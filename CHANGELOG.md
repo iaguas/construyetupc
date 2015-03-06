@@ -1,9 +1,6 @@
-##/*************************/
 #	ConstruyeTuPC CHANGELOG
 
-###	+ | Añadido
-###	- | Eliminado
-###	* | Modificado
-###	! | Bug encontrado
-
-##/*************************/
+####	+ | Añadido
+####	- | Eliminado
+####	* | Modificado
+####	! | Bug encontrado
