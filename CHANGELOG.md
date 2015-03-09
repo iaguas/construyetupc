@@ -7,3 +7,4 @@
 
 09/03/2015
 + Añadido el patrón MVC con una Landing Page y la Main Page.
+* Cambiado el idioma del código a Inglés :)

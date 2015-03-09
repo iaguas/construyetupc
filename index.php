@@ -10,17 +10,17 @@
 	/**
 	 * Control de la acción que se lleva a cabo.
 	 */
-	if (isset($_GET["accion"])){
-		$accion = $_GET["accion"]; 
+	if (isset($_GET["action"])){
+		$action = $_GET["action"]; 
 	}	
 	else {
-		if (isset($_POST["accion"])){
-			$accion = $_POST["accion"];
+		if (isset($_POST["action"])){
+			$action = $_POST["action"];
 		}
 		else {
-			$accion = "landing";
+			$action = "landing";
             // Descomentar cuando quitemos la Landing Page
-            //$accion = "main";
+            //$action = "main";
 		}
 	}	
 
@@ -42,7 +42,7 @@
 	/**
 	 * Cargamos la página principal
 	 */
-	switch($accion) {
+	switch($action) {
         // Landing page
         case 'landing':
             vLandingPage();
