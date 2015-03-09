@@ -1,0 +1,60 @@
+<?php
+/**
+*	Fichero: index.php
+* 	Descripcion: Archivo que contiene todo lo relacionado con el controlador del patrón MVC.
+*/
+	
+	require_once("models/model.php");
+    require_once("view.php");
+
+	/**
+	 * Control de la acción que se lleva a cabo.
+	 */
+	if (isset($_GET["accion"])){
+		$accion = $_GET["accion"]; 
+	}	
+	else {
+		if (isset($_POST["accion"])){
+			$accion = $_POST["accion"];
+		}
+		else {
+			$accion = "landing";
+            // Descomentar cuando quitemos la Landing Page
+            //$accion = "main";
+		}
+	}	
+
+	/**
+	 * Control de la id.
+	 */
+	if (isset($_GET["id"])){
+		$id = $_GET["id"]; 
+	}	
+	else {
+		if (isset($_POST["id"])) {
+			$id = $_POST["id"];
+		}
+		else {
+			$id = 1;
+		}
+	}
+
+	/**
+	 * Cargamos la página principal
+	 */
+	switch($accion) {
+        // Landing page
+        case 'landing':
+            vLandingPage();
+            break;
+
+        // Main page
+        case 'main':
+            switch ($id){
+            case 1:
+                vMainPage();
+                break;
+            }
+            break;
+	}
+?>
