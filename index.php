@@ -51,9 +51,17 @@
         // Main page
         case 'main':
             switch ($id){
-            case 1:
-                vMainPage();
-                break;
+                case 1:
+                    vMainPage();
+                    break;
+                }
+            break;
+
+        case 'partlist':
+            switch ($id){
+                case 1:
+                    vPartListPage();
+                    break;
             }
             break;
 	}

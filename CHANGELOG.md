@@ -10,3 +10,5 @@
 
 12/03/2015
 + Añadida versión completa de Landing Page
++ Añadido el código para atender la URL: [http://www.construyetupc.es?action=partlist](http://www.construyetupc.es?action=partlist), el nombre del archivo que se
+ejecuta es "partlist.php".

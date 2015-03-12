@@ -21,5 +21,13 @@
 		$page = file_get_contents("views/index.html");
 		echo $page;
 	}
+
+    /**
+     * Muestra la lista de componentes.
+     */
+    function vPartList() {
+        $page = file_get_contents("partlist.php");
+        echo $page;
+    }
 	
 ?>
