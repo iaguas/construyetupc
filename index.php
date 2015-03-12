@@ -64,7 +64,8 @@
                     vPartListPage();
                     break;
 				case 2:
-					vShowComponentSelection();
+					$component = "cpu"; // TODO: Obtener el componente seleccionado
+					vShowComponentSelection($component);
 					break;
             }
             break;

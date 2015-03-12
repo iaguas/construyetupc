@@ -30,4 +30,12 @@
         echo $page;
     }
 	
+	/**
+	 * Muestra la lista de selección de modelo de componente
+	 */
+	function vShowComponentSelection($component){
+		$page = file_get_contents("views/components/cpu.html");
+		echo $page;
+	}
+	
 ?>
