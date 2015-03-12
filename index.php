@@ -57,12 +57,17 @@
                 }
             break;
 
+		// Selección de tipo de componente
         case 'partlist':
             switch ($id){
                 case 1:
                     vPartListPage();
                     break;
+				case 2:
+					vShowComponentSelection();
+					break;
             }
             break;
+	
 	}
 ?>
