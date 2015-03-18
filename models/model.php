@@ -29,6 +29,6 @@ class DBHelper {
     }
 }
 
-$db = new DBHelper();
-$db->mConnectMongo();
+/*$db = new DBHelper();
+$db->mConnectMongo();*/
 ?>
