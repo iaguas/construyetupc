@@ -22,6 +22,9 @@
     <!-- Open Sans Font -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
 
+    <!-- CookieCuttr -->
+    <link rel="stylesheet" type="text/css" href="assets/css/cookiecuttr.css">
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -77,11 +80,6 @@
     </form>
 </div>
 
-<br>
-<div class="hidden-text text-center aph">Nuestros ingenieros están trabajando en ello!</div>
-<br>
-<img class="hidden-text text-center center-block" src="http://img.pandawhale.com/101557-dogecoin-mining-gif-Imgur-14ga.gif">
-
 <!-- Sticky footer -->
 <footer class="footer">
     <div class="container">
@@ -93,14 +91,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/jquery.cookie.js"></script>
+<script src="assets/js/jquery.cookiecuttr.js"></script>
 
 <script>
-    $(function () {
-        $('.hidden-text').hide();
-        $('.btn-start-build').click(function () {
-            $('.hidden-text').show();
+    $(document).ready(function() {
+        $.cookieCuttr({
+            cookieAnalyticsMessage: 'Usamos cookies para rastrear las visitas a la web, no almacenamos detalles personales.',
+            cookieAcceptButtonText: 'Me gustan las cookies!',
+            cookieWhatAreLinkText: '¿Qué son las cookies?',
+            cookieWhatAreTheyLink: 'http://www.allaboutcookies.org/es'
         });
     });
+</script>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-61071550-1', 'auto');
+    ga('send', 'pageview');
 </script>
 </body>
 </html>
