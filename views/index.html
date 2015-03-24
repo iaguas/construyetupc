@@ -34,40 +34,41 @@
 </head>
 <body>
 
-<!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Construye Tu PC</a>
-        </div>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Construye Tu PC</a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Crea tu PC</a></li>
-                <li><a href="#">Lista de componentes</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Crea tu PC</a></li>
+                    <li><a href="#">Lista de componentes</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
 
 
-<!-- Start button -->
-<div class="container text-center top-margin">
-    <button class="btn-start-build btn btn-success btn-lg btn-block" type="submit"><span class="fa fa-bolt"></span> Crea tu PC!</button>
-</div>
+    <!-- Start button -->
+    <div class="container text-center top-margin">
+        <button class="btn-start-build btn btn-success btn-lg btn-block" type="button" onclick="window.location.href='index.php?action=partList&id=1'"><span class="fa fa-bolt"></span> Crea tu PC!</button>
+    </div>
 
-<br>
+<!-- GIF DE LOS INGENIEROS PICANDO CON GRÁFICAS
 <div class="hidden-text text-center aph">Nuestros ingenieros están trabajando en ello!</div>
 <br>
 <img class="hidden-text text-center center-block" src="http://img.pandawhale.com/101557-dogecoin-mining-gif-Imgur-14ga.gif"></div>
+-->
 
 <!-- Sticky footer -->
 <footer class="footer">
@@ -77,20 +78,20 @@
 </footer>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>-->
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> Comentado al poner la mierda del easter egg
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
 
 <script>
     var data = '';
 
+    /* Función que controlaba la aparición del gif
     $(function () {
         $('.hidden-text').hide();
         $('.btn-start-build').click(function () {
             $('.hidden-text').show();
         });
-    });
+    });*/
 
     document.addEventListener('keydown', function(event) {
         if(event.keyCode == 66) {

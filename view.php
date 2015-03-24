@@ -25,17 +25,20 @@
     /**
      * Muestra la lista de componentes.
      */
-    function vPartList() {
-        $page = file_get_contents("partlist.php");
+    function vShowPartList() {
+        $page = file_get_contents("views/partlist.html");
         echo $page;
     }
 	
 	/**
 	 * Muestra la lista de selección de modelo de componente
 	 */
-	function vShowComponentSelection($component){
-		$page = file_get_contents("views/components/cpu.html");
-		echo $page;
+	function vShowComponentSelection(){
+        // TODO: Obtener el componente seleccionado
+        $part = $_GET['part'];
+		//$page = file_get_contents("views/components/cpu.html");
+        echo $part;
+		//echo $page;
 	}
 	
 ?>

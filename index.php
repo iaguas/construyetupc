@@ -42,7 +42,9 @@
 	/**
 	 * Cargamos la página principal
 	 */
+
 	switch($action) {
+
         // Landing page
         case 'landing':
             vLandingPage();
@@ -58,14 +60,13 @@
             break;
 
 		// Selección de tipo de componente
-        case 'partlist':
+        case 'partList':
             switch ($id){
                 case 1:
-                    vPartListPage();
+                    vShowPartList();
                     break;
 				case 2:
-					$component = "cpu"; // TODO: Obtener el componente seleccionado
-					vShowComponentSelection($component);
+					vShowComponentSelection();
 					break;
             }
             break;
