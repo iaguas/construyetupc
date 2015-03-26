@@ -46,8 +46,8 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="index.php?action=landing&id=1">Home</a></li>
-            <li><a href="index.php?action=landing&id=2">¿Quíenes somos?</a></li>
+            <li ><a href="index.php?action=landing&id=1">Home</a></li>
+            <li class="active"><a href="index.php?action=landing&id=2">¿Quíenes somos?</a></li>
             <!-- <li><a href="#contact">Contacto</a></li> -->
             <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
@@ -67,27 +67,28 @@
     </nav>  
       
     <!-- Begin page content -->
-    <div class="container text-center top-margin">
-      <img src="assets/img/logo_h200.png" width="478" height="200">
-      <br><br>
-      <h1 class="main-title">Bienvenid@ a ConstruyeTuPC</h1>
+    <div class="container">
+      <h2>¿Qué es ConstruyeTuPC?</h2>
+      <p><b>ConstruyeTuPC</b> es la primera herramienta a nivel de España que sirve para construir el ordenador que se adecue a tus necesidades, pudiendo presupuestarlo
+      y realizar el pedido de los componentes de diferentes tiendas.</p>
+      <h3>¿Qué características nos diferencian de servicios de presupuesto de ordenadores de tiendas y proveedoras de componentes?</h3>
+      <ul>
+        <li>
+          Comparamos precios entre varias tiendas que disponen del mismo componente, y te garantizamos <b>el mejor precio</b>, 
+          teniendo en cuenta las rebajas que puedan tener en ciertos momentos
+        </li>
+        <li>
+            <b>Selector dinámico de componentes</b>, dependiendo de la compatibilidad entre ellas, y recomendación en función
+          del uso al que se vaya a destinar el ordenador deseado
+        </li>
+        <li>
+            Somos el primer servicio enfocado al <b>mercado a nivel nacional</b>, con proveedores que se encuentran en España.
+        </li>  
+      </ul>
       <br>
-      <p class="main-description">Tu comparador y buscador de piezas de ordenador en España.</p>
-      <br>
-      <p class="main-description">Suscríbete para que te avisemos cuando esté disponible!</p>
-      <br>
-      <form class="form-inline" action="model.php?func_name=mInsertEmailLanding()" method="post">
-        <div class="form-group">
-          <div class="input-group">
-            <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-              <input class="form-control" name="email" id="email" type="email" placeholder="tu@correo.com" required>
-            </div>
-          </div>
-        <button class="btn btn-success" type="submit">Suscribirse</button>
-      </form>
-      <!-- model.php?func_name=mInsertEmailLanding -->
+      <p>Tienes opiniones o sugerencias? No dudes en escribirnos a <a href="mailto:info@construyetupc.es">info@construyetupc.es</a></p>
     </div>
-        
+    
     <footer class="footer navbar-fixed-bottom" >
       <div class="container">
           <p class="text-muted"><span class="pull-left">© ConstruyeTuPC 2015</span><span class="pull-right">Made by Kevin Marques, Alvaro Larumbe, Iñigo Aguas, Paul Vega and Iñaki Garcia -- <a href="mailto:info@construyetupc.es">info@construyetupc.es</a></span></p>

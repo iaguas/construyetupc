@@ -47,7 +47,14 @@
 
         // Landing page
         case 'landing':
-            vLandingPage();
+            switch ($id){
+                case 1:
+                	vLandingPage2();
+                	break;
+            	case 2:
+                	vQuienesSomos();
+                	break;
+                }
             break;
 
         // Main page

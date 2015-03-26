@@ -14,6 +14,22 @@
         echo $landing;
     }
 
+    /**
+     * Muestra la Langing Page 2.
+     */
+	function vLandingPage2() {
+        $landing = file_get_contents("views/landing2.html");
+        echo $landing;
+    }
+
+    /**
+     * Muestra la página de quíenes somos.
+     */
+	function vQuienesSomos() {
+        $landing = file_get_contents("views/quienessomos.html");
+        echo $landing;
+    }
+
 	/**
 	 * Muestra la página principal.
 	 */

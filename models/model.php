@@ -59,19 +59,17 @@ class DBHelper {
         }
     }
 
+    public function mInsertEmailLanding(){
+        $db = new DBHelper();
+        $db->mCreateCollection('emails_landing');
+
+        $doc1 = array(
+            "email" => $_POST["email"]
+        );
+
+        $db->mInsertDocument($doc1, 'emails_landing');
+    }
+
 }
 
-/**
- * ¡¡¡¡¡¡¡¡ MUNARRIZ !!!!!!!!
- *
- * Básate en este código para hacer lo del correo de la landing page.
- */
-//$db = new DBHelper();
-//$db->mCreateCollection('emails_landing');
-
-/*$doc1 = array(
-    "email" => "test1@test.com"
-);
-
-$db->mInsertDocument($doc1, 'emails_landing');*/
 ?>
