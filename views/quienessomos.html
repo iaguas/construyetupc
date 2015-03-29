@@ -1,6 +1,5 @@
-<!-- Designed by Iñaki Garcia Munarriz -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,11 +12,18 @@
  
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
+
+    <!-- Sticky footer -->
     <link href="assets/css/sticky-footer-navbar.css" rel="stylesheet">
-    <!-- link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' -->
-    <!-- link href="css/cover.css" rel="stylesheet" -->
-    <!-- link href="css/fondo-personalizado.css" rel="stylesheet" -->
+
+    <!-- Landing styles -->
+    <link href="assets/css/landing.css" rel="stylesheet">
+
+    <!-- Open Sans Font -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+
+    <!-- CookieBar -->
+    <link rel="stylesheet" type="text/css" href="assets/css/cookiebar.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -37,30 +43,15 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">
-              <!-- ------------- AQUÍ VA LA IMAGEN DEL LOGO --------------------
-              <img src="/img/construyetupc-logo.png" height="30">
-              -->
-            ConstruyeTuPC
-          </a>
+          <!--a class="navbar-brand" href="#"-->
+              <!--img src="/img/construyetupc-logo.png" height="30"-->
+            <!--ConstruyeTuPC-->
+          <!--/a-->
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li ><a href="index.php?action=landing&id=1">Home</a></li>
-            <li class="active"><a href="index.php?action=landing&id=2">¿Quíenes somos?</a></li>
-            <!-- <li><a href="#contact">Contacto</a></li> -->
-            <!-- <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="dropdown-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-            </li> -->
+            <li ><a href="index.php?action=landing">Inicio</a></li>
+            <li class="active"><a href="#">¿Quiénes somos?</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -68,30 +59,42 @@
       
     <!-- Begin page content -->
     <div class="container">
-      <h2>¿Qué es ConstruyeTuPC?</h2>
-      <p><b>ConstruyeTuPC</b> es la primera herramienta a nivel de España que sirve para construir el ordenador que se adecue a tus necesidades, pudiendo presupuestarlo
-      y realizar el pedido de los componentes de diferentes tiendas.</p>
-      <h3>¿Qué características nos diferencian de servicios de presupuesto de ordenadores de tiendas y proveedoras de componentes?</h3>
-      <ul>
-        <li>
-          Comparamos precios entre varias tiendas que disponen del mismo componente, y te garantizamos <b>el mejor precio</b>, 
-          teniendo en cuenta las rebajas que puedan tener en ciertos momentos
-        </li>
-        <li>
-            <b>Selector dinámico de componentes</b>, dependiendo de la compatibilidad entre ellas, y recomendación en función
-          del uso al que se vaya a destinar el ordenador deseado
-        </li>
-        <li>
-            Somos el primer servicio enfocado al <b>mercado a nivel nacional</b>, con proveedores que se encuentran en España.
-        </li>  
-      </ul>
-      <br>
-      <p>Tienes opiniones o sugerencias? No dudes en escribirnos a <a href="mailto:info@construyetupc.es">info@construyetupc.es</a></p>
+        <div class="main-description">
+            <br>
+            <h2>¿Qué es ConstruyeTuPC?</h2>
+            <p><b>ConstruyeTuPC</b> es la primera herramienta a nivel de España que sirve para construir el ordenador que se adecue a tus necesidades, pudiendo presupuestarlo
+            y realizar el pedido de los componentes de diferentes tiendas.</p>
+            <h3>¿Qué características nos diferencian de servicios de presupuesto de ordenadores de tiendas y proveedoras de componentes?</h3>
+            <ul>
+            <li>
+              Comparamos precios entre varias tiendas que disponen del mismo componente, y te garantizamos <b>el mejor precio</b>,
+              teniendo en cuenta las rebajas que puedan tener en ciertos momentos
+            </li>
+            <li>
+                <b>Selector dinámico de componentes</b>, dependiendo de la compatibilidad entre ellas, y recomendación en función
+              del uso al que se vaya a destinar el ordenador deseado
+            </li>
+            <li>
+                Somos el primer servicio enfocado al <b>mercado a nivel nacional</b>, con proveedores que se encuentran en España.
+            </li>
+            </ul>
+            <br>
+            <p>Tienes opiniones o sugerencias? No dudes en escribirnos a <a href="mailto:info@construyetupc.es">info@construyetupc.es</a></p>
+            <br>
+            <p>Diseñado y construido por:</p>
+            <ul>
+                <li>Iñigo Aguas Ardaiz</li>
+                <li>Iñaki García Munarriz</li>
+                <li>Álvaro Larumbe Munuce</li>
+                <li>Kevin Marques Paniagua</li>
+                <li>Paul Vega Quishpe</li>
+            </ul>
+        </div>
     </div>
     
     <footer class="footer navbar-fixed-bottom" >
       <div class="container">
-          <p class="text-muted"><span class="pull-left">© ConstruyeTuPC 2015</span><span class="pull-right">Made by Kevin Marques, Alvaro Larumbe, Iñigo Aguas, Paul Vega and Iñaki Garcia -- <a href="mailto:info@construyetupc.es">info@construyetupc.es</a></span></p>
+          <p class="text-muted"><span class="pull-left">© ConstruyeTuPC 2015</span></p>
       </div>
     </footer>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

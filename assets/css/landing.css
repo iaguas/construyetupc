@@ -1,8 +1,6 @@
 /* Landing styles */
 body {
-    /background-image: url("../img/bg.jpg");
     background-size: cover;
-    /font-family: "Open Sans";
 }
 
 .top-margin {
@@ -12,10 +10,6 @@ body {
 .btn-start-build {
     max-width: 20em;
     margin: 0px auto;
-}
-
-.footer-color {
-    /color: lightgrey;
 }
 
 .main-title {

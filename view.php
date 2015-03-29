@@ -7,18 +7,10 @@
 */
 
     /**
-     * Muestra la Langing Page.
+     * Muestra la Landing Page.
      */
 	function vLandingPage() {
         $landing = file_get_contents("views/landing.html");
-        echo $landing;
-    }
-
-    /**
-     * Muestra la Langing Page 2.
-     */
-	function vLandingPage2() {
-        $landing = file_get_contents("views/landing2.html");
         echo $landing;
     }
 

@@ -49,7 +49,7 @@
         case 'landing':
             switch ($id){
                 case 1:
-                	vLandingPage2();
+                	vLandingPage();
                 	break;
             	case 2:
                 	vQuienesSomos();
