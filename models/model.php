@@ -6,70 +6,13 @@
 *		Después de dicha letra, las palabras empiezan con mayúsculas.
 */
 
-/**
- * Clase DBHelper
- *
- * Encapsula la interacción con la base de datos MongoDB.
- */
-class DBHelper {
-    // Datos de conexión
-    private $mongoDbName = 'construyetupc';
-    private $db;
+// Clase de encapsulación para MongoDB
+require_once 'DBHelper.php';
 
-    /**
-     * Método de conexión a la BD
-     * Conexión local
-     */
-    public function __construct() {
-        $mon = new MongoClient();
-        $db = $mon->selectDB($this->mongoDbName);
-        $this->db = $db;
-    }
+// Creación del objeto de base de datos
+$db = new DBHelper();
 
-    /**
-     * Crea una colección en la BD.
-     *
-     * @param $name nombre de la colección.
-     * @return mixed
-     */
-    public function mCreateCollection($name) {
-        return $this->db->createCollection($name);
-    }
+// Operaciones con GET, POST, Ajax, que usen la base de datos.
 
-    /**
-     * Inserta un documento en una colección.
-     *
-     * @param $document documento a insertar.
-     * @param $collection colección donde insertarlo.
-     */
-    public function mInsertDocument($document, $collection) {
-        $col = $this->db->$collection;
-        $col->insert($document);
-    }
-
-    /**
-     * NO USAR!! En construcción...
-     */
-    public function mGetEmailsLanding() {
-        $col = $this->db->emails_landing;
-        $cursor = $col->find();
-
-        foreach($cursor as $doc) {
-            // Insertar $doc en un array, así hasta que acabe el foreach y returnarlo!
-        }
-    }
-
-    public function mInsertEmailLanding(){
-        $db = new DBHelper();
-        $db->mCreateCollection('emails_landing');
-
-        $doc1 = array(
-            "email" => $_POST["email"]
-        );
-
-        $db->mInsertDocument($doc1, 'emails_landing');
-    }
-
-}
-
-?>
+// Ejemplo:
+//$res = $db->mGetEmailsLanding();

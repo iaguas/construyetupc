@@ -48,5 +48,3 @@
         echo $part;
 		//echo $page;
 	}
-	
-?>

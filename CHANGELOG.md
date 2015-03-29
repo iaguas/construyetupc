@@ -16,3 +16,4 @@ ejecuta es "partlist.php".
 29/03/2015
 * Mejorada visualmente la Landing Page.
 * Limpieza de archivos no usados y código.
++ Añadida jerarquía de clases para el acceso a base de datos. Modificado model.php para que haga uso de estas clases.
