@@ -2,73 +2,28 @@
 /**
 *	Fichero: model.php
 * 	Descripcion: Archivo que contiene todo lo relacionado con el modelo del patrón MVC.
-*		El nombre de las funciones empiezan por la letra "m" (hace referencia al modelo para que se más sencillo localizarlo).
-*		Después de dicha letra, las palabras empiezan con mayúsculas.
 */
 
 /**
- * Clase DBHelper
- *
- * Encapsula la interacción con la base de datos MongoDB.
- */
-class DBHelper {
-    // Datos de conexión
-    private $mongoDbName = 'construyetupc';
-    private $db;
+* Formulario de suscripción por correo
+* Comprueba si se ha introducido un correo por petición POST, y lo almacena en la BBDD
+*/
+include 'DBHelper.php';
 
-    /**
-     * Método de conexión a la BD
-     * Conexión local
-     */
-    public function __construct() {
-        $mon = new MongoClient();
-        $db = $mon->selectDB($this->mongoDbName);
-        $this->db = $db;
-    }
 
-    /**
-     * Crea una colección en la BD.
-     *
-     * @param $name nombre de la colección.
-     * @return mixed
-     */
-    public function mCreateCollection($name) {
-        return $this->db->createCollection($name);
-    }
+if(isset($_POST['email'])){
+    $db = new DBHelper();
+    $db->mCreateCollection('emails_landing');
 
-    /**
-     * Inserta un documento en una colección.
-     *
-     * @param $document documento a insertar.
-     * @param $collection colección donde insertarlo.
-     */
-    public function mInsertDocument($document, $collection) {
-        $col = $this->db->$collection;
-        $col->insert($document);
-    }
+    $doc1 = array(
+        "email" => $_POST['email']
+    );
 
-    /**
-     * NO USAR!! En construcción...
-     */
-    public function mGetEmailsLanding() {
-        $col = $this->db->emails_landing;
-        $cursor = $col->find();
+    $db->mInsertDocument($doc1, 'emails_landing');
+    echo "El email se ha procesado correctamente";
+    echo "<br>";
+    echo '<a href="../index.php?action=landing&id=1">Volver</a>';
 
-        foreach($cursor as $doc) {
-            // Insertar $doc en un array, así hasta que acabe el foreach y returnarlo!
-        }
-    }
-
-    public function mInsertEmailLanding(){
-        $db = new DBHelper();
-        $db->mCreateCollection('emails_landing');
-
-        $doc1 = array(
-            "email" => $_POST["email"]
-        );
-
-        $db->mInsertDocument($doc1, 'emails_landing');
-    }
 
 }
 
