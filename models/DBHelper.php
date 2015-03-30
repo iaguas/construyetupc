@@ -23,36 +23,6 @@ class DBHelper implements IDBHelper {
         $this->db = $db;
     }
 
-    /***********************/
-    /* Métodos de consulta */
-    /***********************/
-
-    /**
-     * Obtiene la lista de correos recibidos en la landing page.
-     *
-     * @return mixed array de correos almacenados en Mongo.
-     */
-    public function mGetEmailsLanding() {
-        $col = $this->db->emails_landing;
-        return $col->find();
-    }
-
-    /**
-     * Obtiene un sólo documento de una colección con un ID.
-     *
-     * @param $colName nombre de la colección.
-     * @param $id identificador del documento (string).
-     * @return array|null array que contiene el documento.
-     */
-    public function mGetDocumentByColAndId($colName, $id) {
-        $col = $this->db->selectCollection($colName);
-        return $col->findOne(array('_id' => new MongoId($id)));
-    }
-
-    /************************/
-    /* Métodos de inserción */
-    /************************/
-
     /**
      * Crea una colección en la BD.
      *
@@ -75,24 +45,24 @@ class DBHelper implements IDBHelper {
     }
 
     /**
+     * Obtiene la lista de correos recibidos en la landing page.
+     *
+     * @return mixed array de correos almacenados en Mongo.
+     */
+    public function mGetEmailsLanding() {
+        $col = $this->db->emails_landing;
+        return $col->find();
+    }
+
+    /**
      * Inserta un correo en la colección "emails_landing".
      *
      * @param string email a insertar.
      */
     public function mInsertEmailLanding($email) {
+        // TODO: Implement mInsertEmailLanding() method.
+
         $this->mInsertDocument($email, 'emails_landing');
     }
-
-    /****************************/
-    /* Métodos de actualización */
-    /****************************/
-
-
-
-    /**********************/
-    /* Métodos de borrado */
-    /**********************/
-
-
 
 }
