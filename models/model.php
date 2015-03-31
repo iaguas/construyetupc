@@ -25,10 +25,3 @@ if(isset($_POST['email'])){
     echo "<br>";
     echo '<a href="../index.php?action=landing&id=1">Volver</a>';
 }
-<<<<<<< HEAD
-
-/**
- *
- */
-=======
->>>>>>> origin/master
