@@ -1,4 +1,5 @@
 <?php
+
 /**
  *	Fichero: Vista.php
  * 	Descripcion: Archivo que contiene todo lo relacionado con la vista del patrón MVC.
@@ -36,30 +37,25 @@ function vMainPage() {
 function vShowPartList() {
     $page = file_get_contents("views/partlist.html");
 
-    // TODO: obtener categorías de la BD
-    $categories = array(
-        array('cpu', 'CPU', 'assets/img/hard-icons/cpu.png'),
-        array('gpu', 'GPU', 'assets/img/hard-icons/gpu.png'),
-        array('cpu-cooler', 'Ventilador CPU', 'assets/img/hard-icons/cpu-cooler.png'),
-        array('motherboard', 'Placa base','assets/img/hard-icons/motherboard.png'),
-        array('memory', 'Memoria RAM','assets/img/hard-icons/memory.png'),
-        array('power-supply', 'Fuente de alimentación','assets/img/hard-icons/power-supply.png'),
-        array('case', 'Torre/Caja','assets/img/hard-icons/case.png'),
-        array('optical-drive', 'Unidad óptica','assets/img/hard-icons/optical-drive.png'),
-        array('storage', 'Almacenamiento','assets/img/hard-icons/storage.png'),
-        array('monitor', 'Monitor','assets/img/hard-icons/monitor.png')
-    );
+    $db = new DBHelper();
+    $categories = $db->mGetHardwareCategories(); // Obtengo las categorías de componentes desde la base de datos
 
     $dhtml = '';
     foreach($categories as $category){
         $dhtml .= "<tr>";
-        if ($_SESSION['partList']["$category[0]"] == null){
-            $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category[0] . ".png' alt='" . $category[0] . "' width='32' height='32' /> " . $category[1] . "</td>";
-            $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"index.php?action=partList&id=2&part=" . $category[0] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category[1] . "</button></td>";
+        $categoryName = $category['name'];
+        if ($_SESSION['partList']["$categoryName"] == null){
+            $dhtml .= "<td class='col-md-2 vert-align'><img src='" . $category['img'] . "' alt='" . $category[0] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
+            $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"index.php?action=partList&id=2&part=" . $category['name'] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category['spanishName'] . "</button></td>";
             $dhtml .= "<td class='col-md-2 vert-align'></td>";
             $dhtml .= "<td class='col-md-1 vert-align'></td>";
         }else{
-            $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category[0] . ".png' alt='" . $category[0] . "' width='32' height='32' /> " . $category[1] . "</td>";
+            // Obtener el ID del producto seleccionado
+            $productID = $_SESSION['partList']["$categoryName"];
+
+            // TODO: Obtener los datos de dicho producto desde la BD
+
+            $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category['name'] . ".png' alt='" . $category['name'] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
             $dhtml .= "<td class='col-md-3 vert-align'>
                             <table>
                                 <tr>
@@ -73,7 +69,7 @@ function vShowPartList() {
             $dhtml .= "<td class='col-md-2 vert-align'>
                             <img src='assets/img/shops/PcComponentes-logo-min.png' alt='Logo PcComponentes' width='50' height='50' /> <a href='http://www.pccomponentes.com/' title='PcComponentes'>PcComponentes</a>
                         </td>";
-            $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"index.php?action=partList&id=4&part=" . $category[0] . "\"'>X</button></td>";
+            $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"index.php?action=partList&id=4&part=" . $category['name'] . "\"'>X</button></td>";
         }
         $dhtml .= "</tr>";
     }
@@ -113,7 +109,7 @@ function vShowComponentSelection(){
             }
             break;
         default:
-            $page = 'Not implemented'; // TODO
+            $page = 'Not implemented'; // TODO: hacer lo mismo para todos los demás componentes
             break;
     }
 

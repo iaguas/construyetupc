@@ -5,6 +5,10 @@
  *		El nombre de las funciones empiezan por la letra "s" (hace referencia al modelo de sesiones para que se más sencillo localizarlo).
  */
 
+/**
+ * Comprueba si el usuario tiene definida la variable que almacena la lista de componentes elegidos. Si no la tiene
+ * la crea.
+ */
 function sCheckSessionVar(){
     if (!isset($_SESSION['partList'])){
         $_SESSION['partList'] = [
@@ -22,6 +26,9 @@ function sCheckSessionVar(){
     }
 }
 
+/**
+ * Añade un componente a la lista de partes elegidas
+ */
 function sAddPart(){
     if (isset($_GET["cpuId"])){
         $_SESSION['partList']['cpu'] = $_GET["cpuId"];
@@ -46,6 +53,9 @@ function sAddPart(){
     }
 }
 
+/**
+ * Elimina un componente de la lista de partes elegidas
+ */
 function sRemovePart(){
     if (isset($_GET["part"])) {
         $categoryToRemove = $_GET["part"];
