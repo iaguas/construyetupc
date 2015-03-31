@@ -47,15 +47,17 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Crea tu PC</a></li>
-                <li><a href="#">Lista de componentes</a></li>
+                <li class="active"><a href="index.php?action=partList">Crea tu PC</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
 
 <div class="container">
-    <table class="table table-categories">
+    <div class="row">
+        <strong>Coste total de su configuración:</strong> {{totalCost}}
+    </div>
+    <table class="table">
         <tr>
             <th>Componente</th>
             <th>Selección</th>
@@ -63,26 +65,6 @@
             <th></th>
         </tr>
         {{component-list}}
-        <!--<tr>
-            <td class="col-md-1 vert-align">
-                <img src="assets/img/hard-icons/storage.png" alt="cpu-image" /> CPU
-            </td>
-
-            <td class="col-md-3 vert-align">
-                <table>
-                    <tr>
-                        <td rowspan="2"><img src="assets/img/processors/corei3.png" alt="product-image" width="50" height="50"/></td>
-                        <td><strong>Nombre</strong>: Intel Core i3-2105 2.1GHz Quad-Core<br />
-                            <strong>Precio</strong>: <span style="color:forestgreen">109€</span>
-                        </td>
-                    </tr>
-                </table>
-            </td>
-            <td class="col-md-2 vert-align">
-                <img src="assets/img/pcCom-logo-min.png" alt="Logo PcComponentes" width="50" height="50" /> <a href="http://www.pccomponentes.com/" title="PcComponentes">PcComponentes</a>
-            </td>
-            <td class="col-md-1 vert-align"><button type="button" class="btn btn-primary btn-xs" title="Comprar">Comprar</button> <button type="button" class="btn btn-danger btn-xs" title="Eliminar">X</button></td>
-        </tr>-->
     </table>
 </div>
 

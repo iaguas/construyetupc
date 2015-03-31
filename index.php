@@ -6,6 +6,10 @@
 
 require_once("models/model.php");
 require_once("view.php");
+require_once("models/sessions.php");
+
+session_start();
+sCheckSessionVar();
 
 /**
  * Control de la acción que se lleva a cabo.
@@ -73,6 +77,14 @@ switch($action) {
                 break;
             case 2:
                 vShowComponentSelection();
+                break;
+            case 3:
+                sAddPart();
+                vShowPartList();
+                break;
+            case 4:
+                sRemovePart();
+                vShowPartList();
                 break;
         }
         break;

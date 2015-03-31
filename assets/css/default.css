@@ -3,28 +3,6 @@ body {
     background-color: #F2F2F2;
 }
 
-ul.category{
-	list-style-type: none;
-}
-
-li.category{
-	display: inline-block;
-	-moz-border-radius: 5px;
-    border-radius: 5px;
-	border: 1px solid #1C1C1C;
-	padding: 10px;
-}
-
-li.category a{
-	display: block;
-	padding: 0.2em 1em;
-	text-decoration: none;
-}
-
-li.category:hover{
-	background-color: #CCC;
-}
-
 .table tbody>tr>td.vert-align{
     vertical-align: middle;
 }
