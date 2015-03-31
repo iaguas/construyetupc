@@ -12,8 +12,8 @@
     <!-- Sticky footer -->
     <link href="assets/css/sticky-footer-index.css" rel="stylesheet">
 
-    <!-- Index styles -->
-    <link href="assets/css/index.css" rel="stylesheet">
+    <!-- Default styles -->
+    <link href="assets/css/default.css" rel="stylesheet">
 
     <!-- Font Awesome -->
     <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
@@ -55,18 +55,35 @@
 </nav>
 
 <div class="container">
-    <ul>
-        <li><a href="index.php?action=partList&id=2&part=cpu">CPU</a></li>
-        <li><a href="index.php?action=partList&id=2&part=case">Caja</a></li>
-        <li><a href="index.php?action=partList&id=2&part=cpu-cooler">Ventilador CPU</a></li>
-        <li><a href="index.php?action=partList&id=2&part=gpu">GPU</a></li>
-        <li><a href="index.php?action=partList&id=2&part=memory">Memoria RAM</a></li>
-        <li><a href="index.php?action=partList&id=2&part=monitor">Monitor</a></li>
-        <li><a href="index.php?action=partList&id=2&part=motherboard">Placa base</a></li>
-        <li><a href="index.php?action=partList&id=2&part=optical-drive">Unidad óptica</a></li>
-        <li><a href="index.php?action=partList&id=2&part=power-supply">Fuente de alimentación</a></li>
-        <li><a href="index.php?action=partList&id=2&part=storage">Almacenamiento</a></li>
-    </ul>
+    <table class="table table-categories">
+        <tr>
+            <th>Componente</th>
+            <th>Selección</th>
+            <th>Dónde</th>
+            <th></th>
+        </tr>
+        {{component-list}}
+        <!--<tr>
+            <td class="col-md-1 vert-align">
+                <img src="assets/img/hard-icons/storage.png" alt="cpu-image" /> CPU
+            </td>
+
+            <td class="col-md-3 vert-align">
+                <table>
+                    <tr>
+                        <td rowspan="2"><img src="assets/img/processors/corei3.png" alt="product-image" width="50" height="50"/></td>
+                        <td><strong>Nombre</strong>: Intel Core i3-2105 2.1GHz Quad-Core<br />
+                            <strong>Precio</strong>: <span style="color:forestgreen">109€</span>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+            <td class="col-md-2 vert-align">
+                <img src="assets/img/pcCom-logo-min.png" alt="Logo PcComponentes" width="50" height="50" /> <a href="http://www.pccomponentes.com/" title="PcComponentes">PcComponentes</a>
+            </td>
+            <td class="col-md-1 vert-align"><button type="button" class="btn btn-primary btn-xs" title="Comprar">Comprar</button> <button type="button" class="btn btn-danger btn-xs" title="Eliminar">X</button></td>
+        </tr>-->
+    </table>
 </div>
 
 <!-- Sticky footer -->
