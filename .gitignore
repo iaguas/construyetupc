@@ -58,3 +58,4 @@ nbactions.xml
 nb-configuration.xml
 .nb-gradle/
 img/Thumbs.db
+*.db
