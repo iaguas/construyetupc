@@ -17,3 +17,8 @@ ejecuta es "partlist.php".
 * Mejorada visualmente la Landing Page.
 * Limpieza de archivos no usados y código.
 + Añadida jerarquía de clases para el acceso a base de datos. Modificado model.php para que haga uso de estas clases.
+
+31/03/2015
+* Arreglado método de insertar emails de la Landing Page.
++ Añadidos métodos para eliminar documentos de una colección o vaciarla.
++ Añadido método para insertar documentos en Mongo utilizando un fichero JSON.
