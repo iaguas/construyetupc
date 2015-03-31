@@ -11,13 +11,6 @@ interface IDBHelper {
     /***********************/
 
     /**
-     * Obtiene la lista de correos recibidos en la landing page.
-     *
-     * @return mixed array de correos.
-     */
-    public function mGetEmailsLanding();
-
-    /**
      * Obtiene un sólo documento de una colección con un ID.
      *
      * @param $colName nombre de la colección.
@@ -25,6 +18,20 @@ interface IDBHelper {
      * @return array|null array que contiene el documento.
      */
     public function mGetDocumentByColAndId($colName, $id);
+
+    /**
+     * Obtiene la lista de correos recibidos en la landing page.
+     *
+     * @return mixed array de correos.
+     */
+    public function mGetEmailsLanding();
+
+    /**
+     * Obtiene las categorías de hardware y demás datos sobre las mismas.
+     *
+     * @return MongoCursor categorías y datos sobre las mismas.
+     */
+    public function mGetHardwareCategories();
 
     /************************/
     /* Métodos de inserción */
@@ -42,9 +49,17 @@ interface IDBHelper {
      * Inserta un documento en una colección.
      *
      * @param $document documento a insertar.
-     * @param $collection colección donde insertarlo.
+     * @param $colName colección donde insertarlo.
      */
-    public function mInsertDocument($document, $collection);
+    public function mInsertDocument($document, $colName);
+
+    /**
+     * Inserta un documento JSON en una colección.
+     *
+     * @param $json documento JSON.
+     * @param $colName nombre de la colección (string).
+     */
+    public function mInsertJson($json, $colName);
 
     /**
      * Inserta un correo en la colección "emails_landing".
@@ -63,6 +78,20 @@ interface IDBHelper {
     /* Métodos de borrado */
     /**********************/
 
+    /**
+     * Vacía una colección.
+     *
+     * @param $colName colección a vaciar (string).
+     */
+    public function mRemoveAllInCollection($colName);
 
+    /**
+     * Elimina uno o más documentos de una colección.
+     *
+     * @param $doc patrón que tienen que cumplir los documentos a borrar.
+     *             Ejemplo: array('name' => 'power-supply')
+     * @param $colName colección de la que eliminar los documentos.
+     */
+    public function mRemoveDocsInCollection($doc, $colName);
 
 }

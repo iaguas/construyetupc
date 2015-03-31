@@ -1,0 +1,52 @@
+[
+  {
+    "name": "cpu",
+    "spanishName": "CPU",
+    "img": "assets/img/hard-icons/cpu.png"
+  },
+  {
+    "name": "gpu",
+    "spanishName": "GPU",
+    "img": "assets/img/hard-icons/gpu.png"
+  },
+  {
+    "name": "cpu-cooler",
+    "spanishName": "Ventilador CPU",
+    "img": "assets/img/hard-icons/cpu-cooler.cpu"
+  },
+  {
+    "name": "motherboard",
+    "spanishName": "Placa base",
+    "img": "assets/img/hard-icons/motherboard.png"
+  },
+  {
+    "name": "memory",
+    "spanishName": "Memoria RAM",
+    "img": "assets/img/hard-icons/memory.png"
+  },
+  {
+    "name": "power-supply",
+    "spanishName": "Fuente de alimentación",
+    "img": "assets/img/hard-icons/power-supply.png"
+  },
+  {
+    "name": "case",
+    "spanishName": "Torre/Caja",
+    "img": "assets/img/hard-icons/case.png"
+  },
+  {
+    "name": "optical-drive",
+    "spanishName": "Unidad óptica",
+    "img": "assets/img/hard-icons/drive.png"
+  },
+  {
+    "name": "storage",
+    "spanishName": "Almacenamiento",
+    "img": "assets/img/hard-icons/storage.png"
+  },
+  {
+    "name": "monitor",
+    "spanishName": "Monitor",
+    "img": "assets/img/hard-icons/monitor.png"
+  }
+]

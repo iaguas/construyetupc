@@ -28,16 +28,6 @@ class DBHelper implements IDBHelper {
     /***********************/
 
     /**
-     * Obtiene la lista de correos recibidos en la landing page.
-     *
-     * @return mixed array de correos almacenados en Mongo.
-     */
-    public function mGetEmailsLanding() {
-        $col = $this->db->emails_landing;
-        return $col->find();
-    }
-
-    /**
      * Obtiene un sólo documento de una colección con un ID.
      *
      * @param $colName nombre de la colección.
@@ -47,6 +37,26 @@ class DBHelper implements IDBHelper {
     public function mGetDocumentByColAndId($colName, $id) {
         $col = $this->db->selectCollection($colName);
         return $col->findOne(array('_id' => new MongoId($id)));
+    }
+
+    /**
+     * Obtiene la lista de correos recibidos en la landing page.
+     *
+     * @return mixed array de correos almacenados en Mongo.
+     */
+    public function mGetEmailsLanding() {
+        $col = $this->db->selectCollection("emails_landing");
+        return $col->find();
+    }
+
+    /**
+     * Obtiene las categorías de hardware y demás datos sobre las mismas.
+     *
+     * @return MongoCursor categorías y datos sobre las mismas.
+     */
+    public function mGetHardwareCategories() {
+        $col = $this->db->selectCollection('hardware_categories');
+        return $col->find();
     }
 
     /************************/
@@ -66,12 +76,28 @@ class DBHelper implements IDBHelper {
     /**
      * Inserta un documento en una colección.
      *
-     * @param $document documento a insertar.
-     * @param $collection colección donde insertarlo.
+     * @param $document documento a insertar (array).
+     * @param $colName colección donde insertarlo.
      */
-    public function mInsertDocument($document, $collection) {
-        $col = $this->db->$collection;
+    public function mInsertDocument($document, $colName) {
+        $col = $this->db->selectCollection($colName);
         $col->insert($document);
+    }
+
+    /**
+     * Inserta un documento JSON en una colección.
+     *
+     * @param $json documento JSON.
+     * @param $colName nombre de la colección (string).
+     */
+    public function mInsertJson($json, $colName) {
+        // Conversión JSON a Array
+        $array = json_decode($json, true);
+
+        // Inserción del array en BD
+        foreach($array as $id => $item) {
+            $this->mInsertDocument($item, $colName);
+        }
     }
 
     /**
@@ -80,7 +106,8 @@ class DBHelper implements IDBHelper {
      * @param string email a insertar.
      */
     public function mInsertEmailLanding($email) {
-        $this->mInsertDocument($email, 'emails_landing');
+        $email_array = array('email' => $email);
+        $this->mInsertDocument($email_array, 'emails_landing');
     }
 
     /****************************/
@@ -93,6 +120,26 @@ class DBHelper implements IDBHelper {
     /* Métodos de borrado */
     /**********************/
 
+    /**
+     * Vacía una colección.
+     *
+     * @param $colName colección a vaciar (string).
+     */
+    public function mRemoveAllInCollection($colName) {
+        $col = $this->db->selectCollection($colName);
+        $col->remove();
+    }
 
+    /**
+     * Elimina uno o más documentos de una colección.
+     *
+     * @param $doc patrón que tienen que cumplir los documentos a borrar.
+     *             Ejemplo: array('name' => 'power-supply')
+     * @param $colName colección de la que eliminar los documentos.
+     */
+    public function mRemoveDocsInCollection($doc, $colName) {
+        $col = $this->db->selectCollection($colName);
+        $col->remove($doc);
+    }
 
 }
