@@ -53,7 +53,7 @@ function vShowPartList() {
     $dhtml = '';
     foreach($categories as $category){
         $dhtml .= "<tr>";
-        $dhtml .= "<td class='col-md-1 vert-align'>" . $category[1] . "</td>";
+        $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category[0] . ".png' alt='" . $category[0] . "' width='32' height='32' /> " . $category[1] . "</td>";
         $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"index.php?action=partList&id=2&part=\"'" . $category[0] . "><span class='glyphicon glyphicon-search'></span> Elegir " . $category[1] . "</button></td>";
         $dhtml .= "<td class='col-md-2 vert-align'></td>";
         $dhtml .= "<td class='col-md-1 vert-align'></td>";
