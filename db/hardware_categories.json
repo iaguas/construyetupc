@@ -12,7 +12,7 @@
   {
     "name": "cpu-cooler",
     "spanishName": "Ventilador CPU",
-    "img": "assets/img/hard-icons/cpu-cooler.cpu"
+    "img": "assets/img/hard-icons/cpu-cooler.png"
   },
   {
     "name": "motherboard",
@@ -37,7 +37,7 @@
   {
     "name": "optical-drive",
     "spanishName": "Unidad óptica",
-    "img": "assets/img/hard-icons/drive.png"
+    "img": "assets/img/hard-icons/optical-drive.png"
   },
   {
     "name": "storage",
