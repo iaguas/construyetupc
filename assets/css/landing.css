@@ -1,5 +1,7 @@
 /* Landing styles */
 body {
+    font-family: "Open Sans", sans-serif;
+    font-weight: bold;
     background-size: cover;
 }
 
@@ -22,4 +24,14 @@ body {
     font-family: "Open Sans", sans-serif;
     font-weight: 400;
     font-size: 20px;
+}
+
+.quienes-somos {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+font {
+    font-family: "Open Sans", sans-serif;
 }
