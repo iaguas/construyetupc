@@ -10,7 +10,7 @@
 require_once 'DBHelper.php';
 
 // Creación del objeto de base de datos
-//$db = new DBHelper();
+$db = new DBHelper();
 
 // Operaciones con GET, POST, Ajax, que usen la base de datos.
 
