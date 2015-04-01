@@ -117,3 +117,37 @@ function vShowComponentSelection(){
 
     echo $page;
 }
+
+/**
+ * Muestra una lista con todos los correos registrados.
+ */
+function vShowEmails($lista){
+
+    $page = file_get_contents("views/emails.html");
+
+    $trozos=explode("##fila1##",$page);
+    $aux="";
+    $cuerpo="";
+
+    foreach ($lista as $coleccion) {
+
+        $aux=$trozos[1];
+        $aux=str_replace("##email##",$coleccion['email'],$aux);
+        $cuerpo.=$aux;
+    }
+
+    echo $trozos[0].$cuerpo.$trozos[2];
+    //echo $page;
+
+    
+}
+
+/**
+ * Muestra validación del registro de un correo
+ */
+function vShowValidateRegister(){
+
+   $page=file_get_contents("views/validateRegisterEmail.html");
+   echo $page;
+
+}

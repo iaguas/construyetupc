@@ -10,18 +10,27 @@
 require_once 'DBHelper.php';
 
 // Creación del objeto de base de datos
-$db = new DBHelper();
+//$db = new DBHelper();
 
 // Operaciones con GET, POST, Ajax, que usen la base de datos.
 
 // Ejemplo:
 //$res = $db->mGetEmailsLanding();
 
+function mGetEmails(){
+    $db = new DBHelper();
+    $lista = $db->mGetEmailsLanding();
+    return $lista;
 
-if(isset($_POST['email'])){
-    $email = $_POST['email'];
-    $db->mInsertEmailLanding($email);
-    echo "El email se ha procesado correctamente";
-    echo "<br>";
-    echo '<a href="../index.php?action=landing&id=1">Volver</a>';
+}
+
+function mResgiterEmail(){
+    $db = new DBHelper();
+    if(isset($_POST['email'])){
+        $email = $_POST['email'];
+        $db->mInsertEmailLanding($email);
+        
+    }
+
+
 }

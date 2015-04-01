@@ -88,4 +88,21 @@ switch($action) {
                 break;
         }
         break;
+    // Muestra los emails introducidos en MONGODB
+    case 'showEmails':
+        switch ($id){
+            case 1:
+                vShowEmails(mGetEmails());
+                break;
+        }
+        break;
+    // Muestra los emails introducidos en MONGODB
+    case 'validateRegister':
+        switch ($id){
+            case 1:
+                mResgiterEmail();
+                vShowValidateRegister();
+                break;
+        }
+        break;
 }
