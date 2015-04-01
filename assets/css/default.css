@@ -1,8 +1,14 @@
 /* Estilos generales */
 body {
-    background-color: #F2F2F2;
+    font-family: "Open Sans", sans-serif;
+    background-color: #FAFAFA;
 }
 
 .table tbody>tr>td.vert-align{
     vertical-align: middle;
+}
+
+.logo-navbar {
+    max-width: 100px;
+    margin-top: -5px;
 }

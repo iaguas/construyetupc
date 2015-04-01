@@ -15,6 +15,9 @@
     <!-- Index styles -->
     <link href="assets/css/index.css" rel="stylesheet">
 
+    <!-- Navbar styles -->
+    <link href="assets/css/navbar-custom.css" rel="stylesheet">
+
     <!-- Font Awesome -->
     <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
@@ -35,7 +38,7 @@
 <body>
 
 <!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top font">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -45,14 +48,24 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Construye Tu PC</a>
+            <a class="navbar-brand" href="#">
+                <img class="logo-navbar" src="assets/img/logo_h200.png" height="30">
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Crea tu PC</a></li>
-                <li><a href="#">Lista de componentes</a></li>
+                <li>
+                    <a href="index.php?action=partList">
+                        <i class="fa fa-wrench"></i> Crea tu PC
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-cubes"></i> Lista de componentes
+                    </a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -61,6 +74,8 @@
 
 <!-- Start button -->
 <div class="container text-center top-margin">
+    <p class="main-title">Construye tu PC en cuestión de minutos!</p>
+    <br><br><br><br><br>
     <button class="btn-start-build btn btn-success btn-lg btn-block" type="button" onclick="window.location.href='index.php?action=partList&id=1'"><span class="fa fa-bolt"></span> Crea tu PC!</button>
 </div>
 

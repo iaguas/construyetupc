@@ -1,11 +1,11 @@
 /* Index styles */
 body {
-    background-image: url("../img/bg.jpg");
-    background-size: cover;
+    font-family: "Open Sans", sans-serif;
+    background-color: #FAFAFA;
 }
 
 .top-margin {
-    margin-top: 20em;
+    margin-top: 10em;
 }
 
 .btn-start-build {
@@ -14,11 +14,16 @@ body {
 }
 
 .footer-color {
-    color: lightgrey;
+    /*color: #000000;*/
 }
 
-.aph {
-    font-size: 50px;
-    color: #ffffff;
-    text-shadow: 5px 5px 8px #262626;
+.main-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-size: 56px;
+}
+
+.logo-navbar {
+    max-width: 100px;
+    margin-top: -5px;
 }
