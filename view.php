@@ -74,6 +74,10 @@ function vShowPartList() {
         $dhtml .= "</tr>";
     }
 
+    // TODO: Calcular el coste total
+    $totalCost = 35;
+
+    $page = str_replace("{{totalCost}}", $totalCost . "€", $page);
     $page = str_replace("{{component-list}}", $dhtml, $page);
 
     echo $page;

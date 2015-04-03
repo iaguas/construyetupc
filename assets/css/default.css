@@ -12,3 +12,20 @@ body {
     max-width: 100px;
     margin-top: -5px;
 }
+
+.g-container{
+    border: 2px solid #87c55c;
+    padding: 5px;
+    margin: 10px 0px;
+    float: right;
+    font-size: 2em;
+    text-align: center;
+}
+
+.footer{
+    background-color: #87c55c;
+    color: #D0F0BA;
+    font-size: 1.3em;
+    padding: 5px;
+    text-align: center;
+}
