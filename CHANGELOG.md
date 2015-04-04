@@ -5,6 +5,9 @@
 ####	* | Modificado
 ####	! | Bug encontrado
 
+05/04/2015
++ Añadidos los casos necesarios en el controlador para poder añadir todas las partes a la lista de componentes.
+
 31/03/2015
 * Arreglado método de insertar emails de la Landing Page.
 + Añadidos métodos para eliminar documentos de una colección o vaciarla.

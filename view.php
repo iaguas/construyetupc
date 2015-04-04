@@ -100,24 +100,212 @@ function vShowComponentSelection(){
                 array(3, 'Intel Core i7-4700HQ', 'Core i7', '1150', '4', '2.8GHz', '249€', ''),
                 array(4, 'Intel Core 2 duo E-5000', 'Core 2 duo', '775', '2', '2.1GHz', '87€', '')
             );
-            foreach ($processors as $processor){
+            foreach ($processors as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $processor[1] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $processor[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $processor[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $processor[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $processor[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $processor[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&cpuId=" . $processor[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&cpuId=" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
+            $page = str_replace('{{processor-list}}', $dhtml, $page);
             break;
-        default:
-            $page = 'Not implemented'; // TODO: hacer lo mismo para todos los demás componentes
+        case 'cpu-cooler':
+            $page = file_get_contents("views/components/cpu-cooler.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todos los ventiladores de CPU
+            $cpu_coolers = array(
+                array(0, 'Super mega ventilador tope 1000', '92mm', '2000', '20dB', '21€', ''),
+                array(1,'Ventilador motherfoca edition', '120mm', '600 - 1200', '10dB', '7€', ''),
+                array(2, 'Ventitetera', '2mm', '10', '50dB', '205€', ''),
+                array(3, 'MEGACICLON 9000', '120mm', '9000', '35dB', '249€', ''),
+                array(4, 'Tren chu chu', '120mm', '800', '12dB', '2€', '')
+            );
+            foreach ($cpu_coolers as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&cpu-coolerId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{cpu-cooler-list}}', $dhtml, $page);
+            break;
+        case 'memory':
+            $page = file_get_contents("views/components/memory.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todas las memorias
+            $memories = array(
+                array(0, 'Memoria 1', '1600', '2x4GB', '8GB', '80€', ''),
+                array(1,'Memoria 2', '2100', '2x8GB', '16GB', '50€', '')
+            );
+            foreach ($memories as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&memoryId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{memory-list}}', $dhtml, $page);
+            break;
+        case 'gpu':
+            $page = file_get_contents("views/components/gpu.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todas las tarjetas gráficas
+            $gpus = array(
+                array(0, 'Grafica 1', '4GB', '1.5GHz', '350€', ''),
+                array(1,'Gráfica 2', '1GB', '2GHz', '150€', '')
+            );
+            foreach ($gpus as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&gpuId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{gpu-list}}', $dhtml, $page);
+            break;
+        case 'power-supply':
+            $page = file_get_contents("views/components/power-supply.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todas las fuentes de alimentación
+            $power_supplies = array(
+                array(0, 'Fuente 1', '4GB', '1.5GHz', '350€', ''),
+                array(1,'Fuente 2', '1GB', '2GHz', '150€', '')
+            );
+            foreach ($power_supplies as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&power-supplyId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{power-supply-list}}', $dhtml, $page);
+            break;
+        case 'storage':
+            $page = file_get_contents("views/components/storage.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todos los discos duros
+            $storages = array(
+                array(0, 'Disco 1', 'SSD', '1TB', '2.5"','350€', ''),
+                array(1,'Disco 2', 'HDD', '1TB', '3.5"','150€', '')
+            );
+            foreach ($storages as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&storageId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{storage-list}}', $dhtml, $page);
+            break;
+        case 'motherboard':
+            $page = file_get_contents("views/components/motherboard.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todas las placas base
+            $motherboards = array(
+                array(0, 'Placa 1', '1150', '350€', ''),
+                array(1,'Placa 2', '775', '150€', '')
+            );
+            foreach ($motherboards as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&motherboardId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{motherboard-list}}', $dhtml, $page);
+            break;
+        case 'case':
+            $page = file_get_contents("views/components/case.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todas las cajas
+            $cases = array(
+                array(0, 'Caja 1', 'ATX', '350€', ''),
+                array(1,'Caja 2', 'uATX', '150€', '')
+            );
+            foreach ($cases as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&caseId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{case-list}}', $dhtml, $page);
+            break;
+        case 'monitor':
+            $page = file_get_contents("views/components/monitor.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todos los monitores
+            $monitors = array(
+                array(0, 'Monitor 1', '1920x1080', '21"','350€', ''),
+                array(1,'Monitor 2', '1440x900', '30"', '100€','')
+            );
+            foreach ($monitors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&monitorId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{monitor-list}}', $dhtml, $page);
+            break;
+        case 'optical-drive':
+            $page = file_get_contents("views/components/optical-drive.html");
+            $dhtml = '';
+            // TODO: Obtener lista de todas las unidades ópticas
+            $optical_drives = array(
+                array(0, 'Unidad óptica 1', 'Alta', '350€', ''),
+                array(1,'Unidad óptica 2', 'Extrema', '100€','')
+            );
+            foreach ($optical_drives as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&optical-driveId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{optical-drive-list}}', $dhtml, $page);
             break;
     }
-
-    $page = str_replace('{{processor-list}}', $dhtml, $page);
 
     echo $page;
 }
