@@ -4,105 +4,68 @@
  * 	Descripcion: Archivo que contiene todo lo relacionado con el controlador del patrón MVC.
  */
 
-require_once("models/model.php");
-require_once("view.php");
-require_once("models/sessions.php");
+// Router class
+require 'AltoRouter.php';
 
-session_start();
-sCheckSessionVar();
+// Modelos y vistas
+require 'models/model.php';
+require 'view.php';
+require 'models/sessions.php';
 
-/**
- * Control de la acción que se lleva a cabo.
- */
-if (isset($_GET["action"])){
-    $action = $_GET["action"];
+// Directorio raiz
+if($_SERVER[HTTP_HOST] === 'localhost') {
+    $basepath = 'ConstruyeTuPC/'; // Para trabajar en local
 }
 else {
-    if (isset($_POST["action"])){
-        $action = $_POST["action"];
-    }
-    else {
-        $action = "landing";
-        // Descomentar cuando quitemos la Landing Page
-        //$action = "main";
-    }
+    $basepath = ''; // Para trabajar en el servidor
 }
 
-/**
- * Control de la id.
- */
-if (isset($_GET["id"])){
-    $id = $_GET["id"];
-}
-else {
-    if (isset($_POST["id"])) {
-        $id = $_POST["id"];
-    }
-    else {
-        $id = 1;
-    }
-}
+// Router
+$router = new AltoRouter();
+$router->setBasePath($basepath);
 
-/**
- * Cargamos la página principal
- */
+// Rutas
+$router->map('GET', '/', 'vLandingPage', 'landing');
 
-switch($action) {
-    // Landing page
-    case 'landing':
-        switch ($id){
-            case 1:
-                vLandingPage();
-                break;
-            case 2:
+$router->map('GET', '/main', 'vMainPage', 'quienes-somos');
+
+$router->map('GET', '/partlist', 'vShowPartList', 'part-list');
+
+$router->map('GET', '/showemails', 'vShowEmailsLanding', 'show-emails');
+
+$router->map('GET', '/landing', 'vLandingPage', 'landing-full');
+$router->map('GET', '/landing/[i:id]', 'vLandingPage', 'landing-full-2');
+
+$match = $router->match();
+
+if($match) {
+    // Si la URL encaja en alguna de las rutas
+
+    //echo 'Parámetro por la URL: ' . $match['params']['id'];
+    //echo 'Match: ' . print_r($match) . '<br>';
+
+    switch($match['target']) {
+        case 'vLandingPage':
+            if($match['params']['id'] == 2) {
                 vCreatorId();
-                break;
-        }
-        break;
+            }
+            else {
+                vLandingPage();
+            }
+            break;
 
-    // Main page
-    case 'main':
-        switch ($id){
-            case 1:
-                vMainPage();
-                break;
-        }
-        break;
+        // Caso concreto: llamada a una función con parámetros
+        case 'vShowEmailsLanding':
+            vShowEmails(mGetEmails());
+            break;
 
-    // Selección de tipo de componente
-    case 'partList':
-        switch ($id){
-            case 1:
-                vShowPartList();
-                break;
-            case 2:
-                vShowComponentSelection();
-                break;
-            case 3:
-                sAddPart();
-                vShowPartList();
-                break;
-            case 4:
-                sRemovePart();
-                vShowPartList();
-                break;
-        }
-        break;
-    // Muestra los emails introducidos en MONGODB
-    case 'showEmails':
-        switch ($id){
-            case 1:
-                vShowEmails(mGetEmails());
-                break;
-        }
-        break;
-    // Muestra los emails introducidos en MONGODB
-    case 'validateRegister':
-        switch ($id){
-            case 1:
-                mResgiterEmail();
-                vShowValidateRegister();
-                break;
-        }
-        break;
+        // Por defecto se llama a la función indicada en la ruta
+        default:
+            call_user_func($match['target']);
+            break;
+    }
+}
+else {
+    // Si no encaja, mostramos 404
+    echo file_get_contents('views/404.html');
 }

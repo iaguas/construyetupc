@@ -45,7 +45,7 @@ class DBHelper implements IDBHelper {
      * @return mixed array de correos almacenados en Mongo.
      */
     public function mGetEmailsLanding() {
-        $col = $this->db->selectCollection("emails_landing");
+        $col = $this->db->selectCollection('emails_landing');
         return $col->find();
     }
 

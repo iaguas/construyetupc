@@ -17,20 +17,22 @@ $db = new DBHelper();
 // Ejemplo:
 //$res = $db->mGetEmailsLanding();
 
-function mGetEmails(){
+// Arreglo temporal debido al router!!
+mRegisterEmail();
+
+function mGetEmails() {
     $db = new DBHelper();
     $lista = $db->mGetEmailsLanding();
     return $lista;
-
 }
 
-function mResgiterEmail(){
+function mRegisterEmail() {
     $db = new DBHelper();
-    if(isset($_POST['email'])){
+    if(isset($_POST['email'])) {
         $email = $_POST['email'];
         $db->mInsertEmailLanding($email);
-        
+
+        echo 'Email registrado!<br><br>';
+        echo '<a href="/">Pa casa!</a>';
     }
-
-
 }
