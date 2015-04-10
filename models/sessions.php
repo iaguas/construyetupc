@@ -29,67 +29,64 @@ function sCheckSessionVar(){
 /**
  * Añade un componente a la lista de partes elegidas
  */
-function sAddPart(){
-    if (isset($_GET["cpuId"])){
-        $_SESSION['partList']['cpu'] = $_GET["cpuId"];
-    }elseif (isset($_GET["gpuId"])){
-        $_SESSION['partList']['gpu'] = $_GET["gpuId"];
-    }elseif (isset($_GET["cpu-coolerId"])){
-        $_SESSION['partList']['cpu-cooler'] = $_GET["cpu-coolerId"];
-    }elseif (isset($_GET["memoryId"])){
-        $_SESSION['partList']['memory'] = $_GET["memoryId"];
-    }elseif (isset($_GET["caseId"])){
-        $_SESSION['partList']['case'] = $_GET["caseId"];
-    }elseif (isset($_GET["monitorId"])){
-        $_SESSION['partList']['monitor'] = $_GET["monitorId"];
-    }elseif (isset($_GET["motherboardId"])){
-        $_SESSION['partList']['motherboard'] = $_GET["motherboardId"];
-    }elseif (isset($_GET["power-supplyId"])){
-        $_SESSION['partList']['power-supply'] = $_GET["power-supplyId"];
-    }elseif (isset($_GET["optical-driveId"])){
-        $_SESSION['partList']['optical-drive'] = $_GET["optical-driveId"];
-    }elseif (isset($_GET["storageId"])){
-        $_SESSION['partList']['storage'] = $_GET["storageId"];
+function sAddPart($part, $id){
+    if ($part == "cpu"){
+        $_SESSION['partList']['cpu'] = $id;
+    }elseif ($part == "gpu"){
+        $_SESSION['partList']['gpu'] = $id;
+    }elseif ($part == "cpu-cooler"){
+        $_SESSION['partList']['cpu-cooler'] = $id;
+    }elseif ($part == "memory"){
+        $_SESSION['partList']['memory'] = $id;
+    }elseif ($part == "case"){
+        $_SESSION['partList']['case'] = $id;
+    }elseif ($part == "monitor"){
+        $_SESSION['partList']['monitor'] = $id;
+    }elseif ($part == "motherboard"){
+        $_SESSION['partList']['motherboard'] = $id;
+    }elseif ($part == "power-supply"){
+        $_SESSION['partList']['power-supply'] = $id;
+    }elseif ($part == "optical-drive"){
+        $_SESSION['partList']['optical-drive'] = $id;
+    }elseif ($part == "storage"){
+        $_SESSION['partList']['storage'] = $id;
     }
 }
 
 /**
  * Elimina un componente de la lista de partes elegidas
  */
-function sRemovePart(){
-    if (isset($_GET["part"])) {
-        $categoryToRemove = $_GET["part"];
-        switch ($categoryToRemove) {
-            case 'cpu':
-                $_SESSION['partList']['cpu'] = null;
-                break;
-            case 'cpu-cooler':
-                $_SESSION['partList']['cpu-cooler'] = null;
-                break;
-            case 'gpu':
-                $_SESSION['partList']['gpu'] = null;
-                break;
-            case 'memory':
-                $_SESSION['partList']['memory'] = null;
-                break;
-            case 'case':
-                $_SESSION['partList']['case'] = null;
-                break;
-            case 'monitor':
-                $_SESSION['partList']['monitor'] = null;
-                break;
-            case 'motherboard':
-                $_SESSION['partList']['motherboard'] = null;
-                break;
-            case 'power-supply':
-                $_SESSION['partList']['power-supply'] = null;
-                break;
-            case 'optical-drive':
-                $_SESSION['partList']['optical-drive'] = null;
-                break;
-            case 'storage':
-                $_SESSION['partList']['storage'] = null;
-                break;
-        }
-    }
+function sRemovePart($categoryToRemove){
+	switch ($categoryToRemove) {
+		case 'cpu':
+			$_SESSION['partList']['cpu'] = null;
+			break;
+		case 'cpu-cooler':
+			$_SESSION['partList']['cpu-cooler'] = null;
+			break;
+		case 'gpu':
+			$_SESSION['partList']['gpu'] = null;
+			break;
+		case 'memory':
+			$_SESSION['partList']['memory'] = null;
+			break;
+		case 'case':
+			$_SESSION['partList']['case'] = null;
+			break;
+		case 'monitor':
+			$_SESSION['partList']['monitor'] = null;
+			break;
+		case 'motherboard':
+			$_SESSION['partList']['motherboard'] = null;
+			break;
+		case 'power-supply':
+			$_SESSION['partList']['power-supply'] = null;
+			break;
+		case 'optical-drive':
+			$_SESSION['partList']['optical-drive'] = null;
+			break;
+		case 'storage':
+			$_SESSION['partList']['storage'] = null;
+			break;
+	}
 }

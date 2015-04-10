@@ -29,7 +29,10 @@ $router->map('GET', '/', 'vLandingPage', 'landing');
 
 $router->map('GET', '/main', 'vMainPage', 'quienes-somos');
 
-$router->map('GET', '/partlist', 'vShowPartList', 'part-list');
+$router->map('GET', '/partList', 'vShowPartList', 'part-list');
+$router->map('GET', '/partList/choose/[*:part]', 'vShowComponentSelection', 'component-selection');
+$router->map('GET', '/partList/select/[*:part]/[i:id]', 'sAddPart', 'add-part');
+$router->map('GET', '/partList/remove/[*:part]', 'sRemovePart', 'remove-part');
 
 $router->map('GET', '/showemails', 'vShowEmailsLanding', 'show-emails');
 
@@ -58,6 +61,17 @@ if($match) {
         case 'vShowEmailsLanding':
             vShowEmails(mGetEmails());
             break;
+		case 'vShowComponentSelection':
+			vShowComponentSelection($match['params']['part']);
+			break;
+		case 'sAddPart':
+			sAddPart($match['params']['part'], $match['params']['id']);
+            vShowPartList();
+			break;
+		case 'sRemovePart':
+			sRemovePart($match['params']['part']);
+            vShowPartList();
+			break;
 
         // Por defecto se llama a la función indicada en la ruta
         default:
@@ -66,6 +80,6 @@ if($match) {
     }
 }
 else {
-    // Si no encaja, mostramos 404
+    // Si no encaja, mostramos 404 y nos echamos una siesta
     echo file_get_contents('views/404.html');
 }

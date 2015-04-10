@@ -46,7 +46,7 @@ function vShowPartList() {
         $categoryName = $category['name'];
         if ($_SESSION['partList']["$categoryName"] == null){
             $dhtml .= "<td class='col-md-2 vert-align'><img src='" . $category['img'] . "' alt='" . $category[0] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
-            $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"index.php?action=partList&id=2&part=" . $category['name'] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category['spanishName'] . "</button></td>";
+            $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"partList/choose/" . $category['name'] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category['spanishName'] . "</button></td>";
             $dhtml .= "<td class='col-md-2 vert-align'></td>";
             $dhtml .= "<td class='col-md-1 vert-align'></td>";
         }else{
@@ -69,7 +69,7 @@ function vShowPartList() {
             $dhtml .= "<td class='col-md-2 vert-align'>
                             <img src='assets/img/shops/PcComponentes-logo-min.png' alt='Logo PcComponentes' width='50' height='50' /> <a href='http://www.pccomponentes.com/' title='PcComponentes'>PcComponentes</a>
                         </td>";
-            $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"index.php?action=partList&id=4&part=" . $category['name'] . "\"'>X</button></td>";
+            $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
         }
         $dhtml .= "</tr>";
     }
@@ -86,8 +86,8 @@ function vShowPartList() {
 /**
  * Muestra la lista de selección de modelo de componente
  */
-function vShowComponentSelection(){
-    $part = $_GET['part'];
+function vShowComponentSelection($part){
+    //$part = $_GET['part']; // TODO: Eliminar esta línea cuando estemos seguros de que el AltoRouter funciona bien.
     switch($part){
         case 'cpu':
             $page = file_get_contents("views/components/cpu.html");
@@ -108,7 +108,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&cpuId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{processor-list}}', $dhtml, $page);
@@ -132,7 +132,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&cpu-coolerId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu-cooler/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{cpu-cooler-list}}', $dhtml, $page);
@@ -153,7 +153,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&memoryId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/memory/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{memory-list}}', $dhtml, $page);
@@ -174,7 +174,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&gpuId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/gpu/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{gpu-list}}', $dhtml, $page);
@@ -195,7 +195,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&power-supplyId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/power-supply/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{power-supply-list}}', $dhtml, $page);
@@ -216,7 +216,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&storageId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/storage/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{storage-list}}', $dhtml, $page);
@@ -237,7 +237,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&motherboardId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/motherboard/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{motherboard-list}}', $dhtml, $page);
@@ -258,7 +258,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&caseId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/case/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{case-list}}', $dhtml, $page);
@@ -279,7 +279,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&monitorId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/monitor/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{monitor-list}}', $dhtml, $page);
@@ -300,7 +300,7 @@ function vShowComponentSelection(){
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"index.php?action=partList&id=3&optical-driveId=" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/optical-drive/" . $partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{optical-drive-list}}', $dhtml, $page);
