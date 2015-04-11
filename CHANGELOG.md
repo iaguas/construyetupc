@@ -5,6 +5,12 @@
 ####	* | Modificado
 ####	! | Bug encontrado
 
+11/04/2015
++ Añadidas páginas de especificación de modelo de componente con la comparativa de precios
+
+10/05/2015
+* Adaptadas las rutas para URL amigables
+
 05/04/2015
 + Añadidos los casos necesarios en el controlador para poder añadir todas las partes a la lista de componentes.
 

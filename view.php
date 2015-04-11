@@ -102,7 +102,7 @@ function vShowComponentSelection($part){
             );
             foreach ($processors as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/cpu/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -126,7 +126,7 @@ function vShowComponentSelection($part){
             );
             foreach ($cpu_coolers as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/cpu-cooler/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -147,7 +147,7 @@ function vShowComponentSelection($part){
             );
             foreach ($memories as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/memory/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -168,7 +168,7 @@ function vShowComponentSelection($part){
             );
             foreach ($gpus as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/gpu/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -189,7 +189,7 @@ function vShowComponentSelection($part){
             );
             foreach ($power_supplies as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/power-supply/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -210,7 +210,7 @@ function vShowComponentSelection($part){
             );
             foreach ($storages as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/storage/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -231,7 +231,7 @@ function vShowComponentSelection($part){
             );
             foreach ($motherboards as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/motherboard/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -252,7 +252,7 @@ function vShowComponentSelection($part){
             );
             foreach ($cases as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/case/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -273,7 +273,7 @@ function vShowComponentSelection($part){
             );
             foreach ($monitors as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/monitor/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -294,7 +294,7 @@ function vShowComponentSelection($part){
             );
             foreach ($optical_drives as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/optical-drive/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
@@ -307,6 +307,235 @@ function vShowComponentSelection($part){
             break;
     }
 
+    echo $page;
+}
+
+/**
+ * Muestra los detalles, puntos de venta y precios de un modelo de componente
+ */
+function vShowDetailedPartModel($part, $id){
+    switch ($part){
+        case 'cpu':
+            $page = file_get_contents("views/detailedComponents/cpu.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
+            break;
+        case 'cpu-cooler':
+            $page = file_get_contents("views/detailedComponents/cpu-cooler.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu-cooler/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-cpu-cooler-list}}', $dhtml, $page);
+            break;
+        case 'memory':
+            $page = file_get_contents("views/detailedComponents/memory.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/memory/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-memory-list}}', $dhtml, $page);
+            break;
+        case 'gpu':
+            $page = file_get_contents("views/detailedComponents/gpu.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/gpu/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-gpu-list}}', $dhtml, $page);
+            break;
+        case 'power-supply':
+            $page = file_get_contents("views/detailedComponents/power-supply.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/power-supply/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-power-supply-list}}', $dhtml, $page);
+            break;
+        case 'storage':
+            $page = file_get_contents("views/detailedComponents/storage.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/storage/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-storage-list}}', $dhtml, $page);
+            break;
+        case 'motherboard':
+            $page = file_get_contents("views/detailedComponents/motherboard.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/motherboard/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-motherboard-list}}', $dhtml, $page);
+            break;
+        case 'case':
+            $page = file_get_contents("views/detailedComponents/case.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/case/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-case-list}}', $dhtml, $page);
+            break;
+        case 'monitor':
+            $page = file_get_contents("views/detailedComponents/monitor.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/monitor/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-monitor-list}}', $dhtml, $page);
+            break;
+        case 'optical-drive':
+            $page = file_get_contents("views/detailedComponents/optical-drive.html");
+            $dhtml = '';
+            $model = $id;
+            $modelName = 'NombreComponente';
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            // TODO: Obtener especificaciones técnicas del modelo solicitado
+            $processors = array(
+                array(0, 'Chino de confianza', '580€', '5€', '585€')
+            );
+            foreach ($processors as $partItem){
+                $dhtml .= "<tr>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/optical-drive/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-optical-drive-list}}', $dhtml, $page);
+            break;
+    }
     echo $page;
 }
 
@@ -330,8 +559,6 @@ function vShowEmails($lista){
 
     echo $trozos[0].$cuerpo.$trozos[2];
     //echo $page;
-
-    
 }
 
 /**

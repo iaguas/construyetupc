@@ -34,6 +34,8 @@ $router->map('GET', '/partList/choose/[*:part]', 'vShowComponentSelection', 'com
 $router->map('GET', '/partList/select/[*:part]/[i:id]', 'sAddPart', 'add-part');
 $router->map('GET', '/partList/remove/[*:part]', 'sRemovePart', 'remove-part');
 
+$router->map('GET', '/part/[*:part]/[*:serialNumber]', 'vShowDetailedPartModel', 'part-details');
+
 $router->map('GET', '/showemails', 'vShowEmailsLanding', 'show-emails');
 
 $router->map('GET', '/landing', 'vLandingPage', 'landing-full');
@@ -72,6 +74,9 @@ if($match) {
 			sRemovePart($match['params']['part']);
             vShowPartList();
 			break;
+        case 'vShowDetailedPartModel':
+            vShowDetailedPartModel($match['params']['part'], $match['params']['serialNumber']);
+            break;
 
         // Por defecto se llama a la función indicada en la ruta
         default:
