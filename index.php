@@ -12,14 +12,6 @@ require 'models/model.php';
 require 'view.php';
 require 'models/sessions.php';
 
-// Directorio raiz
-if($_SERVER[HTTP_HOST] === 'localhost') {
-    $basepath = 'ConstruyeTuPC/'; // Para trabajar en local
-}
-else {
-    $basepath = ''; // Para trabajar en el servidor
-}
-
 // Router
 $router = new AltoRouter();
 $router->setBasePath($basepath);
