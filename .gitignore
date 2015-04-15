@@ -60,5 +60,8 @@ nb-configuration.xml
 img/Thumbs.db
 *.db
 
-## PAUL VEGA ##
+## Paul Vega XAMPP ##
 general/
+
+## Iñaki García WAMP ##
+viejo/
