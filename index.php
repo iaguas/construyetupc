@@ -14,7 +14,7 @@ require 'models/sessions.php';
 
 // Router
 $router = new AltoRouter();
-$router->setBasePath($basepath);
+$router->setBasePath('');
 
 // Rutas
 $router->map('GET', '/', 'vLandingPage', 'landing');
@@ -33,6 +33,10 @@ $router->map('GET', '/showemails', 'vShowEmailsLanding', 'show-emails');
 $router->map('GET', '/landing', 'vLandingPage', 'landing-full');
 $router->map('GET', '/landing/[i:id]', 'vLandingPage', 'landing-full-2');
 
+$router->map('GET', '/administrator/showemails', 'vShowEmailsLanding', 'administratorEmails');
+
+$router->map('GET', '/admin', 'vAdministrator', 'administrator');//no funciona de momento..
+
 $match = $router->match();
 
 if($match) {
@@ -49,6 +53,9 @@ if($match) {
             else {
                 vLandingPage();
             }
+            break;
+        case 'vAdministrator':
+            vShowAdministrator();
             break;
 
         // Caso concreto: llamada a una función con parámetros
@@ -69,6 +76,7 @@ if($match) {
         case 'vShowDetailedPartModel':
             vShowDetailedPartModel($match['params']['part'], $match['params']['serialNumber']);
             break;
+
 
         // Por defecto se llama a la función indicada en la ruta
         default:
