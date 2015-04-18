@@ -21,6 +21,8 @@ $router->map('GET', '/', 'vLandingPage', 'landing');
 
 $router->map('GET', '/main', 'vMainPage', 'quienes-somos');
 
+$router->map('GET', '/contact', 'vShowContact', 'contact');
+
 $router->map('GET', '/partList', 'vShowPartList', 'part-list');
 $router->map('GET', '/partList/choose/[*:part]', 'vShowComponentSelection', 'component-selection');
 $router->map('GET', '/partList/select/[*:part]/[i:id]', 'sAddPart', 'add-part');
@@ -73,7 +75,9 @@ if($match) {
         case 'vShowDetailedPartModel':
             vShowDetailedPartModel($match['params']['part'], $match['params']['serialNumber']);
             break;
-
+        case 'vShowContact':
+            vShowContact();
+            break;
 
         // Por defecto se llama a la función indicada en la ruta
         default:

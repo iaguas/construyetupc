@@ -5,60 +5,76 @@
     <base href="/">
     <title>Página no encontrada</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Sticky footer -->
+    <link href="assets/css/sticky-footer-navbar.css" rel="stylesheet">
+
+    <!-- Navbar styles -->
+    <link href="assets/css/navbar-custom.css" rel="stylesheet">
+
+    <!-- Default styles -->
+    <link href="assets/css/default.css" rel="stylesheet">
+
     <style>
-
-        * {
-            line-height: 1.2;
-            margin: 0;
-        }
-
-        html {
-            color: #888;
-            display: table;
-            font-family: sans-serif;
-            height: 100%;
-            text-align: center;
+        html, body{height:100%; margin:0;padding:0}
+        .container-fluid{
+            height:75%;
+            display:table;
             width: 100%;
+            padding: 0;
         }
 
-        body {
-            display: table-cell;
-            vertical-align: middle;
-            margin: 2em auto;
+        .row-fluid {height: 100%; display:table-cell; vertical-align: middle;}
+
+        .centering {
+            float:none;
+            margin:0 auto;
         }
-
-        h1 {
-            color: #555;
-            font-size: 2em;
-            font-weight: 400;
-        }
-
-        p {
-            margin: 0 auto;
-            width: 280px;
-        }
-
-        @media only screen and (max-width: 280px) {
-
-            body, p {
-                width: 95%;
-            }
-
-            h1 {
-                font-size: 1.5em;
-                margin: 0 0 0.3em;
-            }
-
-        }
-
     </style>
 </head>
 <body>
-<h1>404</h1>
-<h2>Página no encontrada</h2>
-<br>
-<p>Lo sentimos, pero la página que estabas tratando de visitar no existe.</p>
-<br>
-<p><a href="/">Volver al inicio</a></p>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">ConstruyeTuPC</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#">Crea tu PC</a></li>
+                    <li><a href="#">Lista de componentes</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span3 centering text-center">
+                <p style="font-size: 10em; color: #458419">404</p>
+                <h1>Quizá hayas escrito mal la dirección, aunque es más probable que la hayamos roto nosotros.</h1>
+                <h2>Si crees que la dirección está bien escrita, <a href="/contact" title="Contactar">háznoslo saber</a>.</h2>
+                <h3><a href="/">Volver al inicio</a></h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sticky footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>© ConstruyeTuPC 2015</p>
+        </div>
+    </footer>
 </body>
 </html>

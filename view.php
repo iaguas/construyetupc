@@ -32,6 +32,14 @@ function vMainPage() {
 }
 
 /**
+ * Muestra la página de contacto
+ */
+function vShowContact(){
+    $page = file_get_contents('views/contact.html');
+    echo $page;
+}
+
+/**
  * Muestra la lista de componentes.
  */
 function vShowPartList() {
