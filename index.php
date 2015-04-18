@@ -28,14 +28,11 @@ $router->map('GET', '/partList/remove/[*:part]', 'sRemovePart', 'remove-part');
 
 $router->map('GET', '/part/[*:part]/[*:serialNumber]', 'vShowDetailedPartModel', 'part-details');
 
-$router->map('GET', '/showemails', 'vShowEmailsLanding', 'show-emails');
-
 $router->map('GET', '/landing', 'vLandingPage', 'landing-full');
 $router->map('GET', '/landing/[i:id]', 'vLandingPage', 'landing-full-2');
 
-$router->map('GET', '/administrator/showemails', 'vShowEmailsLanding', 'administratorEmails');
-
-$router->map('GET', '/admin', 'vAdministrator', 'administrator');//no funciona de momento..
+$router->map('GET', '/admin', 'vAdministrator', 'administrator-panel');
+$router->map('GET', '/admin/showemails', 'vShowEmailsLanding', 'administrator-panel-showemails');
 
 $match = $router->match();
 

@@ -545,7 +545,7 @@ function vShowDetailedPartModel($part, $id){
  */
 function vShowEmails($lista){
 
-    $page = file_get_contents("administrator/views/emails.html");
+    $page = file_get_contents("views/admin/emails.html");
 
     $trozos=explode("##fila1##",$page);
     $aux="";
@@ -577,6 +577,6 @@ function vShowValidateRegister(){
  */
 function vShowAdministrator(){
 
-    $page = file_get_contents("administrator/views/administrator.html");
+    $page = file_get_contents("views/admin/adminPanel.html");
     echo $page;
 }
