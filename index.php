@@ -33,7 +33,8 @@ $router->map('GET', '/part/[*:part]/[*:serialNumber]', 'vShowDetailedPartModel',
 $router->map('GET', '/landing', 'vLandingPage', 'landing-full');
 $router->map('GET', '/landing/[i:id]', 'vLandingPage', 'landing-full-2');
 
-$router->map('GET', '/admin', 'vAdministrator', 'administrator-panel');
+$router->map('GET', '/admin', 'vShowAdminLogin', 'administrator-login');
+$router->map('GET', '/admin/panel', 'vShowAdmin', 'administrator-panel');
 $router->map('GET', '/admin/showemails', 'vShowEmailsLanding', 'administrator-panel-showemails');
 
 $match = $router->match();
@@ -53,8 +54,11 @@ if($match) {
                 vLandingPage();
             }
             break;
-        case 'vAdministrator':
-            vShowAdministrator();
+        case 'vAdmin':
+            vShowAdmin();
+            break;
+        case 'vAdminLogin':
+            vShowAdminLogin();
             break;
 
         // Caso concreto: llamada a una función con parámetros

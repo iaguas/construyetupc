@@ -552,7 +552,6 @@ function vShowDetailedPartModel($part, $id){
  * ( Correponde a adminsitrator/views (después será eliminada está funciont).)
  */
 function vShowEmails($lista){
-
     $page = file_get_contents("views/admin/emails.html");
 
     $trozos=explode("##fila1##",$page);
@@ -574,17 +573,19 @@ function vShowEmails($lista){
  * Muestra validación del registro de un correo
  */
 function vShowValidateRegister(){
-
    $page=file_get_contents("views/validateRegisterEmail.html");
    echo $page;
-
 }
 
 /**
  * Muestra la parte del administrador.
  */
-function vShowAdministrator(){
-
+function vShowAdmin(){
     $page = file_get_contents("views/admin/adminPanel.html");
+    echo $page;
+}
+
+function vShowAdminLogin() {
+    $page = file_get_contents("views/admin/adminLogin.html");
     echo $page;
 }

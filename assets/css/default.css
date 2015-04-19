@@ -24,8 +24,30 @@ body {
 
 .footer{
     background-color: #87c55c;
-    color: #D0F0BA;
+    color: #2a2f35;
     font-size: 1.3em;
     padding: 5px;
+    padding-top: 20px;
     text-align: center;
+}
+
+.top-margin {
+    margin-top: 10em;
+}
+
+.btn-start-build {
+    max-width: 20em;
+    margin: 0px auto;
+}
+
+.main-title {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-size: 56px;
+}
+
+.main-description {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
 }
