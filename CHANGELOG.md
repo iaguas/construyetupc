@@ -5,10 +5,14 @@
 ####	* | Modificado
 ####	! | Bug encontrado
 
+20/04/2015
++ Añadida suscripción por AngularJS para la Landing Page
+! AngularJS no muestra correctamente las notificaciones, dado que no captura el mensaje AJAX que se envía con la última línea del fichero php
+
 11/04/2015
 + Añadidas páginas de especificación de modelo de componente con la comparativa de precios
 
-10/05/2015
+10/04/2015
 * Adaptadas las rutas para URL amigables
 
 05/04/2015
