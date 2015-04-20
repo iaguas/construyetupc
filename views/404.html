@@ -19,7 +19,7 @@
     <link href="assets/css/default.css" rel="stylesheet">
 
     <style>
-        html, body{height:100%; margin:0;padding:0}
+        html, body{height:100%; margin:0;padding:0; background-color: #D0F0BA;}
         .container-fluid{
             height:75%;
             display:table;
@@ -54,7 +54,6 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li><a href="#">Crea tu PC</a></li>
-                    <li><a href="#">Lista de componentes</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
@@ -62,10 +61,13 @@
     <div class="container-fluid">
         <div class="row-fluid">
             <div class="span3 centering text-center">
-                <p style="font-size: 10em; color: #458419">404</p>
+                <p style="font-size: 10em; color: #458419">
+                    404
+                </p>
                 <h1>Quizá hayas escrito mal la dirección, aunque es más probable que la hayamos roto nosotros.</h1>
                 <h2>Si crees que la dirección está bien escrita, <a href="/contact" title="Contactar">háznoslo saber</a>.</h2>
-                <h3><a href="/">Volver al inicio</a></h3>
+                <div class="div-btn"><img src="assets/img/home-icon.png" width="64" height="64" alt="Inicio"><br /> <a href="#" title="Inicio" onclick="window.location.href='/'" style="padding-top: 75%">Ir al inicio</a></div>
+                <div class="div-btn"><img src="assets/img/arrow-left-icon.png" width="64" height="64" alt="Atrás"><br /> <a href="#" title="Página anterior" onclick="window.history.back();" style="padding-top: 75%">Volver</a></div>
             </div>
         </div>
     </div>
