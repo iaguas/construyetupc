@@ -19,7 +19,8 @@ $router->setBasePath('');
 // Rutas
 $router->map('GET', '/', 'vLandingPage', 'landing');
 
-$router->map('GET', '/main', 'vMainPage', 'quienes-somos');
+$router->map('GET', '/main', 'vMainPage', 'main');
+$router->map('GET', '/whoweare', 'vWhoWeAre', 'who-we-are');
 
 $router->map('GET', '/contact', 'vShowContact', 'contact');
 
@@ -60,7 +61,12 @@ if($match) {
         case 'vAdminLogin':
             vShowAdminLogin();
             break;
-
+        case 'vMainPage':
+            vShowMainPage();
+            break;
+        case 'vWhoWeAre':
+            vShowWhoWeAre();
+            break;
         // Caso concreto: llamada a una función con parámetros
         case 'vShowEmailsLanding':
             vShowEmails(mGetEmails());

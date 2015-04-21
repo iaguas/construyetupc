@@ -64,6 +64,7 @@ body {
     font-size: 1.8em;
     border-radius: 25%;
     display: inline-block;
+    margin-top: 2em;
 }
 
 .div-btn a {

@@ -19,15 +19,23 @@ function vLandingPage() {
  * Muestra la página de quíenes somos.
  */
 function vCreatorId() {
-    $landing = file_get_contents("views/quienessomos.html");
+    $landing = file_get_contents("views/whoweare.html");
     echo $landing;
 }
 
 /**
  * Muestra la página principal.
  */
-function vMainPage() {
+function vShowMainPage() {
     $page = file_get_contents("views/index.html");
+    echo $page;
+}
+
+/**
+ * Muestra la página principal.
+ */
+function vShowWhoWeAre() {
+    $page = file_get_contents("views/whoweare.html");
     echo $page;
 }
 
