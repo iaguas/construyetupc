@@ -94,3 +94,40 @@ app.controller('AdmLoginFormCtrl', [
         };
     }
 ]);
+
+// Controlador para el borrado de un email
+app.controller('AdmEmailCtrl', [
+    '$scope',
+    '$http',
+    '$window',
+    function ($scope, $http, $window) {
+        'use strict';
+
+        $scope.deleteEmail = function ($emailid) {
+            if ($window.confirm('¿Seguro que quieres eliminar el email?')) {
+                var request = $http({
+                    method  : 'POST',
+                    url     : '/models/removeEmail.php',
+                    data    : {
+                        emailid: $emailid
+                    },
+                    headers : {'Content-Type': 'application/json'}
+                });
+            }
+
+            request.success(function (data) {
+                if (data == 'deleteOk') {
+                    // Recargamos la página
+                    $window.location.reload();
+                }
+                else {
+                    // error
+                }
+            });
+
+            request.error(function (data) {
+                // error
+            });
+        };
+    }
+]);

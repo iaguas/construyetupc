@@ -570,11 +570,11 @@ function vShowEmails($lista){
 
         $aux=$trozos[1];
         $aux=str_replace("##email##",$coleccion['email'],$aux);
+        $aux=str_replace("##emailid##",$coleccion['_id'],$aux);
         $cuerpo.=$aux;
     }
 
     echo $trozos[0].$cuerpo.$trozos[2];
-    //echo $page;
 }
 
 /**

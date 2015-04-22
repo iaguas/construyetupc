@@ -151,7 +151,7 @@ class DBHelper implements IDBHelper {
      */
     public function mRemoveDocsInCollection($doc, $colName) {
         $col = $this->db->selectCollection($colName);
-        $col->remove($doc);
+        return $col->remove($doc);
     }
 
 }
