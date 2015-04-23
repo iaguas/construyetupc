@@ -84,3 +84,36 @@ body {
 .div-btn:hover {
     background-color: #458419;
 }
+
+.div-panel-btn {
+    border: 1px solid #458419;
+    background-color: #B1E38D;
+    height:200px;
+    width:200px;
+    cursor:pointer;
+    text-align: center;
+    position: relative;
+    padding: 15px;
+    font-size: 2em;
+    border-radius: 5%;
+    display: inline-block;
+    margin-top: 2em;
+}
+
+.div-panel-btn a {
+    position: absolute;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    text-decoration: none;
+    color: #458419;
+}
+
+.div-panel-btn a:hover{
+    color: #88C55C;
+}
+
+.div-panel-btn:hover {
+    background-color: #458419;
+}
