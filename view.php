@@ -109,22 +109,38 @@ function vShowComponentSelection($part){
             $page = file_get_contents("views/components/cpu.html");
             $dhtml = '';
             // TODO: Obtener lista de todos los procesadores
-            $processors = array(
-                array(0, 'Intel Core i3-2015 MotherFoca edition', 'Core i3', '1150', '4', '2.5GHz', '199€', ''),
-                array(1,'Intel Core i5-370 Patatero', 'Core i5', '1150', '4', '0.2MHz', '7€', ''),
-                array(2, 'AMD FX-8000 tetera', 'FX Series', 'AM3', '4', '3GHz', '124€', ''),
-                array(3, 'Intel Core i7-4700HQ', 'Core i7', '1150', '4', '2.8GHz', '249€', ''),
-                array(4, 'Intel Core 2 duo E-5000', 'Core 2 duo', '775', '2', '2.1GHz', '87€', '')
-            );
+
+            //obtener cpus
+            $db = new DBHelper();
+            $processors = $db->mGetCpus(); // Obtengo las categorías de componentes desde la base de datos
+           // $dhtml = '';
+            //$processors = array(
+                //array(0, 'Intel Core i3-2015 MotherFoca edition', 'Core i3', '1150', '4', '2.5GHz', '199€', ''),
+                //array(1,'Intel Core i5-370 Patatero', 'Core i5', '1150', '4', '0.2MHz', '7€', ''),
+                //array(2, 'AMD FX-8000 tetera', 'FX Series', 'AM3', '4', '3GHz', '124€', ''),
+              //  array(3, 'Intel Core i7-4700HQ', 'Core i7', '1150', '4', '2.8GHz', '249€', '')
+            //);
             foreach ($processors as $partItem){
+                if(isset($partItem['family'][0])){
+                    $family="N/A";
+                }
+                if(isset($partItem['socket'][0])){
+                    $socket="N/A";
+                }
+                if(isset($partItem['cores'][0])){
+                    $cores="N/A";
+                }
+                if(isset($partItem['frecuency'][0])){
+                    $frecuency="N/A";
+                }
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/cpu/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/cpu/" . $partItem['_id'] ."' title='Ver comparativa y especificaciones'>" . $partItem['name'][0]  . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $family . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $socket . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $cores . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $frecuency . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'][0] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $partItem['_id'] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{processor-list}}', $dhtml, $page);

@@ -1,7 +1,7 @@
 <?php
 /**
  *	Fichero: model.php
- * 	Descripcion: Archivo que contiene todo lo relacionado con el modelo del patrón MVC.
+ * 	Descripcion: Archivo que contiene lo relacionado con el modelo del patrón MVC.
  *		El nombre de las funciones empiezan por la letra "m" (hace referencia al modelo para que se más sencillo localizarlo).
  *		Después de dicha letra, las palabras empiezan con mayúsculas.
  */
@@ -17,8 +17,7 @@ $db = new DBHelper();
 // Ejemplo:
 //$res = $db->mGetEmailsLanding();
 
-// Arreglo temporal debido al router!!
-mRegisterEmail();
+// TODO: Arreglo temporal debido al router!!
 
 function mGetEmails() {
     $db = new DBHelper();
@@ -26,21 +25,21 @@ function mGetEmails() {
     return $lista;
 }
 
-function mRegisterEmail() {
-
-    //Evitamos filtrado de inyecciones...
-    if(isset($_POST['email'])){
-        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
-            $db = new DBHelper();
-            $email = $_POST['email'];
-            $db->mInsertEmailLanding($email);
-
-            echo 'Email registrado!<br><br>';
-            echo '<a href="/">Pa casa!</a>';
-
-        }else if(isset($_POST['email'])) {
-            echo 'Email Invalido!<br><br>';
-            echo '<a href="/">Pa casa!</a>';
-        }
+/**
+ * Registra un email enviado por la Landing Page tras ser filtrado
+ * @param $email
+ * @return bool
+ */
+// TODO: Incorporar esta función a validateLanding.php
+function mRegisterEmail($email) {
+    // Filtramos posibles inyecciones inyecciones...
+    // Devuelve el correo o false, de ahí la forma en el que se muestra la condición
+    if(filter_var($email, FILTER_VALIDATE_EMAIL) != false) {
+        $email = filter_var($email, FILTER_VALIDATE_EMAIL);
+        $db = new DBHelper();
+        $db->mInsertEmailLanding($email);
+        return true;
+    }else{
+        return false;
     }
 }
