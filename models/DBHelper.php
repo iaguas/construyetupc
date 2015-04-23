@@ -56,6 +56,17 @@ class DBHelper implements IDBHelper {
      * @param $query mixed consulta (where de SQL).
      * @return mixed array de correos almacenados en Mongo.
      */
+    public function mGetCpus() {
+        $col = $this->db->selectCollection('cpus');
+        return $col->find();
+    }
+
+    /**
+     * Obtiene la lista de cpus que respondan a un consulta concreta
+     *
+     * @param $query mixed consulta (where de SQL).
+     * @return mixed array de correos almacenados en Mongo.
+     */
     public function mGetEmailsByQuery($query) {
         $col = $this->db->selectCollection('emails_landing');
         return $col->find($query);
@@ -126,6 +137,22 @@ class DBHelper implements IDBHelper {
     /* Métodos de actualización */
     /****************************/
 
+    /**
+     * Actualizar datos
+     * REQUISITO: El array debe estar bien construido
+     */
+    public function mCompleteCPUData($colName, $data) {
+        // Colección donde están las cosas
+        $col = $this->db->selectCollection($colName);
+
+        // Documento donde están las cosas
+        $doc = $col->findOne(array('_id' => new MongoId($data["id"])));
+
+        // Analizamos los datos y metemos sólo lo necesario (los datos que faltan).
+        foreach ($data as $key => $item) 
+            if($doc[$key]=="")
+                $doc[$key] = $data[$key];
+    }
 
 
     /**********************/
