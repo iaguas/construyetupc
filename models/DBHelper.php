@@ -56,6 +56,17 @@ class DBHelper implements IDBHelper {
      * @param $query mixed consulta (where de SQL).
      * @return mixed array de correos almacenados en Mongo.
      */
+    public function mGetCpus() {
+        $col = $this->db->selectCollection('cpus');
+        return $col->find();
+    }
+
+    /**
+     * Obtiene la lista de cpus que respondan a un consulta concreta.
+     *
+     * @param $query mixed consulta (where de SQL).
+     * @return mixed array de correos almacenados en Mongo.
+     */
     public function mGetEmailsByQuery($query) {
         $col = $this->db->selectCollection('emails_landing');
         return $col->find($query);
