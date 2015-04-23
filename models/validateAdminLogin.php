@@ -13,4 +13,4 @@ else {
     echo 'loginErr';
 }
 
-// Falta consultar user y pass en la base de datos!!
+// TODO: Falta consultar user y pass en la base de datos!!
