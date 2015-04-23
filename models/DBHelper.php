@@ -126,6 +126,22 @@ class DBHelper implements IDBHelper {
     /* Métodos de actualización */
     /****************************/
 
+    /**
+     * Actualizar datos
+     * REQUISITO: El array debe estar bien construido
+     */
+    public function mCompleteCPUData($colName, $data) {
+        // Colección donde están las cosas
+        $col = $this->db->selectCollection($colName);
+
+        // Documento donde están las cosas
+        $doc = $col->findOne(array('_id' => new MongoId($data["id"])));
+
+        // Analizamos los datos y metemos sólo lo necesario (los datos que faltan).
+        foreach ($data as $key => $item) 
+            if($doc[$key]=="")
+                $doc[$key] = $data[$key];
+    }
 
 
     /**********************/
