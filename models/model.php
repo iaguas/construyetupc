@@ -27,12 +27,20 @@ function mGetEmails() {
 }
 
 function mRegisterEmail() {
-    $db = new DBHelper();
-    if(isset($_POST['email'])) {
-        $email = $_POST['email'];
-        $db->mInsertEmailLanding($email);
 
-        echo 'Email registrado!<br><br>';
-        echo '<a href="/">Pa casa!</a>';
+    //Evitamos filtrado de inyecciones...
+    if(isset($_POST['email'])){
+        if(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+            $db = new DBHelper();
+            $email = $_POST['email'];
+            $db->mInsertEmailLanding($email);
+
+            echo 'Email registrado!<br><br>';
+            echo '<a href="/">Pa casa!</a>';
+
+        }else if(isset($_POST['email'])) {
+            echo 'Email Invalido!<br><br>';
+            echo '<a href="/">Pa casa!</a>';
+        }
     }
 }
