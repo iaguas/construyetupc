@@ -37,6 +37,7 @@ $router->map('GET', '/landing/[i:id]', 'vLandingPage', 'landing-full-2');
 $router->map('GET', '/admin', 'vShowAdminLogin', 'administrator-login');
 $router->map('GET', '/admin/panel', 'vShowAdmin', 'administrator-panel');
 $router->map('GET', '/admin/showemails', 'vShowEmailsLanding', 'administrator-panel-showemails');
+$router->map('GET', '/admin/crawlerPanel', 'vCrawlerPanel', 'administrator-crawler-panel');
 
 $match = $router->match();
 
@@ -55,8 +56,8 @@ if($match) {
                 vLandingPage();
             }
             break;
-        case 'vAdmin':
-            vShowAdmin();
+        case 'vCrawlerPanel':
+            vShowCrawlerPanel();
             break;
         case 'vAdminLogin':
             vShowAdminLogin();

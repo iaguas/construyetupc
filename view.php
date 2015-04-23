@@ -597,3 +597,8 @@ function vShowAdminLogin() {
     $page = file_get_contents("views/admin/adminLogin.html");
     echo $page;
 }
+
+function vShowCrawlerPanel() {
+    $page = file_get_contents("views/admin/crawlPanel.html");
+    echo $page;
+}
