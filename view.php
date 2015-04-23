@@ -616,5 +616,23 @@ function vShowAdminLogin() {
 
 function vShowCrawlerPanel() {
     $page = file_get_contents("views/admin/crawlPanel.html");
+
+    $dhtml = "";
+
+    $db = new DBHelper();
+
+    $components = [
+        'Procesadores' => 23
+    ];
+
+    foreach ($components as $component){
+        $dhtml .= "<tr>";
+        $dhtml .= "<td>Procesadores</td>";
+        $dhtml .= "<td>23</td>";
+        $dhtml .= "</tr>";
+    }
+
+    $page = str_replace('{{ registered-component-list }}', $dhtml, $page);
+
     echo $page;
 }
