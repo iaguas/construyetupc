@@ -62,7 +62,7 @@ class DBHelper implements IDBHelper {
     }
 
     /**
-     * Obtiene la lista de cpus que respondan a un consulta concreta.
+     * Obtiene la lista de cpus que respondan a un consulta concreta
      *
      * @param $query mixed consulta (where de SQL).
      * @return mixed array de correos almacenados en Mongo.
