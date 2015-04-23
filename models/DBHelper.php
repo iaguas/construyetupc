@@ -141,7 +141,7 @@ class DBHelper implements IDBHelper {
      * Actualizar datos
      * REQUISITO: El array debe estar bien construido
      */
-    public function mCompleteCPUData($colName, $data) {
+    public function mCompleteData($colName, $data) {
         // Colección donde están las cosas
         $col = $this->db->selectCollection($colName);
 
