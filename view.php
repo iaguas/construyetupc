@@ -620,15 +620,16 @@ function vShowCrawlerPanel() {
     $dhtml = "";
 
     $db = new DBHelper();
+    $cpus = $db->mGetCpus();
 
     $components = [
-        'Procesadores' => 23
+        array('Procesadores', $cpus->count())
     ];
 
     foreach ($components as $component){
         $dhtml .= "<tr>";
-        $dhtml .= "<td>Procesadores</td>";
-        $dhtml .= "<td>23</td>";
+        $dhtml .= "<td>" . $component[0] . "</td>";
+        $dhtml .= "<td>" . $component[1] . "</td>";
         $dhtml .= "</tr>";
     }
 
