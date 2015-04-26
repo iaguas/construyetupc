@@ -86,10 +86,10 @@
         </div>
     </form>
     <br>
-    <div class="col-md-4 col-md-offset-4" ng-show="requestResult == 'has-error'">
+    <div class="col-md-4 col-md-offset-4" ng-show="requestResult == 'has-error'" ng-cloak>
         <p class="alert alert-danger" role="alert">Error: el correo no es válido<br/>Inténtelo de nuevo</p>
     </div>
-    <div class="col-md-4 col-md-offset-4" ng-show="requestResult == 'has-success'">
+    <div class="col-md-4 col-md-offset-4" ng-show="requestResult == 'has-success'" ng-cloak>
         <p class="alert alert-success" role="alert" >La dirección de correo se ha registrado correctamente.<br/>Gracias por tu atención.</p>
     </div>
 </div>
