@@ -26,7 +26,7 @@ function mGetEmails() {
 }
 
 /**
- * Registra un email enviado por la Landing Page tras ser filtrado
+ * Registra un email enviado por la Landing Page tras ser filtrado y comprobada su no existencia en la BD
  * @param $email
  * @return bool
  */
@@ -37,8 +37,21 @@ function mRegisterEmail($email) {
     if(filter_var($email, FILTER_VALIDATE_EMAIL) != false) {
         $email = filter_var($email, FILTER_VALIDATE_EMAIL);
         $db = new DBHelper();
-        $db->mInsertEmailLanding($email);
-        return true;
+        // Se coteja con la base de datos
+        $list = mGetEmails();
+        $found = false;
+        foreach ($list as $listItem){
+            if($listItem == $email){
+                $found = true;
+            }
+
+        }
+        if(!$found) {
+            $db->mInsertEmailLanding($email);
+            return true;
+        } else {
+            return false;
+        }
     }else{
         return false;
     }

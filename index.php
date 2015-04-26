@@ -47,14 +47,11 @@ $match = $router->match();
 if($match) {
     // Si la URL encaja en alguna de las rutas
 
-    //echo 'Parámetro por la URL: ' . $match['params']['id'];
-    //echo 'Match: ' . print_r($match) . '<br>';
-
-    //substr_compare ($cadena1 , $cadena2 , 0, strlen($cadena1), true)
+    //Compara la cadena String1 con la String2 (solo las 13 primeras letras) para
+    // ver si coincide la palabra inicial administrator de cada name (ruta).
     $string1='administrator';
     $string2=$match['name'];
-    //echo $string1;
-    //echo $string2;
+
     echo substr_compare ($string1 , $string2 , 0, strlen($string1), true);
 
     if(substr_compare ($string1 , $string2 , 0, strlen($string1), true)==0){
