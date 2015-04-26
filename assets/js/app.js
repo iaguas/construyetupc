@@ -33,12 +33,10 @@ app.controller('formController', [
             });
 
             request.success(function (data) {
-                if (data == 'regOk') {
+                if (data === 'regOk') {
                     $scope.requestResult = 'has-success';
-                }
-                else {
+                } else {
                     $scope.requestResult = 'has-error';
-                    console.log(data);
                 }
             });
         };
@@ -69,16 +67,15 @@ app.controller('AdmLoginFormCtrl', [
             });
 
             request.success(function (data) {
-                if (data == 'loginOk') {
+                if (data === 'loginOk') {
                     $scope.requestResult = 'has-success';
                     $window.location.href = 'http://' + $window.location.host + '/admin/panel';
-                }
-                else {
+                } else {
                     $scope.requestResult = 'has-error';
                 }
             });
 
-            request.error(function (data) {
+            request.error(function () {
                 $scope.requestResult = 'has-error';
             });
         };
@@ -103,21 +100,14 @@ app.controller('AdmEmailCtrl', [
                     },
                     headers : {'Content-Type': 'application/json'}
                 });
+
+                request.success(function (data) {
+                    if (data === 'deleteOk') {
+                        // Recargamos la página
+                        $window.location.reload();
+                    }
+                });
             }
-
-            request.success(function (data) {
-                if (data == 'deleteOk') {
-                    // Recargamos la página
-                    $window.location.reload();
-                }
-                else {
-                    // error
-                }
-            });
-
-            request.error(function (data) {
-                // error
-            });
         };
     }
 ]);

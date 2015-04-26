@@ -8,7 +8,10 @@
 require 'AltoRouter.php';
 
 // Modelos y vistas
-require 'models/model.php';
+require 'controlerAdmin.php';
+require 'controlerMain.php';
+
+require 'models/model.php'; //Estos tres require se utilizan solo una vez para todos los controladores.
 require 'view.php';
 require 'models/sessions.php';
 
@@ -44,57 +47,19 @@ $match = $router->match();
 if($match) {
     // Si la URL encaja en alguna de las rutas
 
-    //echo 'Parámetro por la URL: ' . $match['params']['id'];
-    //echo 'Match: ' . print_r($match) . '<br>';
+    //Compara la cadena String1 con la String2 (solo las 13 primeras letras) para
+    // ver si coincide la palabra inicial administrator de cada name (ruta).
+    $string1='administrator';
+    $string2=$match['name'];
 
-    switch($match['target']) {
-        case 'vLandingPage':
-            if($match['params']['id'] == 2) {
-                vCreatorId();
-            }
-            else {
-                vLandingPage();
-            }
-            break;
-        case 'vCrawlerPanel':
-            vShowCrawlerPanel();
-            break;
-        case 'vAdminLogin':
-            vShowAdminLogin();
-            break;
-        case 'vMainPage':
-            vShowMainPage();
-            break;
-        case 'vWhoWeAre':
-            vShowWhoWeAre();
-            break;
-        // Caso concreto: llamada a una función con parámetros
-        case 'vShowEmailsLanding':
-            vShowEmails(mGetEmails());
-            break;
-		case 'vShowComponentSelection':
-			vShowComponentSelection($match['params']['part']);
-			break;
-		case 'sAddPart':
-			sAddPart($match['params']['part'], $match['params']['id']);
-            vShowPartList();
-			break;
-		case 'sRemovePart':
-			sRemovePart($match['params']['part']);
-            vShowPartList();
-			break;
-        case 'vShowDetailedPartModel':
-            vShowDetailedPartModel($match['params']['part'], $match['params']['serialNumber']);
-            break;
-        case 'vShowContact':
-            vShowContact();
-            break;
+    echo substr_compare ($string1 , $string2 , 0, strlen($string1), true);
 
-        // Por defecto se llama a la función indicada en la ruta
-        default:
-            call_user_func($match['target']);
-            break;
+    if(substr_compare ($string1 , $string2 , 0, strlen($string1), true)==0){
+        controlerAdmin($match);
+    }else{
+        controlerMain($match);
     }
+
 }
 else {
     // Si no encaja, mostramos 404 y nos echamos una siesta
