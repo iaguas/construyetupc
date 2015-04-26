@@ -39,12 +39,14 @@ function mRegisterEmail($email) {
         $db = new DBHelper();
         // Se coteja con la base de datos
         $list = mGetEmails();
+        $found = false;
         foreach ($list as $listItem){
             if($listItem == $email){
                 $found = true;
             }
+
         }
-        if($found) {
+        if(!$found) {
             $db->mInsertEmailLanding($email);
             return true;
         } else {
