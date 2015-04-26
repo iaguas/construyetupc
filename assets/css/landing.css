@@ -35,3 +35,9 @@ body {
 font {
     font-family: "Open Sans", sans-serif;
 }
+
+/* Arreglo para ocultar elementos con el tag ng-cloak
+   hasta que se compilen las vistas de Angular */
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none !important;
+}
