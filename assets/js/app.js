@@ -32,6 +32,8 @@ app.controller('formController', [
                 headers : {'Content-Type': 'application/json'}
             });
 
+            $scope.email = '';
+
             request.success(function (data) {
                 if (data === 'regOk') {
                     $scope.requestResult = 'has-success';
