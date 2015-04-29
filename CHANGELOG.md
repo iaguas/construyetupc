@@ -5,6 +5,9 @@
 ####	* | Modificado
 ####	! | Bug encontrado
 
+29/04/2015
++ Landing Page terminada
+
 20/04/2015
 + Añadida suscripción por AngularJS para la Landing Page
 ! AngularJS no muestra correctamente las notificaciones, dado que no captura el mensaje AJAX que se envía con la última línea del fichero php
