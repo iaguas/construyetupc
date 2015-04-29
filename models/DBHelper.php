@@ -59,9 +59,9 @@ class DBHelper implements IDBHelper {
         $col = $this->db->selectCollection('emails_landing');
         $cont = $col->count(array('email'=>$email));
         if($cont == 0){
-            return false;
+            return 0;//no está
         }else{
-            return true;
+            return 1;//está
         }
     }
 

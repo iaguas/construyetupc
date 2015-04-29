@@ -26,9 +26,9 @@ function mGetEmails() {
 }
 
 /**
+ *
  * Registra un email enviado por la Landing Page tras ser filtrado y comprobada su no existencia en la BD
- * @param $email
- * @return bool
+ *
  */
 // TODO: Incorporar esta función a validateLanding.php
 function mRegisterEmail($email) {
@@ -39,13 +39,13 @@ function mRegisterEmail($email) {
         // Se coteja con la base de datos
         $db = new DBHelper();
         $found = $db->mMatchEmailLanding($email);
-        if(!$found) {
+        if($found==0) {
             $db->mInsertEmailLanding($email);
-            return true;
+            return 1;//registrado correctamente
         } else {
-            return false;
+            return 0;//Email ya registrado
         }
     }else{
-        return false;
+        return -1;//Email no válido
     }
 }

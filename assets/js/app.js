@@ -36,7 +36,10 @@ app.controller('formController', [
                 if (data === 'regOk') {
                     $scope.requestResult = 'has-success';
                     $scope.email = '';
-                } else {
+                }else if( data === 'emailErr') {
+                    $scope.requestResult = 'has-error-email';
+                }
+                else {
                     $scope.requestResult = 'has-error';
                 }
             });
