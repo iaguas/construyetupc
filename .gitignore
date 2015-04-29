@@ -65,3 +65,4 @@ general/
 
 ## Iñaki García WAMP ##
 viejo/
+*.pyc
