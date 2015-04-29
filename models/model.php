@@ -36,16 +36,9 @@ function mRegisterEmail($email) {
     // Devuelve el correo o false, de ahí la forma en el que se muestra la condición
     if(filter_var($email, FILTER_VALIDATE_EMAIL) != false) {
         $email = filter_var($email, FILTER_VALIDATE_EMAIL);
-        $db = new DBHelper();
         // Se coteja con la base de datos
-        $list = mGetEmails();
-        $found = false;
-        foreach ($list as $listItem){
-            if($listItem == $email){
-                $found = true;
-            }
-
-        }
+        $db = new DBHelper();
+        $found = $db->mMatchEmailLanding($email);
         if(!$found) {
             $db->mInsertEmailLanding($email);
             return true;
