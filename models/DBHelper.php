@@ -52,8 +52,6 @@ class DBHelper implements IDBHelper {
     /**
      * Determina si el email a registrar en la Landing Page se encuentra registrado o no.
      *
-     * @param $email string correo a buscar.
-     * @return true/false, dependiendo de si se ha hallado el email o no.
      */
     public function mMatchEmailLanding($email) {
         $col = $this->db->selectCollection('emails_landing');
