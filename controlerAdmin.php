@@ -16,6 +16,9 @@ function controlerAdmin($match){
             case 'vCrawlerPanel':
                 vShowCrawlerPanel();
                 break;
+            case 'vInsertCompPanel':
+                vShowInsertCompPanel();
+                break;
             case 'vAdminLogin':
                 vShowAdminLogin();
                 break;
