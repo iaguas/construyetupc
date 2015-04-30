@@ -53,7 +53,7 @@ if($match) {
     $string1='administrator';
     $string2=$match['name'];
 
-    echo substr_compare ($string1 , $string2 , 0, strlen($string1), true);
+    //echo substr_compare ($string1 , $string2 , 0, strlen($string1), true);
 
     if(substr_compare ($string1 , $string2 , 0, strlen($string1), true)==0){
         controlerAdmin($match);

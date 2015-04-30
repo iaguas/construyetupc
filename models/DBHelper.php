@@ -10,7 +10,11 @@ require_once 'IDBHelper.php';
 class DBHelper implements IDBHelper {
 
     // Datos de conexión
-    private $mongoDbName = 'construyetupc';
+    private static $mongoDbName = 'construyetupc';
+
+    // Duración de la sesión de PHP en segundos
+    private static $sessionMaxTime = 300; // 5 minutos
+
     private $db;
 
     /**
@@ -19,7 +23,7 @@ class DBHelper implements IDBHelper {
      */
     function __construct() {
         $mon = new MongoClient();
-        $db = $mon->selectDB($this->mongoDbName);
+        $db = $mon->selectDB(self::$mongoDbName);
         $this->db = $db;
     }
 
@@ -97,6 +101,50 @@ class DBHelper implements IDBHelper {
         return $col->find();
     }
 
+    /**
+     * Comprueba si el nombre de usuario y contraseña existen en la base de datos.
+     *
+     * @param $userName string nombre de usuario.
+     * @param $password string contraseña hasheada con SHA-256.
+     * @return bool true si existen, false en otro caso.
+     */
+    public function mCheckAdminUserCredentials($userName, $password) {
+        $col = $this->db->selectCollection('users_admin');
+        $res = $col->findOne(array('username' => $userName, 'password' => $password));
+
+        if($res != NULL) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
+     * Comprueba si la sesión es válida.
+     *
+     * @param $sessionid string identificador de la sesión.
+     * @return bool true si es válida, false en caso contrario.
+     */
+    public function mCheckAdminSession($sessionid) {
+        $col = $this->db->selectCollection('admin_sessions');
+        $res = $col->findOne(array('sessionid' => $sessionid));
+
+        // Comprobamos si la sesion es valida
+        $sessionTime = $res['time'];
+
+        if(abs(time() - $sessionTime) < self::$sessionMaxTime) {
+            // Actualizamos el valor de la sesión
+            $this->mUpdateSessionTime($sessionid);
+
+            return true;
+        }
+
+        // Borramos la sesión expirada
+        $rm = $col->remove(array('sessionid' => $sessionid));
+
+        return false;
+    }
+
     /************************/
     /* Métodos de inserción */
     /************************/
@@ -148,6 +196,11 @@ class DBHelper implements IDBHelper {
         $this->mInsertDocument($email_array, 'emails_landing');
     }
 
+    public function mInsertAdminSession($sessionid) {
+        $col = $this->db->selectCollection('admin_sessions');
+        return $col->insert(array('sessionid' => $sessionid, 'time' => time()));
+    }
+
     /****************************/
     /* Métodos de actualización */
     /****************************/
@@ -158,9 +211,8 @@ class DBHelper implements IDBHelper {
      */
     public function mCompleteData($colName, $data) {
         // Colección donde están las cosas
-        $this->db->createCollection($data);
         $col = $this->db->selectCollection($colName);
-        /*
+
         // Documento donde están las cosas
         $doc = $col->findOne(array('_id' => new MongoId($data["id"])));
 
@@ -168,14 +220,17 @@ class DBHelper implements IDBHelper {
         foreach ($data as $key => $item) 
             if($doc[$key]=="")
                 $doc[$key] = $data[$key];
-        */
-        if($col->insert($data)){
-            return true;
-        }else{
-            return false;
-        }
     }
 
+    /**
+     * Actualiza el tiempo de una sesión concreta de PHP.
+     *
+     * @param $sessionid string identificador de la sesión de PHP.
+     */
+    private function mUpdateSessionTime($sessionid) {
+        $col = $this->db->selectCollection('admin_sessions');
+        $res = $col->update(array('sessionid' => $sessionid), array('$set' => array('time' => time())));
+    }
 
     /**********************/
     /* Métodos de borrado */
@@ -201,6 +256,16 @@ class DBHelper implements IDBHelper {
     public function mRemoveDocsInCollection($doc, $colName) {
         $col = $this->db->selectCollection($colName);
         return $col->remove($doc);
+    }
+
+    /**
+     * Elimina la sesión indicada.
+     *
+     * @param $sessionid string sesión a eliminar.
+     */
+    public function mRemoveAdminSession($sessionid) {
+        $col = $this->db->selectCollection('admin_sessions');
+        $col->remove(array('sessionid' => $sessionid));
     }
 
 }

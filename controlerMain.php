@@ -4,7 +4,6 @@
  * Descripcion: dicho documento representa al controlador para la parte de la página principal.
  */
 
-
 function controlerMain($match){
 
     if($match) {
