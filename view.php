@@ -640,9 +640,3 @@ function vShowCrawlerPanel() {
 
     echo $page;
 }
-
-function vShowInsertCompPanel() {
-    $page = file_get_contents("views/admin/insertCompPanel.html");
-
-    echo $page;
-}
