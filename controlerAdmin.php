@@ -12,10 +12,6 @@ function controlerAdmin($match){
 
     $admin = false;
 
-    /*if(session_id() === '22060kdc164j9cq3tk61qtral1') {
-        $admin = true;
-    }*/
-
     $db = new DBHelper();
 
     if($db->mCheckAdminSession(session_id())) {
