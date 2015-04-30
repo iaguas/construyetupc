@@ -63,8 +63,6 @@ img/Thumbs.db
 ## Paul Vega XAMPP ##
 general/
 
-## Iñaki García XAMPP ##
+## Iñaki García WAMP ##
 viejo/
-practicafinal/
-plantillas_ejemplo/
-
+*.pyc
