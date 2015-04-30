@@ -158,17 +158,26 @@ class DBHelper implements IDBHelper {
      * Actualizar datos
      * REQUISITO: El array debe estar bien construido
      */
-    public function mCompleteData($colName, $data) {
+     //Le falta actualizar precios.
+     //Meter productos nuevos.
+    // El método no vale ni para tomar por culo.
+    public function mCompleteData($colName, $dataJSON) {
         // Colección donde están las cosas
         $col = $this->db->selectCollection($colName);
 
+        // Cambio el json
+        $data = json_decode($dataJSON, true);
+
         // Documento donde están las cosas
-        $doc = $col->findOne(array('_id' => new MongoId($data["id"])));
+        //$doc = $col->findOne(array('_id' => new MongoId($data["id"])));
 
         // Analizamos los datos y metemos sólo lo necesario (los datos que faltan).
-        foreach ($data as $key => $item) 
-            if($doc[$key]=="")
-                $doc[$key] = $data[$key];
+        foreach ($data as $item)
+            $doc = $col->findOne(array('pn' => new MongoId($item["pn"])));
+            foreach ($doc as $key => $value) {
+                if($doc[$key]=="")
+                   $doc[$key] = $data[$key];
+            }
     }
 
 

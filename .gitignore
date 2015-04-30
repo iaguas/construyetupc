@@ -66,3 +66,8 @@ general/
 ## Iñaki García WAMP ##
 viejo/
 *.pyc
+
+## Iñigo ## 
+crawler/data/
+*.DS_Store
+inicial/
