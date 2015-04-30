@@ -158,9 +158,8 @@ class DBHelper implements IDBHelper {
      */
     public function mCompleteData($colName, $data) {
         // Colección donde están las cosas
-        $this->db->createCollection($data);
         $col = $this->db->selectCollection($colName);
-        /*
+
         // Documento donde están las cosas
         $doc = $col->findOne(array('_id' => new MongoId($data["id"])));
 
@@ -168,12 +167,6 @@ class DBHelper implements IDBHelper {
         foreach ($data as $key => $item) 
             if($doc[$key]=="")
                 $doc[$key] = $data[$key];
-        */
-        if($col->insert($data)){
-            return true;
-        }else{
-            return false;
-        }
     }
 
 
