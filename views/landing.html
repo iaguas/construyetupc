@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!--suppress XmlDuplicatedId -->
 <html lang="es">
 <head>
     <meta charset="utf-8">
@@ -10,16 +9,12 @@
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Sticky footer -->
-    <link href="assets/css/sticky-footer.css" rel="stylesheet">
-    <!-- Landing styles con estilos del formulario-->
+    <!-- Landing styles -->
     <link href="assets/css/landing.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <!-- Open Sans Font -->
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300,400' rel='stylesheet' type='text/css'>
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <!-- CookieBar -->
-    <link rel="stylesheet" type="text/css" href="assets/css/cookiebar.css">
+    <link href="assets/css/cookiebar.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -64,17 +59,6 @@
     <br>
     <p class="main-description">Suscríbete para que te avisemos cuando esté disponible!</p>
     <br>
-    <!--
-    <form novalidate class="form-inline" action="models/model.php" method="post">
-        <div class="form-group">
-            <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                <input class="form-control" name="email" id="email" type="email" placeholder="tu@correo.com" required>
-            </div>
-        </div>
-        <button class="btn success btn-success" ng-class="theme" ng-click="displayNotify('success')" type="submit">Suscribirse</button>
-    </form> -->
-    <!-- fORMULARIO BÁSICO QUE FUNCIONA POR ANGULAR Y QUE NO TIENE RECARGA DE PÁGINAS-->
     <form ng-submit="submitForm()" class="form-inline">
         <div class="form-group">
           <div class="input-group">

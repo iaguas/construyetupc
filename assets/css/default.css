@@ -1,3 +1,6 @@
+/* Open Sans Font */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
 /* Estilos generales */
 body {
     font-family: "Open Sans", sans-serif;
@@ -122,4 +125,103 @@ body {
    hasta que se compilen las vistas de Angular */
 [ng\:cloak], [ng-cloak], .ng-cloak {
     display: none !important;
+}
+
+/* Navbar styles */
+.navbar-default {
+    background-color: #ffffff;
+    border-color: #87c55c;
+}
+.navbar-default .navbar-brand {
+    color: #585858;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #292929;
+}
+.navbar-default .navbar-text {
+    color: #585858;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #585858;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #292929;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #292929;
+    background-color: #87c55c;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #292929;
+    background-color: #87c55c;
+}
+.navbar-default .navbar-toggle {
+    border-color: #87c55c;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #87c55c;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #585858;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #585858;
+}
+.navbar-default .navbar-link {
+    color: #585858;
+}
+.navbar-default .navbar-link:hover {
+    color: #292929;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #585858;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #292929;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #292929;
+        background-color: #87c55c;
+    }
+}
+
+/* Sticky footer styles */
+html {
+    position: relative;
+    min-height: 100%;
+}
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+body > .container {
+    padding: 60px 15px 0;
+}
+.container .text-muted {
+    margin: 20px 0;
+}
+
+.footer > .container {
+    padding-right: 15px;
+    padding-left: 15px;
+}
+
+code {
+    font-size: 80%;
 }
