@@ -1,12 +1,12 @@
 <?php
 /**
- * Fichero: controlerAdmin.php
+ * Fichero: adminController.php
  * Descripcion: dicho documento representa al controlador para la parte del Admin.
  */
 
 require 'models/DBHelper.php';
 
-function controlerAdmin($match){
+function adminController($match){
 
     session_start();
 
