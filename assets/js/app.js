@@ -4,8 +4,8 @@
  * Contiene el módulo principal de AngularJS.
  */
 
-// Evitamos que JSLint diga que usamos "angular" sin definirlo
-/*global angular*/
+// Variables globales para que no las pille JSLint
+/*global angular, console, Sha256*/
 
 // Módulo principal de AngularJS
 var app = angular.module('app', []);
@@ -36,10 +36,9 @@ app.controller('formController', [
                 if (data === 'regOk') {
                     $scope.requestResult = 'has-success';
                     $scope.email = '';
-                }else if( data === 'emailErr') {
+                } else if (data === 'emailErr') {
                     $scope.requestResult = 'has-error-email';
-                }
-                else {
+                } else {
                     $scope.requestResult = 'has-error';
                 }
             });
@@ -65,7 +64,7 @@ app.controller('AdmLoginFormCtrl', [
                 url     : '/models/validateAdminLogin.php',
                 data    : {
                     username: $scope.username,
-                    password: $scope.password
+                    password: Sha256.hash($scope.password)
                 },
                 headers : {'Content-Type': 'application/json'}
             });
@@ -81,6 +80,17 @@ app.controller('AdmLoginFormCtrl', [
 
             request.error(function () {
                 $scope.requestResult = 'has-error';
+            });
+        };
+
+        $scope.logout = function () {
+            $http({
+                method  : 'POST',
+                url     : '/models/adminLogout.php',
+                data    : {
+                    session: $scope.session
+                },
+                headers : {'Content-Type': 'application/json'}
             });
         };
     }

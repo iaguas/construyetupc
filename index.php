@@ -8,8 +8,8 @@
 require 'AltoRouter.php';
 
 // Modelos y vistas
-require 'controlerAdmin.php';
-require 'controlerMain.php';
+require 'adminController.php';
+require 'mainController.php';
 
 require 'models/model.php'; //Estos tres require se utilizan solo una vez para todos los controladores.
 require 'view.php';
@@ -52,12 +52,12 @@ if($match) {
     $string1='administrator';
     $string2=$match['name'];
 
-    echo substr_compare ($string1 , $string2 , 0, strlen($string1), true);
+    //echo substr_compare ($string1 , $string2 , 0, strlen($string1), true);
 
     if(substr_compare ($string1 , $string2 , 0, strlen($string1), true)==0){
-        controlerAdmin($match);
+        adminController($match);
     }else{
-        controlerMain($match);
+        mainController($match);
     }
 
 }

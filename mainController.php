@@ -1,11 +1,10 @@
 <?php
 /**
- * Fichero: controlerMain.php
+ * Fichero: mainController.php
  * Descripcion: dicho documento representa al controlador para la parte de la página principal.
  */
 
-
-function controlerMain($match){
+function mainController($match){
 
     if($match) {
         // Si la URL encaja en alguna de las rutas

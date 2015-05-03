@@ -607,7 +607,7 @@ function vShowValidateRegister(){
 /**
  * Muestra la parte del administrador.
  */
-function vShowAdmin(){
+function vShowAdmin() {
     $page = file_get_contents("views/admin/adminPanel.html");
     echo $page;
 }
