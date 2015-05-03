@@ -54,6 +54,18 @@ class DBHelper implements IDBHelper {
     }
 
     /**
+     * Busca sobre una colección todos los productos que cumplen una regex concreta.
+     */
+    public function mSearchProduct($colName, $part){
+        $like_var = 'j';
+        $prefix = '/';
+        $suffix = '/';
+        $name = $prefix . $like_var . $suffix;
+        $col = $this->db->selectCollection($colName);
+        return $col->find(['name' => array('$regex'=>new MongoRegex($name))]);
+    }
+
+    /**
      * Determina si el email a registrar en la Landing Page se encuentra registrado o no.
      *
      */
