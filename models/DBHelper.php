@@ -55,6 +55,10 @@ class DBHelper implements IDBHelper {
 
     /**
      * Busca sobre una colección todos los productos que cumplen una regex concreta.
+     *
+     * @param $colName string con el nombre de la colección.
+     * @param $part parte del nombre del producto que se debe buscar.
+     * @return array con todos los productos que cumplen la forma del nombre.
      */
     public function mSearchProduct($colName, $part){
         $like_var = 'j';
