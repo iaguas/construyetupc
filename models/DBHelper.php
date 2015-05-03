@@ -209,9 +209,9 @@ class DBHelper implements IDBHelper {
      * Actualizar datos
      * REQUISITO: El array debe estar bien construido
      */
-     //Le falta actualizar precios.
-     //Meter productos nuevos.
-    // El método no vale ni para tomar por culo.
+     //Le falta actualizar precios. 
+     // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
+     // Disponer de cómo funciona el tema de los precios. ¿Con otro array como hablé con Kevin?
     public function mCompleteData($colName, $dataJSON) {
         // Colección donde están las cosas
         $col = $this->db->selectCollection($colName);
@@ -223,12 +223,16 @@ class DBHelper implements IDBHelper {
         //$doc = $col->findOne(array('_id' => new MongoId($data["id"])));
 
         // Analizamos los datos y metemos sólo lo necesario (los datos que faltan).
-        foreach ($data as $item)
+        foreach ($data as $item){
             $doc = $col->findOne(array('pn' => new MongoId($item["pn"])));
-            foreach ($doc as $key => $value) {
-                if($doc[$key]=="")
-                   $doc[$key] = $data[$key];
-            }
+            if($doc != NULL) // El producto existe.
+               foreach ($doc as $key => $value) {
+                    if($doc[$key]=="")
+                        $doc[$key] = $data[$key];
+                }
+            else // El producto no existía
+                mInsertDocument($item, $colName);
+        }
     }
 
     /**
@@ -268,7 +272,6 @@ class DBHelper implements IDBHelper {
     }
 
     /**
-<<<<<<< HEAD
      * Elimina un documento de una colección con cierto número de producto pn.
      *
      * @param $pn número de producto del documento a borrar.
@@ -278,7 +281,9 @@ class DBHelper implements IDBHelper {
         $col = $this->db->selectCollection($colName);
         $doc = $col->findOne(array('pn' => new MongoId($pn)));
         return $col->remove($doc);
-=======
+    }
+
+    /*
      * Elimina la sesión indicada.
      *
      * @param $sessionid string sesión a eliminar.
@@ -286,7 +291,7 @@ class DBHelper implements IDBHelper {
     public function mRemoveAdminSession($sessionid) {
         $col = $this->db->selectCollection('admin_sessions');
         $col->remove(array('sessionid' => $sessionid));
->>>>>>> origin/master
+
     }
 
 }
