@@ -205,4 +205,16 @@ class DBHelper implements IDBHelper {
         return $col->remove($doc);
     }
 
+    /**
+     * Elimina un documento de una colección con cierto número de producto pn.
+     *
+     * @param $pn número de producto del documento a borrar.
+     * @param $colName string colección de la que eliminar los documentos.
+     */
+    public function mRemoveDocInCollectionForPN($pn, $colName) {
+        $col = $this->db->selectCollection($colName);
+        $doc = $col->findOne(array('pn' => new MongoId($pn)));
+        return $col->remove($doc);
+    }
+
 }
