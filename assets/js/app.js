@@ -9,6 +9,7 @@
 
 // Módulo principal de AngularJS
 var app = angular.module('app', []);
+var todos = angular.module('todos', ['ui.bootstrap']);
 
 // Controlador para el formulario de la Landing Page
 app.controller('formController', [
@@ -125,3 +126,48 @@ app.controller('AdmEmailCtrl', [
         };
     }
 ]);
+
+//Mostramos datos + paginacion CPUS
+todos.controller('TodoController', [
+    '$scope',
+    '$http',
+
+    function ($scope, $http) {
+        'use strict';
+        $scope.todos = []
+        ,$scope.filteredTodos = []
+        , $scope.currentPage = 1
+        , $scope.numPerPage = 5
+        , $scope.maxSize = 5;
+        $scope.getCpus = function ($component) {
+
+            var request = $http({
+                method  : 'POST',
+                url     : '/models/getSpecificComponent.php',
+                data    : {
+                    component: $component
+                },
+                headers : {'Content-Type': 'application/json'}
+            });
+
+            request.success(function (data) {
+                //console.log(data);
+                $scope.todos = data;
+            });
+
+        };
+        console.log($scope);
+        $scope.numPages = function () {
+            return Math.ceil($scope.todos.length / $scope.numPerPage);
+        };
+
+        $scope.$watch('currentPage + numPerPage', function () {
+            var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+                , end = begin + $scope.numPerPage;
+
+            $scope.filteredTodos = $scope.todos.slice(begin, end);
+            //console.log($scope.filteredTodos);
+        });
+    }
+]);
+

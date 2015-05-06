@@ -19,6 +19,8 @@
     <!-- Font Awesome -->
     <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap-combined.min.css">
+
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,8 +30,18 @@
     <![endif]-->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+
+    <!-- Font combined
+    <link rel="stylesheet" href="assets/css/bootstrap-combined.min.css" />
+   -->
+
+    <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+    <script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    <!--data-require="angular.js@1.1.5" data-semver="1.1.5"-->
+    <!--data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0"-->
 </head>
-<body>
+<body >
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -55,13 +67,14 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
+<div class="container"  ng-app="todos" data-ng-controller="TodoController"  data-ng-init="getCpus('cpus')">
     <div class="input-group col-sm-3">
         <input type="text" class="form-control" placeholder="Buscar procesador...">
       <span class="input-group-btn">
         <button class="btn btn-default" type="button">Buscar</button>
       </span>
     </div><!-- /input-group -->
+
     <table class="table">
         <tr>
             <th>Nombre</th>
@@ -72,9 +85,22 @@
             <th>Desde...</th>
             <th></th>
         </tr>
-        {{processor-list}}
+        <tr  ng-repeat="CPU in filteredTodos">
+            <td class='col-md-3 vert-align'><a href='part/cpu/ title='Ver comparativa y especificaciones'> {{CPU[6]}} </a></td>
+            <td class='col-md-1 vert-align'>{{CPU[2]}}</td>
+            <td class='col-md-1 vert-align'>{{CPU[4]}}</td>
+            <td class='col-md-1 vert-align'>{{CPU[5]}}</td>
+            <td class='col-md-1 vert-align'>{{CPU[1]}}</td>
+            <td class='col-md-1 vert-align'>{{CPU[3]}}</td>
+            <td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=partList/select/cpu/{{CPU[5]}}'>Añadir</button></td>
+        </tr>
+
     </table>
+    <div data-pagination="" data-num-pages="numPages()"
+         data-current-page="currentPage" data-max-size="maxSize"
+         data-boundary-links="true"></div>
 </div>
+
 
 <!-- Sticky footer -->
 <footer class="footer">
@@ -87,6 +113,9 @@
 <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> Comentado al poner la mierda del easter egg
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
+
+<!-- App Angular -->
+<script src="assets/js/app.js"></script>
 
 <script type="javascript">
     // TODO: Aplicar acción cuando se implemente la función de búsqueda. Buscar al pulsar el botón pulsar o al pulsar la tecla ENTER.

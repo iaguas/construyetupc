@@ -110,9 +110,8 @@ function vShowComponentSelection($part) {
             $dhtml = '';
             // TODO: Obtener lista de todos los procesadores
 
-            $db = new DBHelper();
+           /* $db = new DBHelper();
             $processors = $db->mGetCpus(); // Obtenemos los datos de todas las CPUs
-
             foreach ($processors as $partItem) {
                 if (isset($partItem['family'][0])) {
                     $family=$partItem['family'][0];
@@ -144,9 +143,9 @@ function vShowComponentSelection($part) {
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'][0] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $partItem['_id'] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
-            }
+            }*/
 
-            $page = str_replace('{{processor-list}}', $dhtml, $page);
+            //$page = str_replace('{{processor-list}}', $dhtml, $page);
             break;
         case 'cpu-cooler':
             $page = file_get_contents("views/components/cpu-cooler.html");
