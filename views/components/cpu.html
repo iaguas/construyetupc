@@ -25,7 +25,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 
 
     <!-- Font combined-->
@@ -62,11 +62,11 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container"  ng-app="todos" data-ng-controller="TodoController"   >
+<div class="container"  ng-app="todos" data-ng-controller="TodoController" >
     <div class="input-group col-sm-3">
         <input type="text" class="form-control" placeholder="Buscar procesador..." onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" onclick="updateSearch()">Buscar</button>
+        <button class="btn btn-default" type="button" >Buscar</button>
       </span>
     </div><!-- /input-group -->
 
@@ -83,8 +83,7 @@
         </tr>
 
         <tr ng-repeat="CPU in filteredTodos">
-            <td class='col-md-3 vert-align'><a href='part/cpu/' title='Ver comparativa y especificaciones'> {{CPU[6]}} </a></td>
-
+            <td class='col-md-3 vert-align'><a href='part/cpu/{{CPU[0]}}' title='Ver comparativa y especificaciones'> {{CPU[6]}} </a></td>
             <td class='col-md-1 vert-align'>{{CPU[2]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[4]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[5]}}</td>
@@ -95,12 +94,14 @@
 
     </table>
 
+
     <pagination
             class="pager"
             data-current-page="currentPage"
             ng-model="currentPage"
             num-pages="numPages()"
-            boundary-links="true">
+            boundary-links="true"
+            ng-change="pageChanged()">
     </pagination>
 
 </div>
@@ -123,9 +124,13 @@
 <!-- App Angular -->
 <script src="assets/js/app.js"></script>
 
-<script type="javascript">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+<script >
+
+
     // TODO: Aplicar acción cuando se implemente la función de búsqueda. Buscar al pulsar el botón pulsar o al pulsar la tecla ENTER.
-        function updateSearch(){
+    /*    function updateSearch(){
         $.ajax({
             method: "POST",
             url: "models/searchcpu.php",
@@ -143,7 +148,7 @@
 
             }
         });
-    }
+    }*/
 
 </script>
 

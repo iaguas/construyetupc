@@ -128,15 +128,16 @@ app.controller('AdmEmailCtrl', [
 ]);
 
 
-
 //Mostramos datos + paginacion CPUS
 todos.controller('TodoController',function ($scope, $http) {
-        $scope.filteredTodos = []
-        , $scope.currentPage = 1
-        , $scope.numPerPage = 10;
+
+        $scope.filteredTodos = [];
+        $scope.currentPage = 1;
+        $scope.todos=[];
+        $scope.numPerPage = 8;
 
         $scope.getCpus = function () {
-            $scope.todos=[];
+
             var request = $http({
                 method  : 'POST',
                 url     : '/models/getSpecificComponent.php',
@@ -147,8 +148,16 @@ todos.controller('TodoController',function ($scope, $http) {
             });
 
             request.success(function (data) {
+
                 $scope.todos=data;
+                $scope.filteredTodos = data.slice(0, 8);
+                //$scope.todos.push(data);
+
+                console.log($scope.todos);
+                //return $scope.todos;
             });
+            //console.log(p1);
+            console.log($scope.todos);
 
         };
         $scope.getCpus();
