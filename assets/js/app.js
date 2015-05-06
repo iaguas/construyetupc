@@ -150,7 +150,7 @@ todos.controller('TodoController',function ($scope, $http) {
             request.success(function (data) {
 
                 $scope.todos=data;
-                $scope.filteredTodos = data.slice(0, 8);
+                $scope.filteredTodos = data.slice(0, $scope.numPerPage);
                 //$scope.todos.push(data);
 
                 console.log($scope.todos);
