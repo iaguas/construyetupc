@@ -156,7 +156,7 @@ todos.controller('TodoController', [
             });
 
         };
-        console.log($scope);
+        //console.log($scope);
         $scope.numPages = function () {
             return Math.ceil($scope.todos.length / $scope.numPerPage);
         };

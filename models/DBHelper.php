@@ -85,11 +85,7 @@ class DBHelper implements IDBHelper {
 
 
     /**
-     * Obtiene la lista de correos recibidos en la landing page,
-     * que respondan a un consulta concreta.
-     *
-     * @param $query mixed consulta (where de SQL).
-     * @return mixed array de correos almacenados en Mongo.
+     * Obtiene la lista de un componente determinado almacenado en mongoDB.
      */
     public function mGetComponent($ct) {
         $col = $this->db->selectCollection($ct);
