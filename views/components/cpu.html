@@ -16,7 +16,6 @@
     <!-- Font Awesome -->
     <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/bootstrap-combined.min.css">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -29,14 +28,12 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 
-    <!-- Font combined
-    <link rel="stylesheet" href="assets/css/bootstrap-combined.min.css" />
-   -->
+    <!-- Font combined-->
 
-    <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+    <!-- AngularJS -->
+    <script src="assets/js/angular.min.js"></script>
+    <!-- UI-Boostrap-->
     <script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
-    <!--data-require="angular.js@1.1.5" data-semver="1.1.5"-->
-    <!--data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0"-->
 
 </head>
 <body >
@@ -65,7 +62,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container"  ng-app="todos" data-ng-controller="TodoController"  data-ng-init="getCpus('cpus')">
+<div class="container"  ng-app="todos" data-ng-controller="TodoController"   >
     <div class="input-group col-sm-3">
         <input type="text" class="form-control" placeholder="Buscar procesador..." onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox">
       <span class="input-group-btn">
@@ -85,20 +82,27 @@
             <th></th>
         </tr>
 
-        <tr  ng-repeat="CPU in filteredTodos">
+        <tr ng-repeat="CPU in filteredTodos">
             <td class='col-md-3 vert-align'><a href='part/cpu/' title='Ver comparativa y especificaciones'> {{CPU[6]}} </a></td>
+
             <td class='col-md-1 vert-align'>{{CPU[2]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[4]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[5]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[1]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[3]}}</td>
-            <td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=partList/select/cpu/{{CPU[5]}}'>Añadir</button></td>
+            <td class='col-md-1 vert-align'><button type='button' onclick='window.location.href="partList/select/cpu-cooler/CPU[5]"'>Añadir</button></td>
         </tr>
 
     </table>
-    <div data-pagination="" data-num-pages="numPages()"
-         data-current-page="currentPage" data-max-size="maxSize"
-         data-boundary-links="true"></div>
+
+    <pagination
+            class="pager"
+            data-current-page="currentPage"
+            ng-model="currentPage"
+            num-pages="numPages()"
+            boundary-links="true">
+    </pagination>
+
 </div>
 
 
