@@ -127,47 +127,41 @@ app.controller('AdmEmailCtrl', [
     }
 ]);
 
+
+
 //Mostramos datos + paginacion CPUS
-todos.controller('TodoController', [
-    '$scope',
-    '$http',
-
-    function ($scope, $http) {
-        'use strict';
-        $scope.todos = []
-        ,$scope.filteredTodos = []
+todos.controller('TodoController',function ($scope, $http) {
+        $scope.filteredTodos = []
         , $scope.currentPage = 1
-        , $scope.numPerPage = 5
-        , $scope.maxSize = 5;
-        $scope.getCpus = function ($component) {
+        , $scope.numPerPage = 10;
 
+        $scope.getCpus = function () {
+            $scope.todos=[];
             var request = $http({
                 method  : 'POST',
                 url     : '/models/getSpecificComponent.php',
                 data    : {
-                    component: $component
+                    component: 'cpus'
                 },
                 headers : {'Content-Type': 'application/json'}
             });
 
             request.success(function (data) {
-                //console.log(data);
-                $scope.todos = data;
+                $scope.todos=data;
             });
 
         };
-        //console.log($scope);
+        $scope.getCpus();
+
         $scope.numPages = function () {
             return Math.ceil($scope.todos.length / $scope.numPerPage);
         };
 
         $scope.$watch('currentPage + numPerPage', function () {
-            var begin = (($scope.currentPage - 1) * $scope.numPerPage)
+            var begin = (($scope.currentPage-1) * $scope.numPerPage)
                 , end = begin + $scope.numPerPage;
-
             $scope.filteredTodos = $scope.todos.slice(begin, end);
-            //console.log($scope.filteredTodos);
         });
-    }
-]);
+
+    });
 
