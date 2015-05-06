@@ -348,24 +348,23 @@ function vShowComponentSelection($part) {
  * Muestra los detalles, puntos de venta y precios de un modelo de componente
  */
 function vShowDetailedPartModel($part, $id){
+    $db = new DBHelper(); // Invocar la clase del modelo de BD
     switch ($part){
         case 'cpu':
             $page = file_get_contents("views/detailedComponents/cpu.html");
             $dhtml = '';
             $model = $id;
-            $modelName = 'NombreComponente';
+            $modelName = $db->mGetCompName($model,'cpus');
             // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            $processors = $db->mGetCompPrices($model,'cpus');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
-            $processors = array(
-                array(0, 'Chino de confianza', '580€', '5€', '585€')
-            );
-            foreach ($processors as $partItem){
+            foreach ($processors as $key => $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[0] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[1] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{component-name}}', $modelName, $page);
@@ -636,6 +635,13 @@ function vShowCrawlerPanel() {
     }
 
     $page = str_replace('{{ registered-component-list }}', $dhtml, $page);
+
+    echo $page;
+}
+
+/* Muestra panel para incorporar datos crawleados a la BD*/
+function vShowInsertCompPanel() {
+    $page = file_get_contents("views/admin/insertCompPanel.html");
 
     echo $page;
 }
