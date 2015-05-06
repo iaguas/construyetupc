@@ -27,7 +27,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
 </head>
 <body>
 
@@ -57,12 +57,13 @@
 
 <div class="container">
     <div class="input-group col-sm-3">
-        <input type="text" class="form-control" placeholder="Buscar procesador...">
+        <input type="text" class="form-control" placeholder="Buscar procesador..." onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox">
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button">Buscar</button>
+        <button class="btn btn-default" type="button" onclick="updateSearch()">Buscar</button>
       </span>
     </div><!-- /input-group -->
-    <table class="table">
+    <div id="divtable">
+    <table class="table" id="tableproducts">
         <tr>
             <th>Nombre</th>
             <th>Familia</th>
@@ -73,7 +74,9 @@
             <th></th>
         </tr>
         {{processor-list}}
+
     </table>
+    </div>
 </div>
 
 <!-- Sticky footer -->
@@ -84,11 +87,31 @@
 </footer>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> Comentado al poner la mierda del easter egg
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!--Comentado al poner la mierda del easter egg-->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
 
-<script type="javascript">
+<script type="text/javascript">
+    function updateSearch(){
+        $.ajax({
+            method: "POST",
+            url: "models/searchcpu.php",
+            data: { search: document.getElementById("searchtextbox").value }
+        })
+        .done(function( msg ) {
+            var table = document.getElementById("tableproducts");   
+            if (!table){
+                alert("El elemento selecionado no existe");
+            } else {
+                var parent = table.parentNode;
+                parent.removeChild(table);
+                var item = document.createElement('table').appendChild(document.createTextNode(msg));
+                parent.appendChild(item);
+
+            }
+        });
+    } 
+
     // TODO: Aplicar acción cuando se implemente la función de búsqueda. Buscar al pulsar el botón pulsar o al pulsar la tecla ENTER.
 </script>
 
