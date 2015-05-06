@@ -157,6 +157,46 @@ class DBHelper implements IDBHelper {
         return false;
     }
 
+
+    /**
+     * Obtiene un array de arrays de precios por tiendas para el componente dado
+     * @param $idComp id del componente en mongoDB
+     * @param $colName nombre de la colección en el que se encuentra el componente a buscar
+     * @return array contiene los arrays contenidos en el campo "prices" del documento del componente
+     */
+    public function mGetCompPrices($idComp, $colName) {
+        $col = $this->db->selectCollection($colName);
+        // Argumentos de findOne(busqueda,campo_a_filtrar)
+        $query = $col->findOne(array('_id' => new MongoId($idComp)),array('prices' => 1));
+        $subq = $query['prices'];
+        $comp = array();
+        $comps = array();
+        $max = sizeof($subq);
+        for($i = 0; $i < $max;$i++){
+            foreach ($subq[$i] as $key => $value){
+                array_push($comp,$value);
+            }
+            array_push($comps,$comp);
+            $comp = [];
+        }
+
+        return $comps;
+    }
+
+    /**
+     * Obtiene el nombre del componente dado
+     * @param $idComp id del componente en mongoDB
+     * @param $colName nombre de la colección en el que se encuentra el componente a buscar
+     * @return string tabla que contiene el campo "nombre" del documento del componente
+     */
+    public function mGetCompName($idComp, $colName){
+        $col = $this->db->selectCollection($colName);
+        $query = $col->findOne(array('_id' => new MongoId($idComp)),array('name' => 1));
+
+        return $query['name'][0];
+    }
+
+
     /************************/
     /* Métodos de inserción */
     /************************/
@@ -213,6 +253,8 @@ class DBHelper implements IDBHelper {
         return $col->insert(array('sessionid' => $sessionid, 'time' => time()));
     }
 
+
+
     /****************************/
     /* Métodos de actualización */
     /****************************/
@@ -221,9 +263,9 @@ class DBHelper implements IDBHelper {
      * Actualizar datos
      * REQUISITO: El array debe estar bien construido
      */
-     //Le falta actualizar precios. 
-     // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
-     // Disponer de cómo funciona el tema de los precios. ¿Con otro array como hablé con Kevin?
+    //Le falta actualizar precios.
+    // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
+    // Disponer de cómo funciona el tema de los precios. ¿Con otro array como hablé con Kevin?
     public function mCompleteData($colName, $dataJSON) {
         // Colección donde están las cosas
         $col = $this->db->selectCollection($colName);
@@ -238,7 +280,7 @@ class DBHelper implements IDBHelper {
         foreach ($data as $item){
             $doc = $col->findOne(array('pn' => new MongoId($item["pn"])));
             if($doc != NULL) // El producto existe.
-               foreach ($doc as $key => $value) {
+                foreach ($doc as $key => $value) {
                     if($doc[$key]=="")
                         $doc[$key] = $data[$key];
                 }
@@ -305,5 +347,4 @@ class DBHelper implements IDBHelper {
         $col->remove(array('sessionid' => $sessionid));
 
     }
-
 }

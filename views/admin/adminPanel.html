@@ -9,10 +9,18 @@
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Sticky footer -->
+    <link href="assets/css/sticky-footer.css" rel="stylesheet">
+
     <!-- Default styles -->
     <link href="assets/css/default.css" rel="stylesheet">
+
+    <!-- Navbar styles -->
+    <link href="assets/css/navbar-custom.css" rel="stylesheet">
+
     <!-- Font Awesome -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +29,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-app="app" ng-controller="AdmLoginFormCtrl">
+<body>
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -34,7 +42,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="admin/panel">
+            <a class="navbar-brand" href="admin">
                 <img class="logo-navbar" src="assets/img/logo_h200.png" height="30">
             </a>
         </div>
@@ -48,7 +56,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="admin" ng-click="logout()">
+                    <a href="admin">
                         <i class="fa fa-home"></i> Salir del panel de administración
                     </a>
                 </li>
@@ -67,6 +75,9 @@
     <div class="div-panel-btn">
         <img src="assets/img/scrapy-logo.png" width="120" height="45" alt="Logo Scrapy"><br /> <a href="admin/crawlerPanel" title="Gestión de araña web" style="padding-top: 60%">Gestión de araña web</a>
     </div>
+    <div class="div-panel-btn">
+        <img src="assets/img/down.png" width="45" height="45" alt="Insertar"><br /> <a href="admin/insertCompPanel" title="Inserciones en BD" style="padding-top: 60%">Añadir datos recolectados a MongoDB</a>
+    </div>
 </div>
 
 <!-- Sticky footer -->
@@ -76,13 +87,9 @@
     </div>
 </footer>
 
-<!-- jQuery -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- AngularJS -->
-<script src="assets/js/angular.min.js"></script>
-<!-- App Angular -->
-<script src="assets/js/app.js"></script>
-<!-- Bootstrap -->
+<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
 
 </body>
