@@ -160,14 +160,14 @@ class DBHelper implements IDBHelper {
 
     /**
      * Obtiene un array de arrays de precios por tiendas para el componente dado
-     * @param $idComp id del componente en mongoDB
+     * @param $idComp número de serie "pn" del componente en mongoDB
      * @param $colName nombre de la colección en el que se encuentra el componente a buscar
      * @return array contiene los arrays contenidos en el campo "prices" del documento del componente
      */
     public function mGetCompPrices($idComp, $colName) {
         $col = $this->db->selectCollection($colName);
         // Argumentos de findOne(busqueda,campo_a_filtrar)
-        $query = $col->findOne(array('_id' => new MongoId($idComp)),array('prices' => 1));
+        $query = $col->findOne(array('pn' => $idComp),array('prices' => 1));
         $subq = $query['prices'];
         $comp = array();
         $comps = array();
@@ -266,7 +266,7 @@ class DBHelper implements IDBHelper {
     //Le falta actualizar precios.
     // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
     // Disponer de cómo funciona el tema de los precios. ¿Con otro array como hablé con Kevin?
-    public function mCompleteData($colName, $dataJSON) {
+    public function mCompleteData($dataJSON, $colName) {
         // Colección donde están las cosas
         $col = $this->db->selectCollection($colName);
 
@@ -285,7 +285,7 @@ class DBHelper implements IDBHelper {
                         $doc[$key] = $data[$key];
                 }
             else // El producto no existía
-                mInsertDocument($item, $colName);
+                $this->mInsertDocument($item, $colName);
         }
     }
 
