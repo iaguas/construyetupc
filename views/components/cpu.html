@@ -9,13 +9,12 @@
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Default styles -->
     <link href="assets/css/default.css" rel="stylesheet">
-
     <!-- Font Awesome -->
-    <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
-    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- CookieBar -->
+    <link href="assets/css/cookiebar.css" rel="stylesheet">
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -24,17 +23,6 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
-
-
-
-
-    <!-- Font combined-->
-
-    <!-- AngularJS -->
-    <script src="assets/js/angular.min.js"></script>
-    <!-- UI-Boostrap-->
-    <script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
-
 </head>
 <body >
 
@@ -49,14 +37,29 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Construye Tu PC</a>
+            <a class="navbar-brand" href="main">
+                <img class="logo-navbar" src="assets/img/logo_h200.png" height="30">
+            </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Crea tu PC</a></li>
-                <li><a href="#">Lista de componentes</a></li>
+                <li class="active">
+                    <a href="#">
+                        <i class="fa fa-wrench"></i> Crea tu PC
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa fa-cubes"></i> Lista de componentes
+                    </a>
+                </li>
+                <li>
+                    <a href="admin">
+                        <i class="fa fa-cog"></i> Panel de administración
+                    </a>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -110,21 +113,17 @@
 <!-- Sticky footer -->
 <footer class="footer">
     <div class="container">
-        <p class="text-muted footer-color">© ConstruyeTuPC 2015</p>
+        <p>© ConstruyeTuPC 2015</p>
     </div>
 </footer>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script> <!--Comentado al poner la mierda del easter egg-->
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
-
-
-
-<!-- App Angular -->
+<script src="assets/js/angular.min.js"></script>
+<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
 <script src="assets/js/app.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 
 <script >
 
