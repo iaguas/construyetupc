@@ -86,9 +86,36 @@ interface IDBHelper {
     public function mInsertEmailLanding($email);
 
     /****************************/
+    /* Métodos de consulta */
+    /****************************/
+
+
+    /**
+     * Obtiene un array de arrays de precios por tiendas para el componente dado
+     * @param $idComp id del componente en mongoDB
+     * @param $colName nombre de la colección en el que se encuentra el componente a buscar
+     * @return array contiene los arrays contenidos en el campo "prices" del documento del componente
+     */
+    public function mGetCompPrices($idComp, $colName);
+
+    /**
+     * Obtiene el nombre del componente dado
+     * @param $idComp id del componente en mongoDB
+     * @param $colName nombre de la colección en el que se encuentra el componente a buscar
+     * @return string tabla que contiene el campo "nombre" del documento del componente
+     */
+    public function mGetCompName($idComp, $colName);
+
+
+    /****************************/
     /* Métodos de actualización */
     /****************************/
 
+    /**
+     * Actualizar datos
+     * REQUISITO: El array debe estar bien construido
+     */
+    public function mCompleteData($colName, $data);
 
 
     /**********************/
