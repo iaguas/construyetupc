@@ -22,8 +22,9 @@ foreach ($op as $partItem) {
     if(!isset($partItem['frecuency'][0])){
         $partItem['frecuency'][0]="N/A";
     }
+
     $json[]=array(
-        $partItem['_id'],
+        $partItem['pn'][0],
         $partItem['frecuency'][0],
         $partItem['family'][0],
         $partItem['price'][0],
