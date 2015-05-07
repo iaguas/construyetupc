@@ -184,13 +184,13 @@ class DBHelper implements IDBHelper {
 
     /**
      * Obtiene el nombre del componente dado
-     * @param $idComp id del componente en mongoDB
+     * @param $idComp pn del componente en mongoDB
      * @param $colName nombre de la colección en el que se encuentra el componente a buscar
      * @return string tabla que contiene el campo "nombre" del documento del componente
      */
     public function mGetCompName($idComp, $colName){
         $col = $this->db->selectCollection($colName);
-        $query = $col->findOne(array('_id' => new MongoId($idComp)),array('name' => 1));
+        $query = $col->findOne(array('pn' => $idComp),array('name' => 1));
 
         return $query['name'][0];
     }
