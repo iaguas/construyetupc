@@ -83,7 +83,6 @@ class DBHelper implements IDBHelper {
         }
     }
 
-
     /**
      * Obtiene la lista de un componente determinado almacenado en mongoDB.
      */
@@ -266,7 +265,9 @@ class DBHelper implements IDBHelper {
     //Le falta actualizar precios.
     // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
     // Disponer de cómo funciona el tema de los precios. ¿Con otro array como hablé con Kevin?
-    public function mCompleteData($dataJSON, $colName) {
+        // Quitar algo si la araña no lo ha encontrado
+    // Tener en cuenta la función update de Mongo
+    public function mCompleteData($colName, $dataJSON) {
         // Colección donde están las cosas
         $col = $this->db->selectCollection($colName);
 
