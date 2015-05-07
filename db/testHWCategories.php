@@ -7,8 +7,8 @@ header('Content-Type: text/html; charset=utf-8');
 
 //$db->mRemoveAllInCollection('hardware_categories');
 
-//$json = file_get_contents('../db/hardware_categories.json');
-//$db->mInsertJson($json, 'hardware_categories');
+$json = file_get_contents('../db/hardware_categories.json');
+$db->mInsertJson($json, 'hardware_categories');
 
 // Listar categorías
 $res = $db->mGetHardwareCategories();

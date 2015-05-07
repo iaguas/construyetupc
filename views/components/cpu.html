@@ -67,9 +67,9 @@
 
 <div class="container"  ng-app="todos" data-ng-controller="TodoController" >
     <div class="input-group col-sm-3">
-        <input type="text" class="form-control" placeholder="Buscar procesador..." onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox">
+        <input type="text" class="form-control" placeholder="Buscar procesador..." ng-keydown="($event.which === 13)?updateDataSearch('cpu'):0"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" >Buscar</button>
+        <button class="btn btn-default" type="button" ng-click="updateDataSearch('cpu')"><!--onclick="updateSearch()"-->Buscar</button>
       </span>
     </div><!-- /input-group -->
 
@@ -125,8 +125,10 @@
 <script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
 <script src="assets/js/app.js"></script>
 
-<script >
+<!-- App Angular -->
+<script src="assets/js/app.js"></script>
 
+<!--<script type="javascript">
     // TODO: Aplicar acción cuando se implemente la función de búsqueda. Buscar al pulsar el botón pulsar o al pulsar la tecla ENTER.
     /*    function updateSearch(){
         $.ajax({
@@ -149,6 +151,6 @@
     }*/
 
 </script>
-
+-->
 </body>
 </html>

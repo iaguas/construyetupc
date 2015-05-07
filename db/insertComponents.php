@@ -37,11 +37,19 @@ $data = json_decode($json_string,true);
 
 */
 //$db->mCreateCollection($destcol);
-if($db->mInsertJson($json,$destcol)){
+$db->mInsertJson($json,$destcol);
+//$db->mCompleteData($destcol,$json);
+/*if(){
     return 1; // Éxito de inserción
 }else{
     return 0; // Fracaso
 }
+/*
+if($this->db->mCompleteData($destcol,$json)){
+    return 1;
+}else{
+    return 0;
+}*/
 /*if($db->mInsertJson($json_string,$destcol)){
     // Devolver echo a AJAX como indicador de éxito
     echo "";
