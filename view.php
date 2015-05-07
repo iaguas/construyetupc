@@ -621,7 +621,7 @@ function vShowCrawlerPanel() {
     $dhtml = "";
 
     $db = new DBHelper();
-    $cpus = $db->mGetCpus();
+    $cpus = $db->mGetComponent('cpus');
 
     $components = [
         array('Procesadores', $cpus->count())
