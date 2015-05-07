@@ -173,8 +173,21 @@ todos.controller('TodoController',function ($scope, $http) {
         });
 
         $scope.updateDataSearch = function (component) {
-            alert(component);
-            alert("funciona!");
+
+            var request = $http({
+                method  : 'POST',
+                url     : '/models/getSearchResult.php',
+                data    : {
+                    component: component,
+                    text: $scope.search.text
+                },
+                headers : {'Content-Type': 'application/json'}
+            });
+
+            request.success(function (data) {
+                $scope.todos=data;
+                $scope.filteredTodos = data.slice(0, $scope.numPerPage);
+            });
         };
 
     });

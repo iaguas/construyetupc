@@ -67,9 +67,9 @@
 
 <div class="container"  ng-app="todos" data-ng-controller="TodoController" >
     <div class="input-group col-sm-3">
-        <input type="text" class="form-control" placeholder="Buscar procesador..." ng-keydown="($event.which === 13)?updateDataSearch('cpu'):0"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
+        <input type="text" class="form-control" placeholder="Buscar procesador..." ng-keydown="($event.which === 13)?updateDataSearch('cpus'):0" ng-model="search.text"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="updateDataSearch('cpu')"><!--onclick="updateSearch()"-->Buscar</button>
+        <button class="btn btn-default" type="button" ng-click="updateDataSearch('cpus')" ng-model="search.text"><!--onclick="updateSearch()"-->Buscar</button>
       </span>
     </div><!-- /input-group -->
 
