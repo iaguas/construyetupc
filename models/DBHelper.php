@@ -83,7 +83,6 @@ class DBHelper implements IDBHelper {
         }
     }
 
-
     /**
      * Obtiene la lista de un componente determinado almacenado en mongoDB.
      */
@@ -185,13 +184,13 @@ class DBHelper implements IDBHelper {
 
     /**
      * Obtiene el nombre del componente dado
-     * @param $idComp id del componente en mongoDB
+     * @param $idComp pn del componente en mongoDB
      * @param $colName nombre de la colección en el que se encuentra el componente a buscar
      * @return string tabla que contiene el campo "nombre" del documento del componente
      */
     public function mGetCompName($idComp, $colName){
         $col = $this->db->selectCollection($colName);
-        $query = $col->findOne(array('_id' => new MongoId($idComp)),array('name' => 1));
+        $query = $col->findOne(array('pn' => $idComp),array('name' => 1));
 
         return $query['name'][0];
     }
@@ -266,7 +265,9 @@ class DBHelper implements IDBHelper {
     //Le falta actualizar precios.
     // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
     // Disponer de cómo funciona el tema de los precios. ¿Con otro array como hablé con Kevin?
-    public function mCompleteData($dataJSON, $colName) {
+        // Quitar algo si la araña no lo ha encontrado
+    // Tener en cuenta la función update de Mongo
+    public function mCompleteData($colName, $dataJSON) {
         // Colección donde están las cosas
         $col = $this->db->selectCollection($colName);
 

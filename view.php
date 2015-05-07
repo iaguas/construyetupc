@@ -60,19 +60,20 @@ function vShowPartList() {
     foreach($categories as $category){
         $dhtml .= "<tr>";
         $categoryName = $category['name'];
-        if ($_SESSION['partList']["$categoryName"] == null){
-            $dhtml .= "<td class='col-md-2 vert-align'><img src='" . $category['img'] . "' alt='" . $category[0] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
-            $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"partList/choose/" . $category['name'] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category['spanishName'] . "</button></td>";
-            $dhtml .= "<td class='col-md-2 vert-align'></td>";
-            $dhtml .= "<td class='col-md-1 vert-align'></td>";
-        }else{
-            // Obtener el ID del producto seleccionado
-            $productID = $_SESSION['partList']["$categoryName"];
+        if(isset($_SESSION)) {
+            if ($_SESSION['partList']["$categoryName"] == null){
+                $dhtml .= "<td class='col-md-2 vert-align'><img src='" . $category['img'] . "' alt='" . $category[0] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"partList/choose/" . $category['name'] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category['spanishName'] . "</button></td>";
+                $dhtml .= "<td class='col-md-2 vert-align'></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'></td>";
+            }else{
+                // Obtener el ID del producto seleccionado
+                $productID = $_SESSION['partList']["$categoryName"];
 
-            // TODO: Obtener los datos de dicho producto desde la BD
+                // TODO: Obtener los datos de dicho producto desde la BD
 
-            $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category['name'] . ".png' alt='" . $category['name'] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
-            $dhtml .= "<td class='col-md-3 vert-align'>
+                $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category['name'] . ".png' alt='" . $category['name'] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>
                             <table>
                                 <tr>
                                     <td rowspan='2'><img src='assets/img/corei3-temp.png' alt='product-image' width='50' height='50'/></td>
@@ -82,11 +83,13 @@ function vShowPartList() {
                                 </tr>
                             </table>
                         </td>";
-            $dhtml .= "<td class='col-md-2 vert-align'>
+                $dhtml .= "<td class='col-md-2 vert-align'>
                             <img src='assets/img/shops/PcComponentes-logo-min.png' alt='Logo PcComponentes' width='50' height='50' /> <a href='http://www.pccomponentes.com/' title='PcComponentes'>PcComponentes</a>
                         </td>";
-            $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
+            }
         }
+
         $dhtml .= "</tr>";
     }
 
@@ -621,7 +624,7 @@ function vShowCrawlerPanel() {
     $dhtml = "";
 
     $db = new DBHelper();
-    $cpus = $db->mGetCpus();
+    $cpus = $db->mGetComponent('cpus');
 
     $components = [
         array('Procesadores', $cpus->count())

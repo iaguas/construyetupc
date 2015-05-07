@@ -172,5 +172,10 @@ todos.controller('TodoController',function ($scope, $http) {
             $scope.filteredTodos = $scope.todos.slice(begin, end);
         });
 
+        $scope.updateDataSearch = function (component) {
+            alert(component);
+            alert("funciona!");
+        };
+
     });
 
