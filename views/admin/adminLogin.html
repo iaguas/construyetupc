@@ -15,6 +15,8 @@
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
     <!-- CookieBar -->
     <link href="assets/css/cookiebar.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="assets/css/animate.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -36,7 +38,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="admin">
+            <a class="navbar-brand" href="main">
                 <img class="logo-navbar" src="assets/img/logo_h200.png" height="30">
             </a>
         </div>
@@ -45,8 +47,20 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="main">
-                        <i class="fa fa-home"></i> Salir del panel de administración
+                    <a href="/partList">
+                        <i class="fa fa-wrench"></i> Crea tu PC
+                    </a>
+                </li>
+                <li class="active animated fadeIn">
+                    <a href="javascript:">
+                        <i class="fa fa-cog"></i> Panel de administración
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="about">
+                        <i class="fa fa-users"></i> Sobre nosotros
                     </a>
                 </li>
             </ul>
