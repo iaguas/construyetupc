@@ -15,6 +15,9 @@ require 'models/model.php'; //Estos tres require se utilizan solo una vez para t
 require 'view.php';
 require 'models/sessions.php';
 
+session_start();
+sCheckSessionVar();
+
 // Router
 $router = new AltoRouter();
 $router->setBasePath('');
