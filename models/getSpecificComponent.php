@@ -8,9 +8,17 @@ $request = json_decode($postData);
 //Llamada a la función
 $op=$db->mGetComponent($ct);
 
+
+
+
 switch($ct) {
     case 'cpus':
         foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count($partItem['prices']);
+
+            //
             if (!isset($partItem['family'][0])) {
                 $partItem['family'][0]="N/A";
             }
@@ -24,11 +32,23 @@ switch($ct) {
                 $partItem['frecuency'][0]="N/A";
             }
 
+
+            for ($i = 1; $i <= $size; $i++) {
+
+                if($finalPrice==0){
+                    $finalPrice=$finalPrice=$partItem['prices'][$t]['price'];
+                }
+                if($finalPrice>$finalPrice=$finalPrice=$partItem['prices'][$t]['price']){
+                    $finalPrice=$finalPrice=$finalPrice=$partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
             $json[]=array(
                 $partItem['pn'][0],
                 $partItem['frecuency'][0],
                 $partItem['family'][0],
-                $partItem['price'][0],
+                $finalPrice,
                 $partItem['socket'][0],
                 $partItem['cores'][0],
                 $partItem['name'][0]
