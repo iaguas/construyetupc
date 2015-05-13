@@ -58,33 +58,8 @@
 </nav>
 
 <div class="container">
-    <span id="crawlerStopped">
-        <button id="launchCrawler" type="button" class="btn-lg btn-default">
-            <span class="glyphicon glyphicon-refresh"></span> Crawlear
-        </button>
-        (<strong>Última ejecución</strong>: <span id="crawldatetime">22/05/2015 a las 04:00)</span>
-    </span>
-    <div id="crawlerExecuting" style="display: none; border: 1px solid #458419; background-color: #B1E38D; height: 74px; color: #458419; padding: 5px; vertical-align: middle">
-        <img src="assets/img/loading.gif" alt="Cargando" width="64" height="64" > <p style="display: inline; padding-top: 10px; margin-left: 10px; font-size: 2em">Crawler en ejecución</p>
-    </div>
 
-    <div id="crawlerResults" style="display: none; border: 1px solid #458419; width: 300px; padding: 5px; margin: 10px">
-        <h1>Resultados</h1>
-        <table class="table">
-            <tr>
-                <th>Páginas crawleadas</th>
-                <td>1</td>
-            </tr>
-            <tr>
-                <th>Productos encontrados</th>
-                <td>1432</td>
-            </tr>
-            <tr>
-                <th>Tiempo empleado</th>
-                <td>27 segundos</td>
-            </tr>
-        </table>
-    </div>
+    <strong>Última ejecución de la araña</strong>: {{ crawler-last-exec-time }}
 
     <h1>Productos almacenados:</h1>
     <table class="table">
@@ -113,43 +88,7 @@
 <script src="assets/js/bootstrap.min.js"></script>
 
 <script>
-    $("#launchCrawler").click(function(){
-        $('#crawlerStopped').hide();
-        $('#crawlerExecuting').show();  // show the loading message
-        $('#crawlerResults').hide(); // hide the loading message
-        $.ajax({
-            url: "db/launchCrawler.php",
-            type: "POST",
-            cache: false,
-            success : function(html){
-                $('#crawlerExecuting').hide();
-                $('#crawlerStopped').show(); // hide the loading message
-                $('#crawlerResults').show(); // hide the loading message
-                var date = new Date();
-                var dd = date.getDate();
-                var mm = date.getMonth()+1; //January is 0!
-                var yyyy = date.getFullYear();
 
-                var h = date.getHours();
-                var min = date.getMinutes();
-
-                if(dd<10){
-                    dd='0'+dd
-                }
-                if(mm<10){
-                    mm='0'+mm
-                }
-                if(h<10){
-                    h='0'+h;
-                }
-                if(min<10){
-                    min='0'+min;
-                }
-                var date = dd+'/'+mm+'/'+yyyy+' a las '+h+':'+min;
-                $('#crawldatetime').text(date + ")");
-            }
-        })
-    });
 </script>
 
 </body>

@@ -56,17 +56,30 @@
 </nav>
 
 <div class="container">
-    <h1>{{component-name}}</h1>
-    <table class="table">
-        <tr>
-            <th>Proveedor</th>
-            <th>Precio</th>
-            <th>Gastos de envío</th>
-            <th>Total</th>
-            <th></th>
-        </tr>
-        {{vendor-gpu-list}}
-    </table>
+    <div class="row">
+        <div class="col-md-3" style="background-color: #B1E38D; padding-top: 25px">
+            <img src="./assets/img/no-image150x150.png" alt="Sin imágen" width="150" height="150">
+            <h1>Especificaciones</h1>
+            <hr>
+                <p><strong>Propiedad 1:</strong> xxxx</p>
+                <p><strong>Propiedad 2:</strong> xxxx</p>
+                <p><strong>Propiedad 3:</strong> xxxx</p>
+                <p><strong>Propiedad 4:</strong> xxxx</p>
+        </div>
+        <div class="col-md-9">
+            <h1>{{component-name}}</h1>
+            <table class="table">
+                <tr>
+                    <th>Proveedor</th>
+                    <th>Precio</th>
+                    <th>Gastos de envío</th>
+                    <th>Total</th>
+                    <th></th>
+                </tr>
+                {{vendor-gpu-list}}
+            </table>
+        </div>
+    </div>
 </div>
 
 <!-- Sticky footer -->
