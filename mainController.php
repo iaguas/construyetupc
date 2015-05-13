@@ -40,6 +40,9 @@ function mainController($match){
             case 'vShowContact':
                 vShowContact();
                 break;
+            case 'vShowAbout':
+                vShowAbout();
+                break;
             // Por defecto se llama a la función indicada en la ruta
             default:
                 call_user_func($match['target']);

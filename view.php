@@ -726,3 +726,9 @@ function tailCustom($filepath, $lines, $adaptive) {
     fclose($f);
     return trim($output);
 }
+
+function vShowAbout() {
+    $page = file_get_contents("views/about.html");
+
+    echo $page;
+}

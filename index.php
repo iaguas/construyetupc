@@ -46,6 +46,8 @@ $router->map('GET', '/admin/showemails', 'vShowEmailsLanding', 'administrator-pa
 $router->map('GET', '/admin/crawlerPanel', 'vCrawlerPanel', 'administrator-crawler-panel');
 $router->map('GET', '/admin/insertCompPanel', 'vInsertCompPanel', 'administrator-insert-comp-panel');
 
+$router->map('GET', '/about', 'vShowAbout', 'about');
+
 
 $match = $router->match();
 

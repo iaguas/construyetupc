@@ -121,6 +121,65 @@ body {
     background-color: #458419;
 }
 
+.social-bar {
+    text-decoration: none;
+}
+
+.social-bar a:link {
+    text-decoration: none;
+}
+
+.social-bar a:visited {
+    text-decoration: none;
+}
+
+.social-bar a:active {
+    text-decoration: none;
+}
+
+.social-bar i:hover {
+    color: #000000;
+    transition: color 0.2s;
+}
+
+.google-plus-color {
+    color: #E14907;
+    display: inherit;
+}
+
+.twitter-color {
+    color: #4099FF;
+    display: inherit;
+}
+
+.facebook-color {
+    color: #3B5998;
+    display: inherit;
+}
+
+.linkedin-color {
+    color: #4875B4;
+    display: inherit;
+}
+
+.github-color {
+    color: #333333;
+    display: inherit;
+}
+
+.steam-color {
+    color: #333333;
+    display: inherit;
+}
+
+.vertical-center {
+    min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+    min-height: 100vh; /* These two lines are counted as one :-)       */
+
+    display: flex;
+    align-items: center;
+}
+
 /* Arreglo para ocultar elementos con el tag ng-cloak
    hasta que se compilen las vistas de Angular */
 [ng\:cloak], [ng-cloak], .ng-cloak {

@@ -51,13 +51,15 @@
                     </a>
                 </li>
                 <li>
-                    <a href="javascript:">
-                        <i class="fa fa-cubes"></i> Lista de componentes
-                    </a>
-                </li>
-                <li>
                     <a href="admin">
                         <i class="fa fa-cog"></i> Panel de administración
+                    </a>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <a href="about">
+                        <i class="fa fa-users"></i> Sobre nosotros
                     </a>
                 </li>
             </ul>
@@ -84,48 +86,5 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.cookiebar.js"></script>
-
-<script>
-    var data = '';
-
-    document.addEventListener('keydown', function(event) {
-        if(event.keyCode == 66) {
-            data = 'b';
-        }
-        else if(event.keyCode == 65) {
-            if (data.length == 1){
-                data += 'a';
-            }else if (data.length == 6){
-                $('body').doge({
-                    wordList : ["bazinga", "such PC", "many bugs", "much jquery", "wow", "POTATO"],
-                    showDoge : false
-                });
-            }
-        }
-        else if(event.keyCode == 90) {
-            if (data.length == 2){
-                data += 'z';
-            }
-        }
-        else if(event.keyCode == 73) {
-            if (data.length == 3){
-                data += 'i';
-            }
-        }
-        else if(event.keyCode == 78) {
-            if (data.length == 4){
-                data += 'n';
-            }
-        }
-        else if(event.keyCode == 71) {
-            if (data.length == 5){
-                data += 'g';
-            }
-        }else{
-            data = '';
-        }
-    });
-
-</script>
 </body>
 </html>
