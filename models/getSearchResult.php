@@ -9,6 +9,8 @@ $searchText = $request->text;
 //Llamada a la función
 $response = $db->mSearchProduct($component, $searchText);
 
+$json=array();
+
 foreach ($response as $partItem) {
     if (!isset($partItem['family'][0])) {
         $partItem['family'][0]="N/A";
