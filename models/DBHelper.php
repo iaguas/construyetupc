@@ -196,6 +196,18 @@ class DBHelper implements IDBHelper {
         return $query['name'];
     }
 
+    /**
+     * Obtiene todos los datos del componente dado a través de su PN
+     * @param $pn PN del componente en mongoDB
+     * @param $colName nombre de la colección en el que se encuentra el componente a buscar
+     * @return array con los datos del componente requerido
+     */
+    public function mGetCompPropieties($pn, $colName){
+        $col = $this->db->selectCollection($colName);
+        $query = $col->findOne(array('pn' => $pn));
+        return $query;
+    }    
+
 
     /************************/
     /* Métodos de inserción */

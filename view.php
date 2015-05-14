@@ -364,6 +364,7 @@ function vShowDetailedPartModel($part, $id){
             $modelName = $db->mGetCompName($model,'cpus');
             // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
             $processors = $db->mGetCompPrices($model,'cpus');
+            $propieties = $db->mGetCompPropieties($model, 'cpus');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($processors as $key => $partItem){
                 $dhtml .= "<tr>";
@@ -377,6 +378,19 @@ function vShowDetailedPartModel($part, $id){
             }
             $page = str_replace('{{component-name}}', $modelName, $page);
             $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
+            $page = str_replace('{{family}}', $propieties['family'][0],$page);
+            $page = str_replace('{{frecuency}}', $propieties['frecuency'][0],$page);
+            $page = str_replace('{{cores}}', $propieties['cores'][0],$page);
+            $page = str_replace('{{socket}}', $propieties['socket'][0],$page);
+            // Rellenar si es sin imagen de forma adecuada.
+            if ($propieties['img']=="") {
+                $page = str_replace('{{image-url}}', "./assets/img/no-image150x150.png",$page);
+                $page = str_replace('{{image-description}}', "No existe imagen",$page);
+            }
+            else{
+                $page = str_replace('{{image-url}}', $propieties['img'][0],$page);
+                $page = str_replace('{{image-description}}', $modelName,$page);
+            }
             break;
         case 'cpu-cooler':
             $page = file_get_contents("views/detailedComponents/cpu-cooler.html");
