@@ -29,27 +29,32 @@ function sCheckSessionVar(){
 /**
  * Añade un componente a la lista de partes elegidas
  */
-function sAddPart($part, $id){
+function sAddPart($part){
+
+    $productId = $_POST["productId"];
+    $vendorName = $_POST["productVendorName"];
+    $productPrice = $_POST["productPrice"];
+
     if ($part == "cpu"){
-        $_SESSION['partList']['cpu'] = $id;
+        $_SESSION['partList']['cpu'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "gpu"){
-        $_SESSION['partList']['gpu'] = $id;
+        $_SESSION['partList']['gpu'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "cpu-cooler"){
-        $_SESSION['partList']['cpu-cooler'] = $id;
+        $_SESSION['partList']['cpu-cooler'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "memory"){
-        $_SESSION['partList']['memory'] = $id;
+        $_SESSION['partList']['memory'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "case"){
-        $_SESSION['partList']['case'] = $id;
+        $_SESSION['partList']['case'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "monitor"){
-        $_SESSION['partList']['monitor'] = $id;
+        $_SESSION['partList']['monitor'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "motherboard"){
-        $_SESSION['partList']['motherboard'] = $id;
+        $_SESSION['partList']['motherboard'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "power-supply"){
-        $_SESSION['partList']['power-supply'] = $id;
+        $_SESSION['partList']['power-supply'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "optical-drive"){
-        $_SESSION['partList']['optical-drive'] = $id;
+        $_SESSION['partList']['optical-drive'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "storage"){
-        $_SESSION['partList']['storage'] = $id;
+        $_SESSION['partList']['storage'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }
 }
 

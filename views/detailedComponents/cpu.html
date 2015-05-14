@@ -107,5 +107,34 @@
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/jquery.cookiebar.js"></script>
 
+<script>
+    $( document ).ready(function() {
+        $("#add-product").click(function(){
+            $productId = $(this).closest("tr")
+                    .find("#product-id")
+                    .attr('value');
+            $productVendorName = $(this).closest("tr")
+                    .find(".product-vendor")
+                    .text();
+            $productPrice = $(this).closest("tr")
+                    .find(".product-price")
+                    .text();
+
+            $.ajax({
+                type: 'POST',
+                url: '/partList/select/cpu',
+                data: {
+                    'productId': $productId,
+                    'productVendorName': $productVendorName,
+                    'productPrice': $productPrice
+                },
+                success: function(){
+                    window.location.href = "/partList";
+                }
+            });
+        });
+    });
+</script>
+
 </body>
 </html>

@@ -51,6 +51,7 @@ function vShowContact(){
  * Muestra la lista de componentes.
  */
 function vShowPartList() {
+
     $page = file_get_contents("views/partlist.html");
 
     $db = new DBHelper();
@@ -68,7 +69,9 @@ function vShowPartList() {
                 $dhtml .= "<td class='col-md-1 vert-align'></td>";
             }else{
                 // Obtener el ID del producto seleccionado
-                $productID = $_SESSION['partList']["$categoryName"];
+                $productId = $_SESSION['partList']["$categoryName"]['productId'];
+                $productPrice = $_SESSION['partList']["$categoryName"]['price'];
+                $productVendor = $_SESSION['partList']["$categoryName"]['vendorId'];
 
                 // TODO: Obtener los datos de dicho producto desde la BD
 
@@ -78,13 +81,13 @@ function vShowPartList() {
                                 <tr>
                                     <td rowspan='2'><img src='assets/img/corei3-temp.png' alt='product-image' width='50' height='50'/></td>
                                     <td><strong>Nombre</strong>: Intel Core i3-2105 2.1GHz Quad-Core<br />
-                                        <strong>Precio</strong>: <span style='color:forestgreen'>109€</span>
+                                        <strong>Precio</strong>: <span style='color:forestgreen'>". $productPrice ."</span>
                                     </td>
                                 </tr>
                             </table>
                         </td>";
                 $dhtml .= "<td class='col-md-2 vert-align'>
-                            <img src='assets/img/shops/PcComponentes-logo-min.png' alt='Logo PcComponentes' width='50' height='50' /> <a href='http://www.pccomponentes.com/' title='PcComponentes'>PcComponentes</a>
+                            <img src='assets/img/shops/PcComponentes-logo-min.png' alt='Logo PcComponentes' width='50' height='50' /> <a href='http://www.pccomponentes.com/' title='PcComponentes'>". $productVendor ."</a>
                         </td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
             }
@@ -107,6 +110,7 @@ function vShowPartList() {
  */
 function vShowComponentSelection($part) {
     //$part = $_GET['part']; // TODO: Eliminar esta línea cuando estemos seguros de que el AltoRouter funciona bien.
+
     switch($part){
         case 'cpu':
             $page = file_get_contents("views/components/cpu.html");
@@ -363,11 +367,12 @@ function vShowDetailedPartModel($part, $id){
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($processors as $key => $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[0] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[1] . "</td>";
+                $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
+                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . $partItem[0] . "</td>";
+                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem[1] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $key ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{component-name}}', $modelName, $page);

@@ -27,8 +27,7 @@ function mainController($match){
                 vShowComponentSelection($match['params']['part']);
                 break;
             case 'sAddPart':
-                sAddPart($match['params']['part'], $match['params']['id']);
-                vShowPartList();
+                sAddPart($match['params']['part']);
                 break;
             case 'sRemovePart':
                 sRemovePart($match['params']['part']);

@@ -32,7 +32,8 @@ $router->map('GET', '/contact', 'vShowContact', 'contact');
 
 $router->map('GET', '/partList', 'vShowPartList', 'part-list');
 $router->map('GET', '/partList/choose/[*:part]', 'vShowComponentSelection', 'component-selection');
-$router->map('GET', '/partList/select/[*:part]/[i:id]', 'sAddPart', 'add-part');
+$router->map('POST', '/partList/select/[*:part]', 'sAddPart', 'add-part');
+
 $router->map('GET', '/partList/remove/[*:part]', 'sRemovePart', 'remove-part');
 
 $router->map('GET', '/part/[*:part]/[*:serialNumber]', 'vShowDetailedPartModel', 'part-details');
