@@ -20,16 +20,16 @@ switch($ct) {
 
             //
             if (!isset($partItem['family'][0])) {
-                $partItem['family'][0]="N/A";
+                $partItem['family']="N/A";
             }
             if(!isset($partItem['socket'][0])){
-                $partItem['socket'][0]="N/A";
+                $partItem['socket']="N/A";
             }
             if(!isset($partItem['cores'][0])){
-                $partItem['cores'][0]="N/A";
+                $partItem['cores']="N/A";
             }
             if(!isset($partItem['frecuency'][0])){
-                $partItem['frecuency'][0]="N/A";
+                $partItem['frecuency']="N/A";
             }
 
 
@@ -45,13 +45,13 @@ switch($ct) {
             }
 
             $json[]=array(
-                $partItem['pn'][0],
-                $partItem['frecuency'][0],
-                $partItem['family'][0],
+                $partItem['pn'],
+                $partItem['frecuency'],
+                $partItem['family'],
                 $finalPrice,
-                $partItem['socket'][0],
-                $partItem['cores'][0],
-                $partItem['name'][0]
+                $partItem['socket'],
+                $partItem['cores'],
+                $partItem['name']
             );
         }
         break;

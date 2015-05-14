@@ -62,7 +62,7 @@ function vShowPartList() {
         $categoryName = $category['name'];
         if(isset($_SESSION)) {
             if (is_null($_SESSION['partList']["$categoryName"])){
-                $dhtml .= "<td class='col-md-2 vert-align'><img src='" . $category['img'] . "' alt='" . $category[0] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
+                $dhtml .= "<td class='col-md-2 vert-align'><img src='" . $category['img'] . "' alt='" . $category['name'] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
                 $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"partList/choose/" . $category['name'] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category['spanishName'] . "</button></td>";
                 $dhtml .= "<td class='col-md-2 vert-align'></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'></td>";
