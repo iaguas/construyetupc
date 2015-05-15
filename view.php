@@ -368,9 +368,9 @@ function vShowDetailedPartModel($part, $id){
             foreach ($processors as $key => $partItem){
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . $partItem[0] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem[1] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem[0] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[1] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";

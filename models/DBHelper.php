@@ -193,7 +193,7 @@ class DBHelper implements IDBHelper {
         $col = $this->db->selectCollection($colName);
         $query = $col->findOne(array('pn' => $idComp),array('name' => 1));
 
-        return $query['name'][0];
+        return $query['name'];
     }
 
 
