@@ -196,14 +196,6 @@ class DBHelper implements IDBHelper {
         return $query['name'][0];
     }
 
-    /**
-     * Obtiene los datos de una tienda, acorde a un producto específico
-     *
-     */
-    public function mGetDataStore($idStore){
-        $col = $this->db->selectCollection('providers');
-        return $col->find($idStore);
-    }
 
     /************************/
     /* Métodos de inserción */
