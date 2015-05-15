@@ -273,7 +273,7 @@ class DBHelper implements IDBHelper {
 
     /**
      * Actualizar datos
-     * REQUISITO: El array debe estar bien construido
+     * REQUISITO: El JSON debe estar bien construido
      */
     //Le falta actualizar precios.
     // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
@@ -292,12 +292,15 @@ class DBHelper implements IDBHelper {
 
         // Analizamos los datos y metemos sólo lo necesario (los datos que faltan).
         foreach ($data as $item){
-            $doc = $col->findOne(array('pn' => new MongoId($item["pn"])));
-            if($doc != NULL) // El producto existe.
+            $doc = $col->findOne(array('pn' => $item["pn"]));
+            if($doc != NULL){ // El producto existe.
                 foreach ($doc as $key => $value) {
+                    var_dump($doc[$key]);
                     if($doc[$key]=="")
                         $doc[$key] = $data[$key];
                 }
+                $col->update(array("pn" => $item["pn"]), $doc);
+            }
             else // El producto no existía
                 $this->mInsertDocument($item, $colName);
         }
