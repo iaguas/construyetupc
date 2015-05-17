@@ -19,7 +19,7 @@
 /**
  * Este fichero PHP parsea los ficheros JSON antes de ser incorporados a la BD eliminando espacios en blanco no deseados
  */
-$json_string = '../crawler/data/cpus-original.json';
+$json_string = '../crawler/data/cpus-original-with-imgs.json';
 $json = file_get_contents($json_string);
 // Devolver array, no un objeto
 $json_array = json_decode($json, true);
@@ -165,7 +165,7 @@ foreach($json_array as &$row) {
 
 // Los datos ya parseados se sobreescriben sobre el fichero original
 // TODO: optar por almacenar los datos en otro archivo para evitar posibles corrupciones de fichero
-$fp = fopen('../crawler/data/cpus-original.json', 'w');
+$fp = fopen('../crawler/data/cpus-original-with-imgs1.json', 'w');
 fwrite($fp, json_encode($json_array));
 fclose($fp);
 
