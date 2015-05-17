@@ -25,12 +25,16 @@ function mGetEmails() {
     return $lista;
 }
 
-/**
- *
- * Registra un email enviado por la Landing Page tras ser filtrado y comprobada su no existencia en la BD
- *
- */
+
 // TODO: Incorporar esta función a validateLanding.php
+/**
+ * Registra un email enviado por la Landing Page tras ser filtrado y comprobada su no existencia en la BD
+ * @param $email correo a registrar/comprobar su existencia
+ * @return int código de exito/fracaso en función del resultado
+ *  1: registrado correctamente
+ *  0: ya registrado
+ *  -1: no válido
+ */
 function mRegisterEmail($email) {
     // Filtramos posibles inyecciones inyecciones...
     // Devuelve el correo o false, de ahí la forma en el que se muestra la condición

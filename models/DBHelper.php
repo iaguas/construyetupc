@@ -167,9 +167,9 @@ class DBHelper implements IDBHelper {
     public function mGetCompPrices($idComp, $colName) {
         $col = $this->db->selectCollection($colName);
         // Argumentos de findOne(busqueda,campo_a_filtrar)
-        $query = $col->findOne(array('pn' => $idComp),array('prices' => 1));
+        $query = $col->findOne(array('pn' => $idComp));
         $subq = $query['prices'];
-        $comp = array();
+        /*$comp = array();
         $comps = array();
         $max = sizeof($subq);
         for($i = 0; $i < $max;$i++){
@@ -178,9 +178,9 @@ class DBHelper implements IDBHelper {
             }
             array_push($comps,$comp);
             $comp = [];
-        }
+        }*/
 
-        return $comps;
+        return $subq;
     }
 
     /**
@@ -202,7 +202,7 @@ class DBHelper implements IDBHelper {
      * @param $colName nombre de la colección en el que se encuentra el componente a buscar
      * @return array con los datos del componente requerido
      */
-    public function mGetCompPropieties($pn, $colName){
+    public function mGetCompProperties($pn, $colName){
         $col = $this->db->selectCollection($colName);
         $query = $col->findOne(array('pn' => $pn));
         return $query;
