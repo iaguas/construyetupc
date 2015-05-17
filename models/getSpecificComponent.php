@@ -45,7 +45,7 @@ switch($ct) {
                 $partItem['pn'],
                 $partItem['frecuency'],
                 $partItem['family'],
-                $finalPrice,
+                $finalPrice  . " €",
                 $partItem['socket'],
                 $partItem['cores'],
                 $partItem['name']

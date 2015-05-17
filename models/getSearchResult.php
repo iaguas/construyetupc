@@ -44,7 +44,7 @@ foreach ($response as $partItem) {
         $partItem['pn'],
         $partItem['frecuency'],
         $partItem['family'],
-        $partItem['prices'][0]['price'], // TODO: Cambiarlo cuando se decida como se haya el "desde...";
+        $finalPrice . " €", 
         $partItem['socket'],
         $partItem['cores'],
         $partItem['name']
