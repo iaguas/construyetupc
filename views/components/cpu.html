@@ -69,11 +69,11 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container"  ng-app="todos" data-ng-controller="TodoController" >
+<div class="container"  data-ng-app="todos" data-ng-controller="TodoController" >
     <div class="input-group col-sm-3">
-        <input type="text" class="form-control" placeholder="Buscar procesador..." ng-keydown="($event.which === 13)?updateDataSearch('cpus'):0" ng-model="search.text"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
+        <input type="text" class="form-control" placeholder="Buscar procesador..." data-ng-keydown="($event.which === 13)?updateDataSearch('cpus'):0" data-ng-model="search.text"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
       <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="updateDataSearch('cpus')" ng-model="search.text"><!--onclick="updateSearch()"-->Buscar</button>
+        <button class="btn btn-default" type="button" data-ng-click="updateDataSearch('cpus')" data-ng-model="search.text"><!--onclick="updateSearch()"-->Buscar</button>
       </span>
     </div><!-- /input-group -->
 
@@ -89,8 +89,8 @@
             <th></th>
         </tr>
 
-        <tr ng-repeat="CPU in filteredTodos">
-            <td class='col-md-3 vert-align'><a href='part/cpu/{{CPU[0]}}' title='Ver comparativa y especificaciones'> {{CPU[6]}} </a></td>
+        <tr data-ng-repeat="CPU in filteredTodos" data-ng-cloak>
+            <td class='col-md-3 vert-align'><a href="part/cpu/{{CPU[0]}}" title='Ver comparativa y especificaciones'> {{CPU[6]}} </a></td>
             <td class='col-md-1 vert-align'>{{CPU[2]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[4]}}</td>
             <td class='col-md-1 vert-align'>{{CPU[5]}}</td>
@@ -98,17 +98,19 @@
             <td class='col-md-1 vert-align'>{{CPU[3]}}</td>
             <td class='col-md-1 vert-align'><a href="/part/cpu/{{CPU[0]}}" class="btn btn-default">Ver comparativa</a></td>
         </tr>
-
     </table>
 
-
-    <pagination
-            class="pager"
-            data-current-page="currentPage"
-            ng-model="currentPage"
-            num-pages="numPages()"
-            boundary-links="true"
-            ng-change="pageChanged()">
+    <pagination data-ng-change="pageChanged()"
+                data-ng-model="currentPage"
+                total-items="totalItems"
+                items-per-page="8"
+                max-size="5"
+                num-pages="numPages"
+                boundary-links="true"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;">
     </pagination>
 
 </div>
@@ -126,35 +128,8 @@
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
-<script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
 <script src="assets/js/app.js"></script>
 
-<!-- App Angular -->
-<script src="assets/js/app.js"></script>
-
-<!--<script type="javascript">
-    // TODO: Aplicar acción cuando se implemente la función de búsqueda. Buscar al pulsar el botón pulsar o al pulsar la tecla ENTER.
-    /*    function updateSearch(){
-        $.ajax({
-            method: "POST",
-            url: "models/searchcpu.php",
-            data: { search: document.getElementById("searchtextbox").value }
-        })
-        .done(function( msg ) {
-            var table = document.getElementById("tableproducts");   
-            if (!table){
-                alert("El elemento selecionado no existe");
-            } else {
-                var parent = table.parentNode;
-                parent.removeChild(table);
-                var item = document.createElement('table').appendChild(document.createTextNode(msg));
-                parent.appendChild(item);
-
-            }
-        });
-    }*/
-
-</script>
--->
 </body>
 </html>

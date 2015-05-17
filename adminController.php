@@ -8,7 +8,7 @@ require 'models/DBHelper.php';
 
 function adminController($match){
 
-    session_start();
+    @session_start();
 
     $admin = false;
 
@@ -19,8 +19,12 @@ function adminController($match){
     }
 
     if($match) {
+        print_r($match);
         if($admin) {
             switch($match['target']) {
+                case 'vShowAdminLogin':
+                    vShowAdmin();
+                    break;
                 case 'vCrawlerPanel':
                     vShowCrawlerPanel();
                     break;

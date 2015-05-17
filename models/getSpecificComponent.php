@@ -8,15 +8,12 @@ $request = json_decode($postData);
 //Llamada a la función
 $op=$db->mGetComponent($ct);
 
-
-
-
 switch($ct) {
     case 'cpus':
         foreach ($op as $partItem) {
             $t=0;
             $finalPrice=0;
-            $size=count($partItem['prices']);
+            $size=count(@$partItem['prices']);
 
             //
             if (!isset($partItem['family'][0])) {
