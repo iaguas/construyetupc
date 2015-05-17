@@ -12,16 +12,16 @@ $response = $db->mSearchProduct($component, $searchText);
 $json=array();
 
 foreach ($response as $partItem) {
-    if (!isset($partItem['family'])) {
+    if (!isset($partItem['family'][0])) {
         $partItem['family']="N/A";
     }
-    if(!isset($partItem['socket'])){
+    if(!isset($partItem['socket'][0])){
         $partItem['socket']="N/A";
     }
-    if(!isset($partItem['cores'])){
+    if(!isset($partItem['cores'][0])){
         $partItem['cores']="N/A";
     }
-    if(!isset($partItem['frecuency'])){
+    if(!isset($partItem['frecuency'][0])){
         $partItem['frecuency']="N/A";
     }
 
