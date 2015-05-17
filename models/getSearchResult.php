@@ -12,6 +12,10 @@ $response = $db->mSearchProduct($component, $searchText);
 $json=array();
 
 foreach ($response as $partItem) {
+    $t=0;
+    $finalPrice=0;
+    $size=count(@$partItem['prices']);
+
     if (!isset($partItem['family'][0])) {
         $partItem['family']="N/A";
     }
@@ -25,11 +29,22 @@ foreach ($response as $partItem) {
         $partItem['frecuency']="N/A";
     }
 
+    for ($i = 1; $i <= $size; $i++) {
+
+        if($finalPrice==0){
+            $finalPrice=$partItem['prices'][$t]['price'];
+        }
+        if($finalPrice>$partItem['prices'][$t]['price']){
+            $finalPrice=$partItem['prices'][$t]['price'];
+        }
+        $t++;
+    }
+
     $json[]=array(
         $partItem['pn'],
         $partItem['frecuency'],
         $partItem['family'],
-        ''.$partItem['prices'][0]['price'], // TODO: Cambiarlo cuando se decida como se haya el "desde...";
+        $partItem['prices'][0]['price'], // TODO: Cambiarlo cuando se decida como se haya el "desde...";
         $partItem['socket'],
         $partItem['cores'],
         $partItem['name']
