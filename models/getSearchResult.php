@@ -12,27 +12,27 @@ $response = $db->mSearchProduct($component, $searchText);
 $json=array();
 
 foreach ($response as $partItem) {
-    if (!isset($partItem['family'][0])) {
-        $partItem['family'][0]="N/A";
+    if (!isset($partItem['family'])) {
+        $partItem['family']="N/A";
     }
-    if(!isset($partItem['socket'][0])){
-        $partItem['socket'][0]="N/A";
+    if(!isset($partItem['socket'])){
+        $partItem['socket']="N/A";
     }
-    if(!isset($partItem['cores'][0])){
-        $partItem['cores'][0]="N/A";
+    if(!isset($partItem['cores'])){
+        $partItem['cores']="N/A";
     }
-    if(!isset($partItem['frecuency'][0])){
-        $partItem['frecuency'][0]="N/A";
+    if(!isset($partItem['frecuency'])){
+        $partItem['frecuency']="N/A";
     }
 
     $json[]=array(
-        $partItem['pn'][0],
-        $partItem['frecuency'][0],
-        $partItem['family'][0],
-        $partItem['price'][0],
-        $partItem['socket'][0],
-        $partItem['cores'][0],
-        $partItem['name'][0]
+        $partItem['pn'],
+        $partItem['frecuency'],
+        $partItem['family'],
+        ''.$partItem['prices'][0]['price'], // TODO: Cambiarlo cuando se decida como se haya el "desde...";
+        $partItem['socket'],
+        $partItem['cores'],
+        $partItem['name']
     );
 }
 
