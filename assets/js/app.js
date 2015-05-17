@@ -137,6 +137,7 @@ todos.controller('TodoController', [
         $scope.currentPage = 1;
         $scope.todos = [];
         $scope.numPerPage = 8;
+        $scope.maxSize = 5;
 
         $scope.getCpus = function () {
 
@@ -153,12 +154,12 @@ todos.controller('TodoController', [
                 $scope.todos = data;
                 $scope.filteredTodos = data.slice(0, $scope.numPerPage);
                 $scope.totalItems = $scope.todos.length;
+                console.debug('totalItems1:' + $scope.totalItems);
             });
 
         };
 
         $scope.getCpus();
-        $scope.numPages = Math.ceil($scope.todos.length / $scope.numPerPage);
 
         $scope.$watch('currentPage + numPerPage', function () {
             var begin = (($scope.currentPage - 1) * $scope.numPerPage)
@@ -181,6 +182,7 @@ todos.controller('TodoController', [
             request.success(function (data) {
                 $scope.todos = data;
                 $scope.filteredTodos = data.slice(0, $scope.numPerPage);
+                $scope.totalItems = $scope.todos.length;
             });
 
         };
