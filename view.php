@@ -376,11 +376,11 @@ function vShowDetailedPartModel($part, $id){
                 $total = $partItem['price'] + $partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
+                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
+                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $key ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{component-name}}', $modelName, $page);
