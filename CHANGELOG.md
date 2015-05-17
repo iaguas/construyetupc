@@ -5,6 +5,9 @@
 ####	* | Modificado
 ####	! | Bug encontrado
 
+17/05/2015
++ Añadida primera versión para el parseo de los JSON recogidas por la araña para su almacenamiento en la BD
+
 20/04/2015
 + Añadida suscripción por AngularJS para la Landing Page
 ! AngularJS no muestra correctamente las notificaciones, dado que no captura el mensaje AJAX que se envía con la última línea del fichero php

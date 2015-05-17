@@ -15,7 +15,7 @@ $db = new DBHelper();
 $json_string = 'crawler/data/cases.json';
 $json_string = 'crawler/data/cpuCoolers.json';
 */
-$json_string = '../crawler/data/cpus.json';
+$json_string = '../crawler/data/cpus-original1.json';
 $json = file_get_contents($json_string);
 //return $json;
 /*
