@@ -71,7 +71,7 @@
 
 <div class="container"  data-ng-app="todos" data-ng-controller="TodoController" >
     <div class="input-group col-sm-3">
-        <input type="text" class="form-control" placeholder="Buscar procesador..." data-ng-keydown="($event.which === 13)?updateDataSearch('cpus'):0" data-ng-model="search.text"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
+        <input type="text" class="form-control" placeholder="Buscar procesador..." data-ng-keydown="(($event.which === 13)||(search.text===""))?updateDataSearch('cpus'):0" data-ng-model="search.text"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
       <span class="input-group-btn">
         <button class="btn btn-default" type="button" data-ng-click="updateDataSearch('cpus')" data-ng-model="search.text"><!--onclick="updateSearch()"-->Buscar</button>
       </span>
@@ -123,11 +123,13 @@
 </footer>
 
 <!-- jQuery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
+<script src="assets/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
-<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>
+<script src="assets/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
+<!--<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>-->
 <script src="assets/js/app.js"></script>
 
 </body>
