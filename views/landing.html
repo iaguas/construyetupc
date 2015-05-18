@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Buscador y comparador de precios de componentes para PC">
-    <title>ConstruyeTuPC</title>
+    <meta name="description" content="Buscamos y comparamos los precios de varias tiendas españolas para ofrecerte las mejores ofertas de cientos de componentes para tu ordenador.">
+	<title>ConstruyeTuPC, buscador y comparador de componentes para PC</title>
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
@@ -23,7 +23,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-app="app" ng-controller="formController">
+<body data-ng-app="app" data-ng-controller="formController">
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -51,31 +51,31 @@
 
 <!-- Begin page content -->
 <div class="container text-center top-margin">
-    <img src="assets/img/logo_h201.png" width="478" height="200" alt="Logo">
+    <img src="assets/img/logo-h201.png" width="478" height="200" alt="Logo ConstruyeTuPC">
     <br><br>
     <h1 class="main-title">Bienvenid@ a ConstruyeTuPC</h1>
     <br>
-    <p class="main-description">Tu comparador y buscador de piezas de ordenador en España.</p>
+    <h2 class="main-description">Tu comparador y buscador de piezas de ordenador en España.</h2>
     <br>
-    <p class="main-description">¡Suscríbete para que te avisemos cuando esté disponible!</p>
+    <h2 class="main-description">¡Suscríbete para que te avisemos cuando esté disponible!</h2>
     <br>
-    <form ng-submit="submitForm()" class="form-inline">
+    <form data-ng-submit="submitForm()" class="form-inline">
         <div class="form-group">
           <div class="input-group">
                 <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                <input class="form-control" name="email" id="email" type="email" ng-model="email" placeholder="tu@correo.com" required>
+                <input class="form-control" name="email" id="email" type="email" data-ng-model="email" placeholder="tu@correo.com" required>
           </div>
           <button class="btn btn-success" type="submit" name="submit" >Suscribirse</button>
         </div>
     </form>
     <br>
-    <div class="col-md-4 col-md-offset-4" ng-show="requestResult == 'has-error'" ng-cloak>
+    <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-error'" data-ng-cloak>
         <p class="alert alert-danger" role="alert">El correo no es válido.<br/>Inténtelo de nuevo</p>
     </div>
-    <div class="col-md-4 col-md-offset-4" ng-show="requestResult == 'has-error-email'" ng-cloak>
+    <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-error-email'" data-ng-cloak>
         <p class="alert alert-danger" role="alert">El correo ya está registrado<br/>Gracias por su atención.</p>
     </div>
-    <div class="col-md-4 col-md-offset-4" ng-show="requestResult == 'has-success'" ng-cloak>
+    <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-success'" data-ng-cloak>
         <p class="alert alert-success" role="alert" >La dirección de correo se ha registrado correctamente.<br/> Te mantendremos informado de los cambios.</p>
     </div>
 </div>
