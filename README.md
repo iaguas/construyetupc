@@ -1,3 +1,3 @@
 # ConstruyeTuPC
 
-![ConstruyeTuPC](http://www.construyetupc.es/assets/img/logo_h200.png)
+![ConstruyeTuPC](http://www.construyetupc.es/assets/img/logo-h200.png)
