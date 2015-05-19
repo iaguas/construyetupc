@@ -182,7 +182,7 @@ body {
 
 /* Arreglo para ocultar elementos con el tag ng-cloak
    hasta que se compilen las vistas de Angular */
-[ng\:cloak], [ng-cloak], .ng-cloak {
+[ng\:cloak], [ng-cloak], [data-ng-cloak], .ng-cloak, .data-ng-cloak {
     display: none !important;
 }
 
