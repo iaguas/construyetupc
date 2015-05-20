@@ -162,6 +162,7 @@ app.controller('ComponentCtrl', [
         request.success(function (data) {
             for(var i = 0; i < data.length; i++) {
                 $scope.components.push({
+                    'id': data[i][0],
                     'name': data[i][6],
                     'family': data[i][2],
                     'socket': data[i][4],

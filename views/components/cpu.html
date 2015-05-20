@@ -74,23 +74,28 @@
 <div class="container"  data-ng-app="app" data-ng-controller="ComponentCtrl" >
     <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts">
         <tr data-ng-repeat="component in $data" data-ng-cloak>
-            <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}">
-                {{component.name}}
+            <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-6 col-md-6 col-lg-6">
+                <a href="/part/cpu/{{component.id}}">{{component.name}}</a>
             </td>
-            <td data-title="'Familia'" sortable="'family'" filter="{'family': 'text'}">
+            <td data-title="'Familia'" sortable="'family'" filter="{'family': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
                 {{component.family}}
             </td>
-            <td data-title="'Socket'" sortable="'socket'" filter="{'socket': 'text'}">
+            <td data-title="'Socket'" sortable="'socket'" filter="{'socket': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
                 {{component.socket}}
             </td>
-            <td data-title="'Núcleos'" sortable="'cores'" filter="{'cores': 'text'}">
+            <td data-title="'Núcleos'" sortable="'cores'" filter="{'cores': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
                 {{component.cores}}
             </td>
-            <td data-title="'Frecuencia'" sortable="'freq'" filter="{'freq': 'text'}">
+            <td data-title="'Frecuencia'" sortable="'freq'" filter="{'freq': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
                 {{component.freq}}
             </td>
-            <td data-title="'Desde...'" sortable="'price'">
+            <td data-title="'Desde...'" sortable="'price'" class="col-sm-1 col-md-1 col-lg-1">
                 {{component.price}} €
+            </td>
+            <td>
+                <a href="/part/cpu/{{component.id}}" class="btn btn-primary btn-xs">
+                    Ver comparativa
+                </a>
             </td>
         </tr>
     </table>
