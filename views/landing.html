@@ -51,35 +51,37 @@
 </nav>
 
 <!-- Begin page content -->
-<div class="container text-center top-margin">
-    <img src="assets/img/logo-h200.png" width="478" height="200" alt="Logo ConstruyeTuPC">
-    <br><br>
-    <h1 class="main-title">Bienvenid@ a ConstruyeTuPC</h1>
-    <br>
-    <h2 class="main-description">Tu comparador y buscador de piezas de ordenador en España.</h2>
-    <br>
-    <h2 class="main-description">¡Suscríbete para que te avisemos cuando esté disponible!</h2>
-    <br>
-    <form data-ng-submit="submitForm()" class="form-inline">
-        <div class="form-group">
-          <div class="input-group">
-                <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
-                <input class="form-control" name="email" id="email" type="email" data-ng-model="email" placeholder="tu@correo.com" required>
-          </div>
-          <button class="btn btn-success" type="submit" name="submit" >Suscribirse</button>
+<header>
+    <div class="container text-center top-margin">
+        <img src="assets/img/logo-h200.png" width="478" height="200" alt="Logo ConstruyeTuPC">
+        <br><br>
+        <h1 class="main-title">Bienvenid@ a ConstruyeTuPC</h1>
+        <br>
+        <h2 class="main-description">Tu comparador y buscador de piezas de ordenador en España.</h2>
+        <br>
+        <h2 class="main-description">¡Suscríbete para que te avisemos cuando esté disponible!</h2>
+        <br>
+        <form data-ng-submit="submitForm()" class="form-inline">
+            <div class="form-group">
+              <div class="input-group">
+                    <div class="input-group-addon"><i class="fa fa-envelope"></i></div>
+                    <input class="form-control" name="email" id="email" type="email" data-ng-model="email" placeholder="tu@correo.com" required>
+              </div>
+              <button class="btn btn-success" type="submit" name="submit" >Suscribirse</button>
+            </div>
+        </form>
+        <br>
+        <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-error'" data-ng-cloak>
+            <p class="alert alert-danger" role="alert">El correo no es válido.<br/>Inténtelo de nuevo</p>
         </div>
-    </form>
-    <br>
-    <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-error'" data-ng-cloak>
-        <p class="alert alert-danger" role="alert">El correo no es válido.<br/>Inténtelo de nuevo</p>
+        <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-error-email'" data-ng-cloak>
+            <p class="alert alert-danger" role="alert">El correo ya está registrado<br/>Gracias por su atención.</p>
+        </div>
+        <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-success'" data-ng-cloak>
+            <p class="alert alert-success" role="alert" >La dirección de correo se ha registrado correctamente.<br/> Te mantendremos informado de los cambios.</p>
+        </div>
     </div>
-    <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-error-email'" data-ng-cloak>
-        <p class="alert alert-danger" role="alert">El correo ya está registrado<br/>Gracias por su atención.</p>
-    </div>
-    <div class="col-md-4 col-md-offset-4" data-ng-show="requestResult == 'has-success'" data-ng-cloak>
-        <p class="alert alert-success" role="alert" >La dirección de correo se ha registrado correctamente.<br/> Te mantendremos informado de los cambios.</p>
-    </div>
-</div>
+</header>
 
 <footer class="footer navbar-fixed-bottom" >
     <div class="container">
