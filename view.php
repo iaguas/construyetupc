@@ -375,11 +375,11 @@ function vShowDetailedPartModel($part, $id){
             foreach ($processors as $key => $partItem){
                 $total = $partItem['price'] + $partItem['delivery-fare'];
                 $dhtml .= "<tr>";
-                $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
+                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
                 $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
                 $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
