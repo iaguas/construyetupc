@@ -13,6 +13,8 @@
     <link href="assets/css/default.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- ng-table -->
+    <link href="assets/css/ng-table.min.css" rel="stylesheet">
     <!-- CookieBar -->
     <link href="assets/css/cookiebar.css" rel="stylesheet">
     <!-- Animate.css -->
@@ -69,49 +71,29 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container"  data-ng-app="todos" data-ng-controller="TodoController" >
-    <div class="input-group col-sm-3">
-        <input type="text" class="form-control" placeholder="Buscar procesador..." data-ng-keydown="(($event.which === 13)||(search.text===""))?updateDataSearch('cpus'):0" data-ng-model="search.text"><!--onkeypress="if (event.keyCode == 13) updateSearch()" id="searchtextbox"-->
-      <span class="input-group-btn">
-        <button class="btn btn-default" type="button" data-ng-click="updateDataSearch('cpus')" data-ng-model="search.text"><!--onclick="updateSearch()"-->Buscar</button>
-      </span>
-    </div><!-- /input-group -->
-
-    <!--<div id="divtable">-->
-    <table class="table" id="tableproducts">
-        <tr>
-            <th>Nombre</th>
-            <th>Familia</th>
-            <th>Socket</th>
-            <th>Núcleos</th>
-            <th>Frecuencia</th>
-            <th>Desde...</th>
-            <th></th>
-        </tr>
-
-        <tr data-ng-repeat="CPU in filteredTodos" data-ng-cloak>
-            <td class='col-md-3 vert-align'><a href="part/cpu/{{CPU[0]}}" title='Ver comparativa y especificaciones'> {{CPU[6]}} </a></td>
-            <td class='col-md-1 vert-align'>{{CPU[2]}}</td>
-            <td class='col-md-1 vert-align'>{{CPU[4]}}</td>
-            <td class='col-md-1 vert-align'>{{CPU[5]}}</td>
-            <td class='col-md-1 vert-align'>{{CPU[1]}}</td>
-            <td class='col-md-1 vert-align'>{{CPU[3]}}</td>
-            <td class='col-md-1 vert-align'><a href="/part/cpu/{{CPU[0]}}" class="btn btn-default">Ver comparativa</a></td>
+<div class="container"  data-ng-app="app" data-ng-controller="ComponentCtrl" >
+    <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts">
+        <tr data-ng-repeat="component in $data" data-ng-cloak>
+            <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}">
+                {{component.name}}
+            </td>
+            <td data-title="'Familia'" sortable="'family'" filter="{'family': 'text'}">
+                {{component.family}}
+            </td>
+            <td data-title="'Socket'" sortable="'socket'" filter="{'socket': 'text'}">
+                {{component.socket}}
+            </td>
+            <td data-title="'Núcleos'" sortable="'cores'" filter="{'cores': 'text'}">
+                {{component.cores}}
+            </td>
+            <td data-title="'Frecuencia'" sortable="'freq'" filter="{'freq': 'text'}">
+                {{component.freq}}
+            </td>
+            <td data-title="'Desde...'" sortable="'price'">
+                {{component.price}} €
+            </td>
         </tr>
     </table>
-
-    <pagination data-ng-change="pageChanged()"
-                data-ng-model="currentPage"
-                total-items="totalItems"
-                items-per-page="numPerPage"
-                max-size="maxSize"
-                boundary-links="true"
-                previous-text="&lsaquo;"
-                next-text="&rsaquo;"
-                first-text="&laquo;"
-                last-text="&raquo;">
-    </pagination>
-
 </div>
 
 
@@ -123,13 +105,12 @@
 </footer>
 
 <!-- jQuery -->
-<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
 <script src="assets/js/jquery.min.js"></script>
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/ui-bootstrap-tpls-0.13.0.min.js"></script>
-<!--<script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.13.0.min.js"></script>-->
+<script src="assets/js/ng-table.min.js"></script>
 <script src="assets/js/app.js"></script>
 
 </body>

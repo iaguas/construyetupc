@@ -8,8 +8,7 @@
 /*global angular, console, Sha256*/
 
 // Módulo principal de AngularJS
-var app = angular.module('app', []);
-var todos = angular.module('todos', ['ui.bootstrap']);
+var app = angular.module('app', ['ui.bootstrap', 'ngTable']);
 
 // Controlador para el formulario de la Landing Page
 app.controller('formController', [
@@ -128,63 +127,74 @@ app.controller('AdmEmailCtrl', [
 ]);
 
 
-//Mostramos datos + paginacion CPUS
-todos.controller('TodoController', [
+// Controlador para la lógica de componentes
+app.controller('ComponentCtrl', [
     '$scope',
     '$http',
-    function ($scope, $http) {
-        $scope.filteredTodos = [];
-        $scope.currentPage = 1;
-        $scope.todos = [];
+    '$window',
+    '$filter',
+    'ngTableParams',
+    function ($scope, $http, window, $filter, ngTableParams) {
+        $scope.components = [];
+
+        // TODO: ajustar elementos en función de la resolución.
         $scope.numPerPage = 8;
-        $scope.maxSize = 5;
+        var screenHeight = window.screen.availHeight;
 
-        $scope.getCpus = function () {
+        if(screenHeight <= 768) {
+            $scope.numPerPage = 8;
+        } else if(screenHeight > 768 && screenHeight <= 900) {
+            $scope.numPerPage = 10;
+        } else if(screenHeight > 1080) {
+            $scope.numPerPage = 15;
+        }
 
-            var request = $http({
-                method: 'POST',
-                url: '/models/getSpecificComponent.php',
-                data: {
-                    component: 'cpus'
-                },
-                headers: {'Content-Type': 'application/json'}
-            });
-
-            request.success(function (data) {
-                $scope.todos = data;
-                $scope.filteredTodos = data.slice(0, $scope.numPerPage);
-                $scope.totalItems = $scope.todos.length;
-                console.debug('totalItems1:' + $scope.totalItems);
-            });
-
-        };
-
-        $scope.getCpus();
-
-        $scope.$watch('currentPage + numPerPage', function () {
-            var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-                , end = begin + $scope.numPerPage;
-            $scope.filteredTodos = $scope.todos.slice(begin, end);
+        // Obtenemos el componente especificado
+        var request = $http({
+            method: 'POST',
+            url: '/models/getSpecificComponent.php',
+            data: {
+                component: 'cpus'
+            },
+            headers: {'Content-Type': 'application/json'}
         });
 
-        $scope.updateDataSearch = function (component) {
+        request.success(function (data) {
+            for(var i = 0; i < data.length; i++) {
+                $scope.components.push({
+                    'name': data[i][6],
+                    'family': data[i][2],
+                    'socket': data[i][4],
+                    'cores': data[i][5],
+                    'freq': data[i][1],
+                    'price': parseFloat(data[i][3])
+                });
+            }
 
-            var request = $http({
-                method: 'POST',
-                url: '/models/getSearchResult.php',
-                data: {
-                    component: component,
-                    text: $scope.search.text
-                },
-                headers: {'Content-Type': 'application/json'}
+            $scope.tableParams = new ngTableParams({
+                page: 1,
+                count: 8,
+                sorting: {
+                    name: 'asc'
+                }
+            }, {
+                total: $scope.components.length,
+
+                getData: function($defer, params) {
+                    var orderedData = params.filter() ?
+                        $filter('filter')($scope.components, params.filter()) :
+                        $scope.components;
+
+                    orderedData = params.sorting() ?
+                        $filter('orderBy')(orderedData, params.orderBy()) :
+                        orderedData;
+
+                    // Recalculamos páginas
+                    params.total(orderedData.length);
+
+                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                }
             });
-
-            request.success(function (data) {
-                $scope.todos = data;
-                $scope.filteredTodos = data.slice(0, $scope.numPerPage);
-                $scope.totalItems = $scope.todos.length;
-            });
-
-        };
+        });
     }
 ]);
