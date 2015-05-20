@@ -206,8 +206,14 @@ class DBHelper implements IDBHelper {
         $col = $this->db->selectCollection($colName);
         $query = $col->findOne(array('pn' => $pn));
         return $query;
-    }    
-
+    }
+    /**
+     * Obtiene los datos de un proveedor concreto buscado por nombre.
+     */
+    public function mGetProviders($query) {
+        $col = $this->db->selectCollection('providers');
+        return  $col->findOne(array('name'=>$query));
+    }
 
     /************************/
     /* Métodos de inserción */

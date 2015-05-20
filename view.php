@@ -73,6 +73,10 @@ function vShowPartList() {
                 $productPrice = $_SESSION['partList']["$categoryName"]['price'];
                 $productVendor = $_SESSION['partList']["$categoryName"]['vendorId'];
 
+                $productName=$db->mGetCompName($productId, 'cpus');
+
+                $provider=$db->mGetProviders($productVendor);
+                $providerUrl=$provider['url'];
                 // TODO: Obtener los datos de dicho producto desde la BD
 
                 $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category['name'] . ".png' alt='" . $category['name'] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
@@ -80,14 +84,14 @@ function vShowPartList() {
                             <table>
                                 <tr>
                                     <td rowspan='2'><img src='assets/img/corei3-temp.png' alt='product-image' width='50' height='50'/></td>
-                                    <td><strong>Nombre</strong>: Intel Core i3-2105 2.1GHz Quad-Core<br />
+                                    <td><strong>Nombre</strong>: $productName<br />
                                         <strong>Precio</strong>: <span style='color:forestgreen'>". $productPrice ."</span>
                                     </td>
                                 </tr>
                             </table>
                         </td>";
                 $dhtml .= "<td class='col-md-2 vert-align'>
-                            <img src='assets/img/shops/PcComponentes-logo-min.png' alt='Logo PcComponentes' width='50' height='50' /> <a href='http://www.pccomponentes.com/' title='PcComponentes'>". $productVendor ."</a>
+                            <img src='assets/img/shops/".$productVendor.".png' alt='Logo ".$productVendor."' width='50' height='50' /> <a href='$providerUrl' title='$productVendor'>". $productVendor ."</a>
                         </td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
             }
@@ -97,8 +101,7 @@ function vShowPartList() {
     }
 
     // TODO: Calcular el coste total
-    $totalCost = 35;
-
+    $totalCost=+$productPrice;
     $page = str_replace("{{totalCost}}", $totalCost . "€", $page);
     $page = str_replace("{{component-list}}", $dhtml, $page);
 
@@ -116,45 +119,7 @@ function vShowComponentSelection($part) {
     switch($part){
         case 'cpu':
             $page = file_get_contents("views/components/cpu.html");
-            $dhtml = '';
             // TODO: Obtener lista de todos los procesadores
-
-           /* $db = new DBHelper();
-            $processors = $db->mGetCpus(); // Obtenemos los datos de todas las CPUs
-            foreach ($processors as $partItem) {
-                if (isset($partItem['family'][0])) {
-                    $family=$partItem['family'][0];
-                }else{
-                    $family="N/A";
-                }
-                if(isset($partItem['socket'][0])){
-                    $socket=$partItem['socket'][0];
-                }else{
-                    $socket="N/A";
-                }
-                if(isset($partItem['cores'][0])){
-                    $cores=$partItem['cores'][0];
-                }else{
-                    $cores="N/A";
-                }
-                if(isset($partItem['frecuency'][0])){
-                    $frecuency=$partItem['frecuency'][0];
-                }else{
-                    $frecuency="N/A";
-                }
-
-                $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/cpu/" . $partItem['_id'] ."' title='Ver comparativa y especificaciones'>" . $partItem['name'][0]  . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $family . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $socket . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $cores . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $frecuency . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'][0] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu/" . $partItem['_id'] ."\"'>Añadir</button></td>";
-                $dhtml .= "</tr>";
-            }*/
-
-            //$page = str_replace('{{processor-list}}', $dhtml, $page);
             break;
         case 'cpu-cooler':
             $page = file_get_contents("views/components/cpu-cooler.html");
