@@ -7,7 +7,6 @@
 
 import scrapy
 
-
 class ProcessorItem(scrapy.Item):
     # define the fields for your item here like:
 	pn = scrapy.Field()
@@ -16,7 +15,8 @@ class ProcessorItem(scrapy.Item):
 	socket = scrapy.Field()
 	cores = scrapy.Field()
 	frecuency = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class MemoryItem(scrapy.Item):
 	# define the fields for your item here like:
@@ -25,7 +25,8 @@ class MemoryItem(scrapy.Item):
 	frecuency = scrapy.Field()
 	modules = scrapy.Field()
 	size = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class GPUItem(scrapy.Item):
 	# define the fields for your item here like:
@@ -33,7 +34,8 @@ class GPUItem(scrapy.Item):
 	name = scrapy.Field()
 	memory = scrapy.Field()
 	frecuency = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class CPUCoolerItem(scrapy.Item):
 	# define the fields for your item here like:
@@ -42,14 +44,16 @@ class CPUCoolerItem(scrapy.Item):
 	size = scrapy.Field()
 	rpm = scrapy.Field()
 	noise = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class MotherboardItem(scrapy.Item):
 	# define the fields for your item here like:
 	pn = scrapy.Field()
 	name = scrapy.Field()
 	socket = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 
 class PowerSupplyItem(scrapy.Item):
 	# define the fields for your item here like:
@@ -57,20 +61,23 @@ class PowerSupplyItem(scrapy.Item):
 	name = scrapy.Field()
 	eficiency = scrapy.Field()
 	watts = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class CaseItem(scrapy.Item):
 	# define the fields for your item here like:
 	pn = scrapy.Field()
 	name = scrapy.Field()
 	format = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class OpticalDriveItem(scrapy.Item):
 	# define the fields for your item here like:
 	pn = scrapy.Field()
 	name = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class StorageItem(scrapy.Item):
 	# define the fields for your item here like:
@@ -79,7 +86,8 @@ class StorageItem(scrapy.Item):
 	type = scrapy.Field()
 	capacity = scrapy.Field()
 	format = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()
 	
 class MonitorItem(scrapy.Item):
 	# define the fields for your item here like:
@@ -87,4 +95,5 @@ class MonitorItem(scrapy.Item):
 	name = scrapy.Field()
 	resolution = scrapy.Field()
 	size = scrapy.Field()
-	price = scrapy.Field()
+	prices = scrapy.Field()
+	img = scrapy.Field()

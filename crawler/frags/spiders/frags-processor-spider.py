@@ -25,7 +25,12 @@ class MySpider(CrawlSpider):
 		item ["socket"] = ""
 		item ["cores"] = response.xpath('//tr[@id="ThreadCount"]/td[@class="rc"]/text()').extract()
 		item ["frecuency"] = response.xpath('//tr[@id="ClockSpeed"]/td[@class="rc"]/text()').extract()
-		item ["price"] = response.xpath('//div[@class="price-box"]/span/span[@class="price"]/text()').extract()
+		item ["prices"] = {}
+		item ["prices"]["provider"] = "4frags"
+		item ["prices"]["price"] = response.xpath('//div[@class="price-box"]/span/span[@class="price"]/text()').extract()
+		item ["prices"]["delivery-fare"] = ""
+		item ["prices"]["url"] = response.url
+		item ["img"] = response.xpath('//p[contains(@class, "product-image")]/a/img/@src').extract()
 
 		if (item ["pn"][0] != ""):
 			return item
