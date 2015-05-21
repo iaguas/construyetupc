@@ -11,7 +11,7 @@
  * Funcionalidades de éste parser
  * - Sustituir caracteres extraños por espacio vacio
  * - Eliminar espacios en claves para identificar productos
- * - Eliminar claves ("pn") que no cumplen con el mínimo de 8 carácteres
+ * - Eliminar filas con claves ("pn") que no cumplen con el mínimo de 8 carácteres o no existen
  * - Mapear correctamente (en arrays) los precios por tiendas
  * - Eliminar euro/dolar de los precios
  * - Mapear correctamente el array general
@@ -28,11 +28,18 @@ function mParseJsons($dbcol){
 
     // NOTA: necesario pasar la variable por referencia para modificar la variable recorrida
     foreach($json_array as &$row) {
-        // Eliminar "pn"s no válidos
-        $row['pn'][0] = trim($row['pn'][0]);
-        if (strlen($row['pn'][0]) < 8) {
-            $row['pn'][0] = "";
+        // Eliminar filas con "pn"s no válidos
+        if(isset($row['pn']) || !empty($row['pn'])) {
+            $row['pn'][0] = trim($row['pn'][0]);
+            if (strlen($row['pn'][0]) < 8) {
+                unset($row);
+                continue;
+            }
+        }else{
+            unset($row);
+            continue;
         }
+
         // Arrays auxiliares para el array de arrays de prices
         $prices = [];
         $shop_keys = ['url', 'price', 'delivery-fare', 'provider'];
