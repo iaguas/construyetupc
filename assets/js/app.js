@@ -148,7 +148,7 @@ app.controller('ComponentCtrl', [
         } else if(screenHeight > 1080) {
             $scope.numPerPage = 15;
         }
-
+        $('#tableproducts').hide();
         // Obtenemos el componente especificado
         var request = $http({
             method: 'POST',
@@ -170,6 +170,8 @@ app.controller('ComponentCtrl', [
                     'freq': data[i][1],
                     'price': parseFloat(data[i][3])
                 });
+                $('#loadspin').hide();
+                $('#tableproducts').show();
             }
 
             $scope.tableParams = new ngTableParams({
