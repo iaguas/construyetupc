@@ -13,6 +13,8 @@
     <link href="assets/css/default.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="assets/css/animate.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -43,11 +45,6 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="admin/showemails">
-                        <i class="fa fa-envelope"></i> Ver Emails
-                    </a>
-                </li>
-                <li>
                     <a href="main" ng-click="logout()">
                         <i class="fa fa-home"></i> Salir del panel de administración
                     </a>
@@ -57,13 +54,17 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
-    <table class="table">
-        <tr>
-            <th>Panel de administración</th>
-        </tr>
-
-    </table>
+<div class="container text-center">
+    <div class="container text-center">
+        <p class="main-title animated fadeInDown">Panel de administración</p>
+    </div>
+    <div class="div-panel-btn">
+        <i class="fa fa-envelope fa-1x"></i>
+        <br>
+        <a href="admin/showemails" title="Emails web" style="padding-top: 60%">
+            <h3>Ver Emails</h3>
+        </a>
+    </div>
     <div class="div-panel-btn">
         <img src="assets/img/admin-icons/scrapy-logo.png" width="120" height="45" alt="Logo Scrapy">
         <br>
