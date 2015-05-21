@@ -22,6 +22,7 @@ class MySpider(CrawlSpider):
 		item ["prices"]["provider"] = "4frags"
 		item ["prices"]["price"] = response.xpath('//div[@class="price-box"]/span/span[@class="price"]/text()').extract()
 		item ["prices"]["delivery-fare"] = ""
+		item ["prices"]["url"] = response.url
 		item ["img"] = response.xpath('//p[contains(@class, "product-image")]/a/img/@src').extract()
 
 		if (item ["pn"][0] != ""):
