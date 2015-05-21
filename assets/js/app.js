@@ -194,6 +194,7 @@ app.controller('ComponentCtrl', [
 
                     // Recalculamos páginas
                     params.total(orderedData.length);
+                    $('#loadspin').hide();
 
                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                 }
