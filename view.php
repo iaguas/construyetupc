@@ -58,6 +58,7 @@ function vShowPartList() {
     $categories = $db->mGetHardwareCategories(); // Obtengo las categorías de componentes desde la base de datos
 
     $dhtml = '';
+    $productPrice=0;
     foreach($categories as $category){
         $dhtml .= "<tr>";
         $categoryName = $category['name'];
@@ -342,9 +343,9 @@ function vShowDetailedPartModel($part, $id){
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
                 $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "</td>";
+                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem['price']. "€" . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare']. "€" . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
