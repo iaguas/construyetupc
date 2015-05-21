@@ -8,7 +8,8 @@
 /*global angular, console, Sha256*/
 
 // Módulo principal de AngularJS
-var app = angular.module('app', ['ngTable']);
+var app = angular.module('app', []);
+var appTable = angular.module('appTable', ['ngTable']);
 
 // Controlador para el formulario de la Landing Page
 app.controller('formController', [
@@ -127,7 +128,7 @@ app.controller('AdmEmailCtrl', [
 
 
 // Controlador para la lógica de componentes
-app.controller('ComponentCtrl', [
+appTable.controller('ComponentCtrl', [
     '$scope',
     '$http',
     '$window',

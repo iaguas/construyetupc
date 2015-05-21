@@ -71,7 +71,7 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container"  data-ng-app="app" data-ng-controller="ComponentCtrl" >
+<div class="container"  data-ng-app="appTable" data-ng-controller="ComponentCtrl" >
     <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts">
         <tr data-ng-repeat="component in $data" data-ng-cloak>
             <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-6 col-md-6 col-lg-6">
