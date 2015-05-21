@@ -19,7 +19,6 @@ function adminController($match){
     }
 
     if($match) {
-        print_r($match);
         if($admin) {
             switch($match['target']) {
                 case 'vShowAdminLogin':

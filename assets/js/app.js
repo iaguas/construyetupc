@@ -8,13 +8,12 @@
 /*global angular, console, Sha256*/
 
 // Módulo principal de AngularJS
-var app = angular.module('app', ['ui.bootstrap', 'ngTable']);
+var app = angular.module('app', ['ngTable']);
 
 // Controlador para el formulario de la Landing Page
 app.controller('formController', [
     '$scope',
     '$http',
-    '$window',
     function ($scope, $http) {
         'use strict';
 
