@@ -8,13 +8,13 @@
 /*global angular, console, Sha256*/
 
 // Módulo principal de AngularJS
-var app = angular.module('app', ['ui.bootstrap', 'ngTable']);
+var app = angular.module('app', []);
+var appTable = angular.module('appTable', ['ngTable']);
 
 // Controlador para el formulario de la Landing Page
 app.controller('formController', [
     '$scope',
     '$http',
-    '$window',
     function ($scope, $http) {
         'use strict';
 
@@ -128,7 +128,7 @@ app.controller('AdmEmailCtrl', [
 
 
 // Controlador para la lógica de componentes
-app.controller('ComponentCtrl', [
+appTable.controller('ComponentCtrl', [
     '$scope',
     '$http',
     '$window',
@@ -194,6 +194,7 @@ app.controller('ComponentCtrl', [
 
                     // Recalculamos páginas
                     params.total(orderedData.length);
+                    $('#loadspin').hide();
 
                     $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                 }

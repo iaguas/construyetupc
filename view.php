@@ -58,6 +58,7 @@ function vShowPartList() {
     $categories = $db->mGetHardwareCategories(); // Obtengo las categorías de componentes desde la base de datos
 
     $dhtml = '';
+    $productPrice=0;
     foreach($categories as $category){
         $dhtml .= "<tr>";
         $categoryName = $category['name'];

@@ -21,7 +21,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body ng-app="app" ng-controller="AdmLoginFormCtrl">
+<body data-ng-app="app" data-ng-controller="AdmLoginFormCtrl">
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -34,7 +34,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="admin/panel">
+            <a class="navbar-brand" href="javascript:">
                 <img class="logo-navbar" src="assets/img/logo-h30.png" height="30">
             </a>
         </div>
@@ -48,7 +48,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="main" ng-click="logout()">
+                    <a href="main" data-ng-click="logout()">
                         <i class="fa fa-home"></i> Salir del panel de administración
                     </a>
                 </li>
