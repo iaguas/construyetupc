@@ -5,7 +5,7 @@
  */
 
 // Variables globales para que no las pille JSLint
-/*global angular, console, Sha256*/
+/*global angular, console, Sha256, $*/
 
 // Módulo principal de AngularJS
 var app = angular.module('app', []);
@@ -135,70 +135,190 @@ appTable.controller('ComponentCtrl', [
     '$filter',
     'ngTableParams',
     function ($scope, $http, window, $filter, ngTableParams) {
-        $scope.components = [];
+        'use strict';
 
-        // TODO: ajustar elementos en función de la resolución.
+        $scope.components = [];
         $scope.numPerPage = 8;
         var screenHeight = window.screen.availHeight;
 
-        if(screenHeight <= 768) {
+        if (screenHeight <= 768) {
             $scope.numPerPage = 8;
-        } else if(screenHeight > 768 && screenHeight <= 900) {
+        } else if (screenHeight > 768 && screenHeight <= 900) {
             $scope.numPerPage = 10;
-        } else if(screenHeight > 1080) {
+        } else if (screenHeight > 1080) {
             $scope.numPerPage = 15;
         }
-        $('#tableproducts').hide();
-        // Obtenemos el componente especificado
-        var request = $http({
-            method: 'POST',
-            url: '/models/getSpecificComponent.php',
-            data: {
-                component: 'cpus'
-            },
-            headers: {'Content-Type': 'application/json'}
-        });
 
-        request.success(function (data) {
-            for(var i = 0; i < data.length; i++) {
-                $scope.components.push({
-                    'id': data[i][0],
-                    'name': data[i][6],
-                    'family': data[i][2],
-                    'socket': data[i][4],
-                    'cores': data[i][5],
-                    'freq': data[i][1],
-                    'price': parseFloat(data[i][3])
-                });
+        // Ocultamos la tabla de productos
+        $('#tableproducts').hide();
+
+        $scope.getComponents = function (component) {
+            // Obtenemos el componente especificado
+            var request = $http({
+                method: 'POST',
+                url: '/models/getSpecificComponent.php',
+                data: {
+                    component: component
+                },
+                headers: {'Content-Type': 'application/json'}
+            });
+
+            request.success(function (data) {
+                var i;
+
+                // CPU
+                if (component === 'cpus') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': data[i][0],
+                            'name': data[i][6],
+                            'family': data[i][2],
+                            'socket': data[i][4],
+                            'cores': data[i][5],
+                            'freq': data[i][1],
+                            'price': parseFloat(data[i][3])
+                        });
+                    }
+                }
+
+                // GPU
+                if (component === 'gpus') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // CPU Cooler
+                if (component === 'cpu-coolers') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // Motherboard
+                if (component === 'motherboards') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // RAM
+                if (component === 'rams') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // Power Supply
+                if (component === 'power-supplies') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // Case
+                if (component === 'cases') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // Optical Drive
+                if (component === 'optical-drives') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // Storage
+                if (component === 'storages') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // Monitor
+                if (component === 'monitors') {
+                    for (i = 0; i < data.length; i++) {
+                        $scope.components.push({
+                            'id': null,
+                            'name': null,
+                            'brand': null,
+                            'price': null
+                        });
+                    }
+                }
+
+                // Ocultamos rueda de carga y mostramos productos
                 $('#loadspin').hide();
                 $('#tableproducts').show();
-            }
 
-            $scope.tableParams = new ngTableParams({
-                page: 1,
-                count: 8,
-                sorting: {
-                    name: 'asc'
-                }
-            }, {
-                total: $scope.components.length,
+                $scope.tableParams = new ngTableParams({
+                    page: 1,
+                    count: 8,
+                    sorting: {
+                        name: 'asc'
+                    }
+                }, {
+                    total: $scope.components.length,
 
-                getData: function($defer, params) {
-                    var orderedData = params.filter() ?
-                        $filter('filter')($scope.components, params.filter()) :
-                        $scope.components;
+                    getData: function ($defer, params) {
+                        var orderedData = params.filter() ?
+                                $filter('filter')($scope.components, params.filter()) :
+                                $scope.components;
 
-                    orderedData = params.sorting() ?
-                        $filter('orderBy')(orderedData, params.orderBy()) :
-                        orderedData;
+                        orderedData = params.sorting() ?
+                                $filter('orderBy')(orderedData, params.orderBy()) :
+                                orderedData;
 
-                    // Recalculamos páginas
-                    params.total(orderedData.length);
-                    $('#loadspin').hide();
+                        // Recalculamos páginas
+                        params.total(orderedData.length);
+                        $('#loadspin').hide();
 
-                    $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-                }
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
             });
-        });
+        };
     }
 ]);

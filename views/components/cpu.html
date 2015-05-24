@@ -4,20 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<base href="/"> 
+    <base href="/">
     <title>Elegir componentes</title>
 
-    <!-- Bootstrap -->
+    <!-- CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Default styles -->
     <link href="assets/css/default.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link href="assets/css/font-awesome.min.css" rel="stylesheet">
-    <!-- ng-table -->
     <link href="assets/css/ng-table.min.css" rel="stylesheet">
-    <!-- CookieBar -->
     <link href="assets/css/cookiebar.css" rel="stylesheet">
-    <!-- Animate.css -->
     <link href="assets/css/animate.min.css" rel="stylesheet">
 
 
@@ -71,8 +66,8 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container"  data-ng-app="appTable" data-ng-controller="ComponentCtrl" >
-    <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts">
+<div class="container" data-ng-app="appTable" data-ng-controller="ComponentCtrl">
+    <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts" data-ng-init="getComponents('cpus')">
         <tr data-ng-repeat="component in $data" data-ng-cloak>
             <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-6 col-md-6 col-lg-6">
                 <a href="/part/cpu/{{component.id}}">{{component.name}}</a>
@@ -102,7 +97,6 @@
     <div class="container text-center top-margin"><i id="loadspin" class="fa fa-spinner fa-spin fa-5x "></i></div>
 </div>
 
-
 <!-- Sticky footer -->
 <footer class="footer">
     <div class="container">
@@ -110,9 +104,8 @@
     </div>
 </footer>
 
-<!-- jQuery -->
+<!-- JavaScript -->
 <script src="assets/js/jquery.min.js"></script>
-<!-- Include all compiled plugins (below), or include individual files as needed -->
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
 <script src="assets/js/ng-table.min.js"></script>
