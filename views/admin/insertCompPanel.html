@@ -21,7 +21,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body data-ng-app="app" data-ng-controller="AdmLoginFormCtrl">
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -43,13 +43,15 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li>
-                    <a href="admin/showemails">
-                        <i class="fa fa-envelope"></i> Ver Emails
+                    <a href="admin/panel">
+                        <i class="fa fa-undo"></i> Volver
                     </a>
                 </li>
-                <li>
-                    <a href="main">
-                        <i class="fa fa-home"></i> Salir del panel de administración
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-controller="AdmLoginFormCtrl">
+                    <a href="main" ng-click="logout()">
+                        <i class="fa fa-home"></i> Cerrar sesión
                     </a>
                 </li>
             </ul>
@@ -58,8 +60,10 @@
 </nav>
 
 <div class="container">
+    <h1>Insertar datos recolectados en MongoDB</h1>
+    <br>
     <span>
-        <button id="insertData" type="button" class="btn-lg btn-default">
+        <button id="insertData" type="button" class="btn btn-primary btn-lg">
             <span class="glyphicon glyphicon-refresh"></span> Insertar
         </button>
         (<strong>Última ejecución</strong>: <span id="insertiondatetime">22/05/2015 a las 04:00)</span>
@@ -78,6 +82,8 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/app.js"></script>
 
 <script>
     $("#insertData").click(function(){
