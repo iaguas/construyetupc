@@ -5,7 +5,9 @@
  * Date: 08/05/2015
  * Time: 15:54
  */
-
+/* TODO: PARA LAS PRUEBAS CON ENTRADAS DE PRICES DE 3 CAMPOS (PRICE,DELIVERY-FARE,PROVIDER) COMENTAR LÍNEAS 48 Y 56 Y DESCOMENTAR SUS
+RESPECTIVAS ANTERIORES (47 Y 55)
+*/
 /**
  * Esta funcion normaliza los JSONs creados por la araña web. Emplea la función toFloat() para normalizar los precios
  * Funcionalidades de éste parser
@@ -27,29 +29,31 @@ function mParseJsons($dbcol){
     $json_array = json_decode($json, true);
 
     // NOTA: necesario pasar la variable por referencia para modificar la variable recorrida
-    foreach($json_array as &$row) {
+    foreach($json_array as $key => &$row) {
         // Eliminar filas con "pn"s no válidos
         if(isset($row['pn']) || !empty($row['pn'])) {
             $row['pn'][0] = trim($row['pn'][0]);
             if (strlen($row['pn'][0]) < 8) {
-                unset($row);
+                unset($json_array[$key]);
                 continue;
             }
         }else{
-            unset($row);
+            unset($json_array[$key]);
             continue;
         }
 
         // Arrays auxiliares para el array de arrays de prices
         $prices = [];
-        $shop_keys = ['url', 'price', 'delivery-fare', 'provider'];
+        $shop_keys = ['price', 'delivery-fare', 'provider'];
+        //$shop_keys = ['url', 'price', 'delivery-fare', 'provider'];
         $shop_vals = [];
         $j = 0;
         // Recorremos los valores almacenados y los tratamos (teniendo en cuenta los índices repetidos
         foreach ($row['prices'] as $row_in_prices) {
             array_push($shop_vals, $row_in_prices);
             $j++;
-            if ($j == 4) {
+            if ($j == 3) {
+            //if ($j == 4) {
                 array_push($prices, array_combine($shop_keys, $shop_vals));
                 $j = 1;
                 $shop_vals = [];
@@ -78,13 +82,13 @@ function mParseJsons($dbcol){
             $k++;
         }
         // Se normalizan el resto de valores de la fila
-        foreach ($row as $key => $value) {
-            if (!($key == 'prices')) {
-                if (!is_string($row[$key])) {
-                    if (empty($row[$key])) {
-                        $row[$key] = "";
+        foreach ($row as $key1 => $value) {
+            if (!($key1 == 'prices')) {
+                if (!is_string($row[$key1])) {
+                    if (empty($row[$key1])) {
+                        $row[$key1] = "";
                     } else {
-                        $row[$key] = $row[$key][0];
+                        $row[$key1] = $row[$key1][0];
                     }
                 }
             }
