@@ -43,10 +43,10 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li>
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-controller="AdmLoginFormCtrl">
                     <a href="main" ng-click="logout()">
-                        <i class="fa fa-home"></i> Salir del panel de administración
+                        <i class="fa fa-home"></i> Cerrar sesión
                     </a>
                 </li>
             </ul>
@@ -80,7 +80,7 @@
         </a>
     </div>
     <div class="div-panel-btn">
-        <img src="assets/img/admin-icons/google-analytics.png" width="150" height="50" alt="logo Analytics">
+        <img src="assets/img/admin-icons/ga.png" width="150" height="50" alt="logo Analytics">
         <br>
         <a href="https://www.google.com/analytics/web/?hl=es&pli=1#report/visitors-overview/a61071550w95679231p99762144/" title="Acceso Analytics" style="padding-top: 50%" target="_blank">
             <h3>Visión general de audiencia</h3>
