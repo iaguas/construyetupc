@@ -27,8 +27,7 @@ function vCreatorId() {
  * Muestra la página principal.
  */
 function vShowMainPage() {
-    $page = file_get_contents("views/index.html");
-    echo $page;
+    echo vFillTemplatePublic('views/index.html');
 }
 
 /**
@@ -42,7 +41,7 @@ function vShowWhoWeAre() {
 /**
  * Muestra la página de contacto
  */
-function vShowContact(){
+function vShowContact() {
     $page = file_get_contents('views/contact.html');
     echo $page;
 }
@@ -52,7 +51,7 @@ function vShowContact(){
  */
 function vShowPartList() {
 
-    $page = file_get_contents("views/partlist.html");
+    $page = vFillTemplatePublic('views/partlist.html');
 
     $db = new DBHelper();
     $categories = $db->mGetHardwareCategories(); // Obtengo las categorías de componentes desde la base de datos
@@ -119,7 +118,7 @@ function vShowComponentSelection($part) {
 
     switch($part){
         case 'cpu':
-            $page = file_get_contents("views/components/cpu.html");
+            $page = vFillTemplatePublic('views/components/cpu.html');
             // TODO: Obtener lista de todos los procesadores
             break;
         case 'cpu-cooler':
@@ -329,7 +328,7 @@ function vShowDetailedPartModel($part, $id){
     $db = new DBHelper(); // Invocar la clase del modelo de BD
     switch ($part){
         case 'cpu':
-            $page = file_get_contents("views/detailedComponents/cpu.html");
+            $page = vFillTemplatePublic('views/detailedComponents/cpu.html');
             $dhtml = '';
             $model = $id;
             $modelName = $db->mGetCompName($model,'cpus');
@@ -743,7 +742,44 @@ function tailCustom($filepath, $lines, $adaptive) {
 }
 
 function vShowAbout() {
-    $page = file_get_contents("views/about.html");
+    echo vFillTemplatePublic('views/about.html');
+}
 
-    echo $page;
+function vFillTemplatePublic($contentRoute) {
+    $templateRoute = 'views/templates/public.html';
+
+    $template = file_get_contents($templateRoute);
+    $content = file_get_contents($contentRoute);
+    $result = str_replace('{{template_content}}', $content, $template);
+
+    switch($contentRoute) {
+        case 'views/partlist.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{partlist_link}}', 'javascript:void(0);', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            break;
+        case 'views/about.html':
+            $result = str_replace('{{about_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', 'javascript:void(0);', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/components/cpu.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/cpu.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        default:
+            $result = str_replace('{{partlist_class}}', '', $result);
+            $result = str_replace('{{about_class}}', '', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            break;
+    }
+
+    return $result;
 }

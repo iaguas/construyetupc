@@ -322,3 +322,34 @@ appTable.controller('ComponentCtrl', [
         };
     }
 ]);
+
+// Código para que al pulsar el botón de "Añadir" se añada el producto
+$( document ).ready(function() {
+    $("#add-product").click(function(){
+        var productId = $(this).closest("tr")
+            .find("#product-id")
+            .attr('value');
+        var productVendorName = $(this).closest("tr")
+            .find("#product-vendor")
+            .text();
+        var productPrice = $(this).closest("tr")
+            .find("#product-price")
+            .text();
+
+        var component = window.location.href.substring(window.location.href.lastIndexOf('part/')+5,
+            window.location.href.lastIndexOf('/'));
+
+        $.ajax({
+            type: 'POST',
+            url: '/partList/select/' + component,
+            data: {
+                'productId': productId,
+                'productVendorName': productVendorName,
+                'productPrice': productPrice
+            },
+            success: function(){
+                window.location.href = "/partList";
+            }
+        });
+    });
+});
