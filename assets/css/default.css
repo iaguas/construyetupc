@@ -186,6 +186,10 @@ body {
     display: none !important;
 }
 
+.table-td-anchor td a{
+    display: block;
+}
+
 /* Navbar styles */
 .navbar-default {
     background-color: #2a2f35;
