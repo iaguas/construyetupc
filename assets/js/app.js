@@ -323,33 +323,123 @@ appTable.controller('ComponentCtrl', [
     }
 ]);
 
-// Código para que al pulsar el botón de "Añadir" se añada el producto
-$( document ).ready(function() {
-    $("#add-product").click(function(){
-        var productId = $(this).closest("tr")
-            .find("#product-id")
-            .attr('value');
-        var productVendorName = $(this).closest("tr")
-            .find("#product-vendor")
-            .text();
-        var productPrice = $(this).closest("tr")
-            .find("#product-price")
-            .text();
+// Controlador para la inserción de los datos
+appTable.controller('insertionController', [
+    '$scope',
+    '$http',
+    '$filter',
+    '$window',
+    'ngTableParams',
+    function ($scope, $http, $filter,$window, ngTableParams) {
+        'use strict';
+        $scope.nameJson=[];
+        $scope.selection=[];
+        $('#loadSpin').hide();
+        $('#tableJson').hide();
+        $('#insertionData').hide();
 
-        var component = window.location.href.substring(window.location.href.lastIndexOf('part/')+5,
-            window.location.href.lastIndexOf('/'));
+        $scope.getNameJson = function () {
+            $('#startInsertion').hide();
 
-        $.ajax({
-            type: 'POST',
-            url: '/partList/select/' + component,
-            data: {
-                'productId': productId,
-                'productVendorName': productVendorName,
-                'productPrice': productPrice
-            },
-            success: function(){
-                window.location.href = "/partList";
+
+            var request = $http({
+                method: 'POST',
+                url: '/models/getDocJson.php',
+                data: {
+                    url2: '../crawler/data/originals'
+                },
+                headers: {'Content-Type': 'application/json'}
+            });
+
+            request.success(function (data) {
+                var i;
+                $('#loadSpin').show();
+                for (i = 0; i < data.length; i++) {
+                    $scope.nameJson.push({
+                        'name': data[i]['name']
+                    });
+                }
+
+                $scope.tableParams = new ngTableParams({
+                    page: 1,
+                    count: 9,
+                    sorting: {
+                        name: 'asc'
+                    }
+                }, {
+                    total: $scope.nameJson.length,
+
+                    getData: function ($defer, params) {
+                        var orderedData = params.filter() ?
+                            $filter('filter')($scope.nameJson, params.filter()) :
+                            $scope.nameJson;
+
+                        orderedData = params.sorting() ?
+                            $filter('orderBy')(orderedData, params.orderBy()) :
+                            orderedData;
+
+                        // Recalculamos páginas
+                        params.total(orderedData.length);
+
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                        $('#loadSpin').hide();
+                        $('#tableJson').show();
+                    }
+                });
+            });
+
+            $('#insertionData').show();
+        };
+
+
+        $scope.addJson = function(docJson){
+            var i,cont;
+            if($scope.selection.length === 0){
+                $scope.selection.push(docJson);
+                $scope.return="";
+            }else{
+                $scope.selec=$scope.selection;
+                $scope.selection=[];
+                for( i = 0 ; i < $scope.selec.length; i++){
+                    if($scope.selec[i] !== docJson){
+                        $scope.selection.push($scope.selec[i]);
+                        cont=0;
+                    }else{
+                        cont=1;
+                    }
+                }
+                if(cont===0){
+                    $scope.selection.push(docJson);
+                }
             }
-        });
-    });
-});
+            console.log($scope.selection);
+        };
+
+        $scope.insertJson = function () {
+            if($scope.selection.length === 0) {
+                $scope.return="Por favor, selecciona un documento";
+            }else{
+                window.alert('¿Desea continuar?');
+                var request = $http({
+                    method: 'POST',
+                    url: '/db/insertComponents.php',
+                    data: {
+                        docs: $scope.selection
+                    },
+                    headers: {'Content-Type': 'application/json'}
+                });
+                request.success(function (data) {
+                    if(data==='ok'){
+                        $scope.return="Datos insertados correctamente.";
+                        $scope.selection=[];
+                        $('input:checkbox').removeAttr('checked');
+                    }else{
+                        $scope.return="No se ha han insertado los datos correctamente.";
+                    }
+                });
+
+            }
+        };
+
+    }
+]);

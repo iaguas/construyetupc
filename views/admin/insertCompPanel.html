@@ -11,8 +11,11 @@
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Default styles -->
     <link href="assets/css/default.css" rel="stylesheet">
+    <link href="assets/css/ng-table.min.css" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!-- Animate.css -->
+    <link href="assets/css/animate.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,7 +24,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body data-ng-app="app" data-ng-controller="AdmLoginFormCtrl">
+<body>
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -59,18 +62,32 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container">
-    <h1>Insertar datos recolectados en MongoDB</h1>
+<div class="container" data-ng-app="appTable" data-ng-controller="insertionController">
+    <div class="container text-center">
+        <p class="main-title animated fadeInDown">Insertar datos recolectados en MongoDB</p>
+    </div>
     <br>
-    <span>
-        <button id="insertData" type="button" class="btn btn-primary btn-lg">
-            <span class="glyphicon glyphicon-refresh"></span> Insertar
-        </button>
-        (<strong>Última ejecución</strong>: <span id="insertiondatetime">22/05/2015 a las 04:00)</span>
-    </span>
-    <span id="insertionExecuted">
+    <div class="text-center" >
+        <button id="startInsertion"  type="button" class="btn btn-primary btn-lg" ng-click="getNameJson()">
+        <span class="glyphicon glyphicon-refresh"></span> Iniciar Inserción</button>
+    </div>
+    <table data-ng-table="tableParams" show-filter="false" class="table" id="tableJson">
+        <tr data-ng-repeat="doc in $data" data-ng-cloak>
+            <td data-title="'Archivo'" sortable="'name'" class="col-sm-3 col-md-3 col-lg-3">
+                {{doc.name}}
+            </td>
+            <td data-title="'Inserción'"  class="col-sm-1 col-md-1 col-lg-1">
+                <input type="checkbox" ng- ng-click="addJson(doc.name)"/>
+            </td>
+        </tr>
+    </table>
+    <div>{{return}}</div>
+    <div class="text-center" >
+        <button id="insertionData"  type="button" class="btn btn-primary btn-lg" ng-click="insertJson()">
+            <span class="glyphicon glyphicon-refresh"></span> Insertar</button>
+    </div>
+    <div class="container text-center top-margin"><i id="loadSpin" class="fa fa-spinner fa-spin fa-5x "></i></div>
 
-    </span>
 </div>
 
 <!-- Sticky footer -->
@@ -81,8 +98,10 @@
 </footer>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/angular.min.js"></script>
+<script src="assets/js/ng-table.min.js"></script>
 <script src="assets/js/app.js"></script>
 
 <script>
