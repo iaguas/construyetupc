@@ -24,24 +24,16 @@ function mParseJsons($dbcol){
      * Este fichero PHP parsea los ficheros JSON antes de ser incorporados a la BD eliminando espacios en blanco no deseados
      */
     $json_string = '../crawler/data/'. $dbcol .'.json';
+    //$json_string = '../crawler/data/cpus.json';
     $json = file_get_contents($json_string);
     // Devolver array, no un objeto
     $json_array = json_decode($json, true);
 
     // NOTA: necesario pasar la variable por referencia para modificar la variable recorrida
-    foreach($json_array as $key => &$row) {
-        // Eliminar filas con "pn"s no válidos
+    foreach($json_array as &$row) {
         if(isset($row['pn']) || !empty($row['pn'])) {
             $row['pn'][0] = trim($row['pn'][0]);
-            if (strlen($row['pn'][0]) < 8) {
-                unset($json_array[$key]);
-                continue;
-            }
-        }else{
-            unset($json_array[$key]);
-            continue;
         }
-
         // Arrays auxiliares para el array de arrays de prices
         $prices = [];
         //$shop_keys = ['price', 'delivery-fare', 'provider'];
@@ -94,10 +86,18 @@ function mParseJsons($dbcol){
             }
         }
     }
+    // Ahora se eliminan las filas con 'pn's no válidos
+    $json_array1 = array();
+    foreach($json_array as $row){
+        // Eliminar filas con "pn"s no válidos
+        if (!(strlen($row['pn']) < 9)) {
+            array_push($json_array1, $row);
+        }
+    }
     // Los datos ya parseados se sobreescriben sobre el fichero original
     // TODO: optar por almacenar los datos en otro archivo para evitar posibles corrupciones de fichero
     $fp = fopen($json_string, 'w');
-    fwrite($fp, json_encode($json_array));
+    fwrite($fp, json_encode($json_array1));
     fclose($fp);
 }
 
