@@ -44,16 +44,16 @@ function mParseJsons($dbcol){
 
         // Arrays auxiliares para el array de arrays de prices
         $prices = [];
-        $shop_keys = ['price', 'delivery-fare', 'provider'];
-        //$shop_keys = ['url', 'price', 'delivery-fare', 'provider'];
+        //$shop_keys = ['price', 'delivery-fare', 'provider'];
+        $shop_keys = ['url', 'price', 'delivery-fare', 'provider'];
         $shop_vals = [];
         $j = 0;
         // Recorremos los valores almacenados y los tratamos (teniendo en cuenta los índices repetidos
         foreach ($row['prices'] as $row_in_prices) {
             array_push($shop_vals, $row_in_prices);
             $j++;
-            if ($j == 3) {
-            //if ($j == 4) {
+            //if ($j == 3) {
+            if ($j == 4) {
                 array_push($prices, array_combine($shop_keys, $shop_vals));
                 $j = 1;
                 $shop_vals = [];
