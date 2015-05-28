@@ -334,7 +334,7 @@ class DBHelper implements IDBHelper {
             foreach($data as $dataItem) {
                 // Comprobamos que el proveedor lo sea del producto analizado.
                 $providerIN = 0;
-                foreach ($dataItem['prices'] as => $prices) {
+                foreach ($dataItem['prices'] as $prices) {
                     if ($prices['provider'] == $provider) {
                         $providerIN = 1;
                     }
