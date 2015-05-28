@@ -474,3 +474,24 @@ $(document).ready(function () {
         });
     });
 });
+
+// Controlador mostar el coste de la configuración total
+app.controller('totalCostController', [
+    '$scope',
+    function ($scope) {
+        'use strict';
+        $('#totalCostid').hide();
+        $scope.totalCostFin='';
+        $scope.totalCostString='';
+
+        $scope.calculateCost = function (totalCost) {
+            $scope.totalCostString=totalCost;
+            $scope.totalCostFin = $scope.totalCostString.split('€');
+            $scope.totalCostFin = parseFloat($scope.totalCostFin[0]);
+
+            if($scope.totalCostFin !== 0) {
+                $('#totalCostid').show();
+            }
+        };
+    }
+]);

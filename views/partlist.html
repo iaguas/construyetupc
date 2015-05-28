@@ -1,5 +1,5 @@
-<div class="container">
-    <div class="row g-container col-md-6">
+<div class="container" data-ng-app="app" data-ng-controller="totalCostController">
+    <div class="row g-container col-md-6" id="totalCostid" data-ng-init="calculateCost('{{totalCost}}')">
         Coste total de su configuración: <strong>{{totalCost}}</strong>
     </div>
     <table class="table table-striped">
