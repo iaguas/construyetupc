@@ -278,38 +278,76 @@ class DBHelper implements IDBHelper {
     /****************************/
 
     /**
-     * Actualizar datos
-     * REQUISITO: El JSON debe estar bien construido
+     * Actualizar datos de la base con las novedades extraidas por parte del mismo u otros proveedores.
+     * Por definición inclusiva, la función también se encarga de insertar los datos en el primer momento.
+     * En concreto, la función tiene los siguientes comportamientos a tener en cuenta:
+     *    - Basa su funcionamiento en el hecho de que todos los productos iguales tendrán el mismo número de producto (PN). 
+     *    - Sólo actualiza los datos de aquellas características que no disponen de información.
+     *    - Si encuentra que un producto no se encuentra en la BD, añade este.
+     *    - Si encuentra que un producto de la BD ya no se encuentra disponible, lo elimina
+     *    - Actualiza los precios solo para el proveedor indicado, SIEMPRE QUE exista el array donde actualizarlo.
+     *    - Los archivos JSON deberán estar correctamente construidos conforme a las especificaciones dispuestas.
+     * 
+     * @param $colName cadena de caracteres que indica la colección sobre la que se insertan los datos.
+     * @param $dataJSON cadena de caracteres con los datos formateados y ordenados en JSON.
+     * @param $provider cadena de caracteres que indica el proveedor del que provienen los datos.
+     * @return un valor booleano para indicar la actualización correcta.
      */
-    //Le falta actualizar precios.
-    // Problemas para insertar los precios ya que no existen los de las diferentes tiendas.
-    // Disponer de cómo funciona el tema de los precios. ¿Con otro array como hablé con Kevin?
-        // Quitar algo si la araña no lo ha encontrado
-    // Tener en cuenta la función update de Mongo
-    public function mCompleteData($colName, $dataJSON) {
-        // Colección donde están las cosas
+    public function mCompleteData($colName, $dataJSON, $provider) {
+        // Colección donde están los documentos a analizar.
         $col = $this->db->selectCollection($colName);
 
-        // Cambio el json
+        // Decodificación del JSON.
         $data = json_decode($dataJSON, true);
 
-        // Documento donde están las cosas
-        //$doc = $col->findOne(array('_id' => new MongoId($data["id"])));
-
-        // Analizamos los datos y metemos sólo lo necesario (los datos que faltan).
+        // Analizamos los datos del JSON y metemos sólo lo necesario (los datos que faltan) o los productos desconocidos.
         foreach ($data as $item){
-            $doc = $col->findOne(array('pn' => $item["pn"]));
-            if($doc != NULL){ // El producto existe.
-                foreach ($doc as $key => $value) {
-                    var_dump($doc[$key]);
-                    if($doc[$key]=="")
-                        $doc[$key] = $data[$key];
-                }
-                $col->update(array("pn" => $item["pn"]), $doc);
+            if($item["pn"]!=""){
+                //Buscamos el productos en la BD
+                $doc = $col->findOne(array('pn' => $item["pn"]));
+                    // Si el producto existe, analizamos sus campos e introducimos los campos desconocidos.
+                    if($doc != NULL){ 
+                        foreach ($doc as $key => $value) {
+                            // Actualizamos todos los campos
+                            if($doc[$key]=="")
+                                $doc[$key] = $item[$key];
+                            // Actualizamos el precio pero sólo para aquel proveedor especificado.
+                            if($key == 'prices') {
+                                for ($i=0; $i < count($doc["prices"]); $i++) { 
+                                    if($doc["prices"][$i]["provider"] == $provider){
+                                        $doc["prices"][$i]["price"] = $item["prices"][$i]["price"];
+                                    }
+                                }
+                            }
+                        }
+                        // Actualizamos en la BD.
+                        $col->update(array("pn" => $item["pn"]), $doc);
+                    }
+                    else // El producto no existía, lo introducimos.
+                        $this->mInsertDocument($item, $colName);
             }
-            else // El producto no existía
-                $this->mInsertDocument($item, $colName);
         }
+
+        // Comprobamos que todo lo que hay en la BD está dentro del JSON.
+        foreach ($this->mGetComponent($colName) as $dbItem) {
+            $in = 0;
+            foreach($data as $dataItem) {
+                // Comprobamos que el proveedor lo sea del producto analizado.
+                $providerIN = 0;
+                foreach ($dataItem['prices'] as => $prices) {
+                    if ($prices['provider'] == $provider) {
+                        $providerIN = 1;
+                    }
+                }
+                // Comprobamos que el producto está en el JSON.
+                if($dataItem["pn"] == $dbItem["pn"])
+                    $in = 1;
+            }
+            // Cuando no está dentro de los productos de la tienda y es del proveedor señalado, se borra.
+            if(!$in && $providerIN)
+                $col->remove($arrayName = array('pn' => $dbItem["pn"]));
+        }
+        return true;
     }
 
     /**

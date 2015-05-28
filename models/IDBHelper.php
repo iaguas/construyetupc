@@ -115,7 +115,7 @@ interface IDBHelper {
      * Actualizar datos
      * REQUISITO: El array debe estar bien construido
      */
-    public function mCompleteData($colName, $data);
+    //public function mCompleteData($colName, $data);
 
 
     /**********************/
