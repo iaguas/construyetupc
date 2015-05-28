@@ -45,56 +45,58 @@
 </head>
 <body>
 
-<!-- Fixed navbar -->
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="main">
-                <img class="logo-navbar" src="assets/img/logo-h30.png" height="30">
-            </a>
-        </div>
+<header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="main" title="Página principal">
+                    <img class="logo-navbar" src="assets/img/logo-h30.png" height="30" alt="Logo ConstruyeTuPC">
+                </a>
+            </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="{{partlist_class}}">
-                    <a href="{{partlist_link}}">
-                        <i class="fa fa-wrench"></i> Crea tu PC
-                    </a>
-                </li>
-                <li>
-                    <a href="admin">
-                        <i class="fa fa-cog"></i> Panel de administración
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li class="{{about_class}}">
-                    <a href="{{about_link}}">
-                        <i class="fa fa-users"></i> Sobre nosotros
-                    </a>
-                </li>
-                <li style="padding-top: 10px">
-                    <a href="https://www.facebook.com/construyetupc" title="Página de Facebook" style="display: inline; padding-right: 0px">
-                        <i class="fa fa-facebook-square fa-2x"></i>
-                    </a>
-                </li>
-                <li style="padding-top: 10px">
-                    <a href="https://twitter.com/construyetupc" title="Twitter" style="display: inline; padding-right: 0px">
-                        <i class="fa fa-twitter-square fa-2x"></i>
-                    </a>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="{{partlist_class}}">
+                        <a href="{{partlist_link}}" title="Crea tu PC">
+                            <i class="fa fa-wrench"></i> Crea tu PC
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin" title="Panel de administración">
+                            <i class="fa fa-cog"></i> Panel de administración
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="{{about_class}}">
+                        <a href="{{about_link}}" title="Sobre nosotros">
+                            <i class="fa fa-users"></i> Sobre nosotros
+                        </a>
+                    </li>
+                    <li style="padding-top: 10px">
+                        <a href="https://www.facebook.com/construyetupc" title="Página de Facebook" style="display: inline; padding-right: 0px">
+                            <i class="fa fa-facebook-square fa-2x"></i>
+                        </a>
+                    </li>
+                    <li style="padding-top: 10px">
+                        <a href="https://twitter.com/construyetupc" title="Twitter" style="display: inline; padding-right: 0px">
+                            <i class="fa fa-twitter-square fa-2x"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+</header>
 
 <!-- Main content -->
 {{template_content}}
