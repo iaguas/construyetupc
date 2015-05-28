@@ -29,14 +29,12 @@ switch($ct) {
                 $partItem['frecuency']="N/A";
             }
 
-
             for ($i = 1; $i <= $size; $i++) {
-
-                if($finalPrice==0){
-                    $finalPrice=$finalPrice=$partItem['prices'][$t]['price'];
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
                 }
-                if($finalPrice>$finalPrice=$finalPrice=$partItem['prices'][$t]['price']){
-                    $finalPrice=$finalPrice=$finalPrice=$partItem['prices'][$t]['price'];
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
                 }
                 $t++;
             }
@@ -48,6 +46,164 @@ switch($ct) {
                 $finalPrice  . " €",
                 $partItem['socket'],
                 $partItem['cores'],
+                $partItem['name']
+            );
+        }
+        break;
+    case 'gpus':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if (!isset($partItem['frecuency'][0])) {
+                $partItem['frecuency']="N/A";
+            }
+            if(!isset($partItem['memory'][0])){
+                $partItem['memory']="N/A";
+            }
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $partItem['frecuency'],
+                $partItem['memory'],
+                $finalPrice  . " €",
+                $partItem['name']
+            );
+        }
+        break;
+    case 'cpucoolers':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if (!isset($partItem['rpm'][0])) {
+                $partItem['rpm']="N/A";
+            }
+            if (!isset($partItem['noise'][0])) {
+                $partItem['noise']="N/A";
+            }
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $partItem['size'],
+                $partItem['rpm'],
+                $partItem['noise'],
+                $finalPrice  . " €",
+                $partItem['name']
+            );
+        }
+        break;
+    case 'motherboards':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if(!isset($partItem['socket'][0])){
+                $partItem['socket']="N/A";
+            }
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $finalPrice  . " €",
+                $partItem['name'],
+                $partItem['socket']
+            );
+        }
+        break;
+    case 'memories':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if (!isset($partItem['frecuency'][0])) {
+                $partItem['frecuency']="N/A";
+            }
+            if(!isset($partItem['memory'][0])){
+                $partItem['memory']="N/A";
+            }
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $partItem['frecuency'],
+                $partItem['modules'],
+                $partItem['size'],
+                $finalPrice  . " €",
+                $partItem['name']
+            );
+        }
+        break;
+    case 'powersupplies':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if (!isset($partItem['watts'][0])) {
+                $partItem['watts']="N/A";
+            }
+            if(!isset($partItem['efficiency'][0])){
+                $partItem['efficiency']="N/A";
+            }
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $partItem['watts'],
+                $partItem['efficiency'],
+                $finalPrice  . " €",
                 $partItem['name']
             );
         }

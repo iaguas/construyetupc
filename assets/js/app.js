@@ -185,22 +185,25 @@ appTable.controller('ComponentCtrl', [
                 if (component === 'gpus') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][4],
+                            'frecuency': data[i][1],
+                            'memory': data[i][2],
+                            'price': parseFloat(data[i][3])
                         });
                     }
                 }
 
                 // CPU Cooler
-                if (component === 'cpu-coolers') {
+                if (component === 'cpucoolers') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][5],
+                            'rpm': data[i][2],
+                            'noise': data[i][3],
+                            'size': data[i][1],
+                            'price': parseFloat(data[i][4])
                         });
                     }
                 }
@@ -209,34 +212,37 @@ appTable.controller('ComponentCtrl', [
                 if (component === 'motherboards') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][2],
+                            'socket': data[i][3],
+                            'price': parseFloat(data[i][1])
                         });
                     }
                 }
 
                 // RAM
-                if (component === 'rams') {
+                if (component === 'memories') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][5],
+                            'frecuency': data[i][1],
+                            'modules': data[i][2],
+                            'size': data[i][3],
+                            'price': parseFloat(data[i][4])
                         });
                     }
                 }
 
                 // Power Supply
-                if (component === 'power-supplies') {
+                if (component === 'powersupplies') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][4],
+                            'watts': data[i][1],
+                            'eficiency': data[i][2],
+                            'price': parseFloat(data[i][3])
                         });
                     }
                 }

@@ -122,7 +122,7 @@ function vShowComponentSelection($part) {
             // TODO: Obtener lista de todos los procesadores
             break;
         case 'cpu-cooler':
-            $page = file_get_contents("views/components/cpu-cooler.html");
+            $page = vFillTemplatePublic('views/components/cpu-cooler.html');
             $dhtml = '';
             // TODO: Obtener lista de todos los ventiladores de CPU
             $cpu_coolers = array(
@@ -134,19 +134,19 @@ function vShowComponentSelection($part) {
             );
             foreach ($cpu_coolers as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/cpu-cooler/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu-cooler/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/cpu-cooler/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu-cooler/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{cpu-cooler-list}}', $dhtml, $page);
             break;
         case 'memory':
-            $page = file_get_contents("views/components/memory.html");
+            $page = vFillTemplatePublic('views/components/memory.html');
             $dhtml = '';
             // TODO: Obtener lista de todas las memorias
             $memories = array(
@@ -155,19 +155,19 @@ function vShowComponentSelection($part) {
             );
             foreach ($memories as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/memory/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/memory/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/memory/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/memory/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{memory-list}}', $dhtml, $page);
             break;
         case 'gpu':
-            $page = file_get_contents("views/components/gpu.html");
+            $page = vFillTemplatePublic('views/components/gpu.html');
             $dhtml = '';
             // TODO: Obtener lista de todas las tarjetas gráficas
             $gpus = array(
@@ -176,19 +176,19 @@ function vShowComponentSelection($part) {
             );
             foreach ($gpus as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/gpu/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/gpu/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/gpu/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @@$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/gpu/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{gpu-list}}', $dhtml, $page);
             break;
         case 'power-supply':
-            $page = file_get_contents("views/components/power-supply.html");
+            $page = vFillTemplatePublic('views/components/power-supply.html');
             $dhtml = '';
             // TODO: Obtener lista de todas las fuentes de alimentación
             $power_supplies = array(
@@ -197,13 +197,13 @@ function vShowComponentSelection($part) {
             );
             foreach ($power_supplies as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/power-supply/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/power-supply/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/power-supply/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/power-supply/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{power-supply-list}}', $dhtml, $page);
@@ -218,19 +218,19 @@ function vShowComponentSelection($part) {
             );
             foreach ($storages as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/storage/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/storage/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/storage/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/storage/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{storage-list}}', $dhtml, $page);
             break;
         case 'motherboard':
-            $page = file_get_contents("views/components/motherboard.html");
+            $page = vFillTemplatePublic('views/components/motherboard.html');
             $dhtml = '';
             // TODO: Obtener lista de todas las placas base
             $motherboards = array(
@@ -239,13 +239,13 @@ function vShowComponentSelection($part) {
             );
             foreach ($motherboards as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/motherboard/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/motherboard/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/motherboard/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/motherboard/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{motherboard-list}}', $dhtml, $page);
@@ -260,13 +260,13 @@ function vShowComponentSelection($part) {
             );
             foreach ($cases as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/case/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/case/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/case/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/case/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{case-list}}', $dhtml, $page);
@@ -281,13 +281,13 @@ function vShowComponentSelection($part) {
             );
             foreach ($monitors as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/monitor/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/monitor/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/monitor/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/monitor/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{monitor-list}}', $dhtml, $page);
@@ -302,13 +302,13 @@ function vShowComponentSelection($part) {
             );
             foreach ($optical_drives as $partItem){
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/optical-drive/" . $partItem[0] ."' title='Ver comparativa y especificaciones'>" . $partItem[1] . "</a></td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[3] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[4] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[5] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[6] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/optical-drive/" . $partItem[0] ."\"'>Añadir</button></td>";
+                $dhtml .= "<td class='col-md-3 vert-align'><a href='part/optical-drive/" . @$partItem[0] ."' title='Ver comparativa y especificaciones'>" . @$partItem[1] . "</a></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[3] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[4] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[5] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[6] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/optical-drive/" . @$partItem[0] ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{optical-drive-list}}', $dhtml, $page);
@@ -338,12 +338,12 @@ function vShowDetailedPartModel($part, $id){
             $properties = $db->mGetCompProperties($model, 'cpus');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($processors as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
-                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . $partItem['price']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare']. "€" . "</td>";
+                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -375,12 +375,12 @@ function vShowDetailedPartModel($part, $id){
             $coolers = $db->mGetCompPrices($model,'cpu-coolers');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($coolers as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu-cooler/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -399,12 +399,12 @@ function vShowDetailedPartModel($part, $id){
             $memories = $db->mGetCompPrices($model,'memories');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($memories as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/memory/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -423,12 +423,12 @@ function vShowDetailedPartModel($part, $id){
             $gpus = $db->mGetCompPrices($model,'gpus');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($gpus as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/cpu-cooler/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -447,11 +447,11 @@ function vShowDetailedPartModel($part, $id){
             $powersupplies = $db->mGetCompPrices($model,'power-supplies');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($powersupplies as $key => $partItem){
-                $total = (float)$partItem[1] + (float)$partItem[2];
+                $total = (float)@$partItem[1] + (float)@$partItem[2];
                 $dhtml .= "<tr>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem[0] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[1] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem[2] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem[0] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[1] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem[2] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/gpu/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -470,12 +470,12 @@ function vShowDetailedPartModel($part, $id){
             $storages = $db->mGetCompPrices($model,'storages');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($storages as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/storage/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -494,12 +494,12 @@ function vShowDetailedPartModel($part, $id){
             $motherboards = $db->mGetCompPrices($model,'motherboards');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($motherboards as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/motherboard/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -518,12 +518,12 @@ function vShowDetailedPartModel($part, $id){
             $cases = $db->mGetCompPrices($model,'cases');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($cases as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/case/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -542,12 +542,12 @@ function vShowDetailedPartModel($part, $id){
             $monitors = $db->mGetCompPrices($model,'monitors');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($monitors as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/monitor/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -566,12 +566,12 @@ function vShowDetailedPartModel($part, $id){
             $opticaldrives = $db->mGetCompPrices($model,'optical-drives');
             // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($opticaldrives as $key => $partItem){
-                $total = $partItem['price'] + $partItem['delivery-fare'];
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
                 $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . $partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $partItem['delivery-fare'] . "</td>";
+                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/optical-drive/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
@@ -764,6 +764,31 @@ function vFillTemplatePublic($contentRoute) {
             $result = str_replace('{{partlist_link}}', '/partList', $result);
             break;
         case 'views/components/cpu.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/components/gpu.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/components/cpu-cooler.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/components/motherboard.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/components/memory.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/components/power-supply.html':
             $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
             $result = str_replace('{{about_link}}', '/about', $result);
             $result = str_replace('{{partlist_link}}', '/partList', $result);
