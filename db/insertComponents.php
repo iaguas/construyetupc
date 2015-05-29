@@ -4,7 +4,7 @@
  * User: Iñaki
  * Date: 29/04/2015
  * Time: 21:37
- * PHP encargado de almacenar (y próximamente, actualizar) los componentes en la BD
+ * PHP encargado de almacenar y actualizar los componentes en la BD
  */
 // Clase de encapsulación para MongoDB
 require_once '../models/DBHelper.php';
@@ -23,10 +23,10 @@ foreach($files as $file) {
     $colname = str_replace("-", "", $file);
     $aux = explode('.', $colname);
     $colname=$aux[0];
-    $db->mRemoveAllInCollection($colname);
+    //$db->mRemoveAllInCollection($colname);
 
     $json_string = '../crawler/data/' . $file;
     $json = file_get_contents($json_string);
-    $db->mInsertJson($json,$colname);
+    $db->mCompleteData($colname,$json,"4frags");
 }
 echo 'ok';
