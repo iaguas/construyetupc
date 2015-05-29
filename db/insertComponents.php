@@ -23,6 +23,7 @@ foreach($files as $file) {
     $colname = str_replace("-", "", $file);
     $aux = explode('.', $colname);
     $colname=$aux[0];
+    // Borra toda la tabla de la base de datos 
     //$db->mRemoveAllInCollection($colname);
 
     $json_string = '../crawler/data/' . $file;
