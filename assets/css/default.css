@@ -17,12 +17,13 @@ body {
 }
 
 .g-container{
-    border: 2px solid #87c55c;
+    border: 2px solid #2a2f35;
     padding: 5px;
-    margin: 10px 0px;
+    margin: 10px 0;
     float: right;
     font-size: 2em;
     text-align: center;
+    background-color: #D0F0BA;
 }
 
 .footer{
