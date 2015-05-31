@@ -1,4 +1,7 @@
 <div class="container" data-ng-app="appTable" data-ng-controller="ComponentCtrl">
+    <a href="partList" type="button" class="btn btn-default btn-back-space">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> Volver</span>
+    </a>
     <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts" data-ng-init="getComponents('cases')">
         <tr data-ng-repeat="component in $data" data-ng-cloak>
             <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-9 col-md-9 col-lg-9">
