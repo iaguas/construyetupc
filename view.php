@@ -363,6 +363,7 @@ function vShowDetailedPartModel($part, $id){
                 $page = str_replace('{{image-propieties}}', $modelName,$page);
             }
             break;
+        //////////////////////////////  CPU  //////////////////////////////  
         case 'cpu':
             $page = vFillTemplatePublic('views/detailedComponents/cpu.html');
             $dhtml = '';
@@ -372,7 +373,6 @@ function vShowDetailedPartModel($part, $id){
             // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
             $processors = $db->mGetCompPrices($model,'cpus');
             $properties = $db->mGetCompProperties($model, 'cpus');
-            // TODO: Obtener especificaciones técnicas del modelo solicitado
             foreach ($processors as $key => $partItem){
                 $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
@@ -384,6 +384,7 @@ function vShowDetailedPartModel($part, $id){
                 $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
+            // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
             $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
             $page = str_replace('{{family}}', $properties['family'],$page);
@@ -393,11 +394,11 @@ function vShowDetailedPartModel($part, $id){
             // Rellenar si es sin imagen de forma adecuada.
             if ($properties['img']=="") {
                 $page = str_replace('{{image-url}}', "./assets/img/no-image150x150.png",$page);
-                $page = str_replace('{{image-description}}', "No existe imagen",$page);
+                $page = str_replace('{{image-propieties}}', "No existe imagen",$page);
             }
             else{
                 $page = str_replace('{{image-url}}', $properties['img'],$page);
-                $page = str_replace('{{image-description}}', $modelName,$page);
+                $page = str_replace('{{image-propieties}}', $modelName,$page);
             }
             break;
         //////////////////////////////  CPU-COOLER  //////////////////////////////  
