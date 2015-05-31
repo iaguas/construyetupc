@@ -268,6 +268,43 @@ switch($ct) {
             );
         }
         break;
+    case 'storages':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if (!isset($partItem['capacity'][0])) {
+                $partItem['capacity']="N/A";
+            }
+            if (!isset($partItem['format'][0])) {
+                $partItem['format']="N/A";
+            }
+            if (!isset($partItem['type'][0])) {
+                $partItem['type']="N/A";
+            }
+
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $partItem['capacity'],
+                $partItem['format'],
+                $partItem['type'],
+                $finalPrice  . " €",
+                $partItem['name']
+            );
+        }
+        break;
     case 'monitors':
         foreach ($op as $partItem) {
             $t=0;
