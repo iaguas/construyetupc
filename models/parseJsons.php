@@ -19,12 +19,14 @@ RESPECTIVAS ANTERIORES (47 Y 55)
  * - Mapear correctamente el array general
  * @param $dbcol string con el nombre de la tabla de base de datos al que se va almacenar el fichero JSON de mismo nombre
  */
+
 function mParseJsons($dbcol){
     /**
      * Este fichero PHP parsea los ficheros JSON antes de ser incorporados a la BD eliminando espacios en blanco no deseados
      */
     $json_string = '../crawler/data/originals/'. $dbcol;
-    $json_string2 = '../crawler/data/'. $dbcol;
+    $dbcol_trimmed = str_replace("-","",$dbcol);
+    $json_string2 = '../crawler/data/'. $dbcol_trimmed;
     $json = file_get_contents($json_string);
     // Devolver array, no un objeto
     $json_array = json_decode($json, true);
@@ -86,10 +88,18 @@ function mParseJsons($dbcol){
             }
         }
     }
+    // Ahora se eliminan las filas con 'pn's no válidos
+    $json_array1 = array();
+    foreach($json_array as $row){
+        // Eliminar filas con "pn"s no válidos
+        if (!(strlen($row['pn']) < 9)) {
+            array_push($json_array1, $row);
+        }
+    }
     // Los datos ya parseados se sobreescriben sobre el fichero original
     // TODO: optar por almacenar los datos en otro archivo para evitar posibles corrupciones de fichero
     $fp = fopen($json_string2, 'w');
-    fwrite($fp, json_encode($json_array));
+    fwrite($fp, json_encode($json_array1));
     fclose($fp);
 }
 
