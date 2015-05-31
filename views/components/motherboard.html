@@ -1,7 +1,7 @@
 <div class="container" data-ng-app="appTable" data-ng-controller="ComponentCtrl">
     <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts" data-ng-init="getComponents('motherboards')">
         <tr data-ng-repeat="component in $data" data-ng-cloak>
-            <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-6 col-md-6 col-lg-6">
+            <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-9 col-md-9 col-lg-9">
                 <a href="/part/motherboard/{{component.id}}">{{component.name}}</a>
             </td>
             <td data-title="'Socket'" sortable="'socket'" filter="{'socket': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
