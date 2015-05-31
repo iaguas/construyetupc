@@ -101,7 +101,7 @@ function vShowPartList() {
                 $dhtml .= "<td class='col-md-2 vert-align'>
                             <img src='assets/img/shops/".$productVendor.".png' alt='Logo ".$productVendor."' width='50' height='50' /> <a href='$providerUrl' title='$productVendor'>". $productVendor ."</a>
                         </td>";
-                $dhtml .= "<td class='col-md-1 vert-align'> <a href='".$productUrl."' class='btn btn-primary btn-xs' target='_blank'>Comprar</a><button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'> <a href='".$productUrl."' class='btn btn-primary btn-xs' target='_blank'>Comprar </a> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
                 $totalCost=+$productPrice;
                 $totalCostInic+=$totalCost;
             }
