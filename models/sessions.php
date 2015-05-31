@@ -46,9 +46,10 @@ function sAddPart($part){
         //var_dump($_SESSION['partList']['cpu']);
     }elseif ($part == "gpu"){
         $_SESSION['partList']['gpu'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
-    }elseif ($part == "cpu-cooler"){
+    }elseif ($part == "cpucooler"){
         $_SESSION['partList']['cpu-cooler'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "memory"){
+        var_dump($part);
         $_SESSION['partList']['memory'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "case"){
         $_SESSION['partList']['case'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];

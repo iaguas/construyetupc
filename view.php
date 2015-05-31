@@ -57,28 +57,33 @@ function vShowPartList() {
     $categories = $db->mGetHardwareCategories(); // Obtengo las categorías de componentes desde la base de datos
 
     $dhtml = '';
+    $totalCostInic=0;
     $productPrice=0;
     foreach($categories as $category){
         //var_dump($category);
         $dhtml .= "<tr>";
         $categoryName = $category['name'];
+        //var_dump($categoryName);
         if(isset($_SESSION)) {
             if (is_null($_SESSION['partList']["$categoryName"])){
                 $dhtml .= "<td class='col-md-2 vert-align'><img src='" . $category['img'] . "' alt='" . $category['name'] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
                 $dhtml .= "<td class='col-md-3 vert-align'><button type='button' class='btn btn-default' onclick='window.location.href=\"partList/choose/" . $category['name'] . "\"'><span class='glyphicon glyphicon-search'></span> Elegir " . $category['spanishName'] . "</button></td>";
                 $dhtml .= "<td class='col-md-2 vert-align'></td>";
                 $dhtml .= "<td class='col-md-1 vert-align'></td>";
+                //$totalCost+=$productPrice;
             }else{
                 // Obtener el ID del producto seleccionado
                 $productId = $_SESSION['partList']["$categoryName"]['productId'];
                 $productPrice = $_SESSION['partList']["$categoryName"]['price'];
                 $productVendor = $_SESSION['partList']["$categoryName"]['vendorId'];
 
-                $productName = $db -> mGetCompName($productId, plural($categoryName));
-                $productPhoto = $db -> mGetCompPhoto($productId, plural($categoryName));
+                $productName = $db -> mGetCompName($productId, str_replace("-","",plural($categoryName)));
+                $productPhoto = $db -> mGetCompPhoto($productId, str_replace("-","",plural($categoryName)));
                 
                 $provider=$db->mGetProviders($productVendor);
                 $providerUrl=$provider['url'];
+
+                $productUrl= $db->mGetUrlCompPrice($productId, str_replace("-","",plural($categoryName)),$productPrice);
 
                 // TODO: Obtener los datos de dicho producto desde la BD
 
@@ -96,16 +101,16 @@ function vShowPartList() {
                 $dhtml .= "<td class='col-md-2 vert-align'>
                             <img src='assets/img/shops/".$productVendor.".png' alt='Logo ".$productVendor."' width='50' height='50' /> <a href='$providerUrl' title='$productVendor'>". $productVendor ."</a>
                         </td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' class='btn btn-primary btn-xs' title='Comprar'>Comprar</button> <button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
+                $dhtml .= "<td class='col-md-1 vert-align'> <a href='".$productUrl."' class='btn btn-primary btn-xs' target='_blank'>Comprar</a><button type='button' class='btn btn-danger btn-xs' title='Eliminar' onclick='window.location.href=\"partList/remove/" . $category['name'] . "\"'>X</button></td>";
+                $totalCost=+$productPrice;
+                $totalCostInic+=$totalCost;
             }
         }
 
         $dhtml .= "</tr>";
     }
 
-    // TODO: Calcular el coste total
-    $totalCost=+$productPrice;
-    $page = str_replace("{{totalCost}}", $totalCost . "€", $page);
+    $page = str_replace("{{totalCost}}", $totalCostInic . "€", $page);
     $page = str_replace("{{component-list}}", $dhtml, $page);
 
     echo $page;
@@ -259,6 +264,9 @@ function vShowDetailedPartModel($part, $id){
 
             $modelName = $db->mGetCompName($model,$component);
             $properties = $db->mGetCompProperties($model, $component);
+            //var_dump($part);
+            //var_dump($component);
+            //var_dump($component);
 
             $page = str_replace('{{component-pn}}',$model,$page);
             $page = str_replace('{{component-type}}',$component,$page);
@@ -411,7 +419,6 @@ function vShowDetailedPartModel($part, $id){
             $page = str_replace('{{component-type}}',$component,$page);
             // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
-            $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
             $page = str_replace('{{format}}', $properties['format'],$page);
             $page = str_replace('{{type}}', $properties['type'],$page);
             // Rellenar si es sin imagen de forma adecuada.

@@ -184,6 +184,13 @@ class DBHelper implements IDBHelper {
 
         return $subq;
     }
+    public function mGetUrlCompPrice($idComp, $colName,$price) {
+        $col = $this->db->selectCollection($colName);
+        $query = $col->findOne(array('pn' => $idComp),  array('prices' => $price));
+
+        return $query['prices'][0]['url'];
+    }
+
 
     /**
      * Obtiene el nombre del componente dado

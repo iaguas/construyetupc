@@ -391,10 +391,18 @@ appTable.controller('ComponentCtrl', [
         //Función para añadir un componente a la cesta
         $scope.addComponent = function ($productId,$component) {
 
-            //console.log($('#product-price').val());
-            //console.log($('#product-vendor').val());
-            $scope.component1=$component.substring(0,$component.length-1);
-            //console.log($scope.component1);
+
+            $scope.component1 = $component.substring(0,$component.length-1);
+
+            if ($scope.component1 === 'memorie'){
+                $scope.component1 = 'memory';
+            }
+            if ($scope.component1 === 'opticaldrive'){
+                $scope.component1 = 'optical-drive';
+            }
+            if ($scope.component1 === 'powersupplie'){
+                $scope.component1 = 'power-supply';
+            }
 
            var request = $http({
                 method  : 'POST',
