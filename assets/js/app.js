@@ -223,7 +223,6 @@ appTable.controller('ComponentCtrl', [
 
                 // RAM
                 if (component === 'memories') {
-                    console.log(data[1][2]);
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
                             'id': data[i][0],
@@ -345,7 +344,6 @@ appTable.controller('ComponentCtrl', [
 
             request.success(function (data) {
                 var i;
-                console.log(compPn,compType);
                 // data['provider'], data['price']...
                 // El total se calcula en la funcion que devuelve los valores, getComponentProviders.php
                 for (i = 0; i < data.length; i++) {
@@ -387,6 +385,30 @@ appTable.controller('ComponentCtrl', [
                         $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
                     }
                 });
+            });
+        };
+
+        //Función para añadir un componente a la cesta
+        $scope.addComponent = function ($productId,$component) {
+
+            //console.log($('#product-price').val());
+            //console.log($('#product-vendor').val());
+            $scope.component1=$component.substring(0,$component.length-1);
+            //console.log($scope.component1);
+
+           var request = $http({
+                method  : 'POST',
+                url: '/partList/select/' + $scope.component1,
+                data: {
+                    'productId': $productId,
+                    'productVendorName': $('#product-vendor').val(),
+                    'productPrice': $('#product-price').val()
+                },
+               headers : {'Content-Type': 'application/json'}
+            });
+
+            request.success(function () {
+                window.location.href = "/partList";
             });
         };
     }
@@ -481,7 +503,6 @@ appTable.controller('insertionController', [
                     $scope.selection.push(docJson);
                 }
             }
-            console.log($scope.selection);
         };
 
         $scope.insertJson = function () {
@@ -512,39 +533,6 @@ appTable.controller('insertionController', [
 
     }
 ]);
-
-// Código para que al pulsar el botón de "Añadir" se añada el producto
-$(document).ready(function () {
-    $("#add-product").click(function () {
-        var productId = $(this).closest("tr")
-            .find("#product-id")
-            .attr('value');
-        console.log(productId);
-        var productVendorName = $(this).closest("tr")
-            .find("#product-vendor")
-            .text();
-        var productPrice = $(this).closest("tr")
-            .find("#product-price")
-            .text();
-        var component = window.location.href.substring(window.location.href.lastIndexOf('part/') + 5,
-            window.location.href.lastIndexOf('/'));
-
-        $.ajax({
-            type: 'POST',
-            url: '/partList/select/' + component,
-            data: {
-                'productId': productId,
-                'productVendorName': productVendorName,
-                'productPrice': productPrice
-            },
-            success: function () {
-                window.location.href = "/partList";
-            },
-            error: function () {
-            }
-        });
-    });
-});
 
 // Controlador mostrar el coste de la configuración total
 app.controller('totalCostController', [

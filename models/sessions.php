@@ -31,12 +31,19 @@ function sCheckSessionVar(){
  */
 function sAddPart($part){
 
-    $productId = $_POST["productId"];
-    $vendorName = $_POST["productVendorName"];
-    $productPrice = $_POST["productPrice"];
+    $postData = file_get_contents('php://input');
+    $request = json_decode($postData);
+    $productId = $request->productId;
+    //var_dump($productId);
+    $vendorName = $request->productVendorName;
+    //var_dump($vendorName);
+    $productPrice = $request->productPrice;
+    //var_dump($productPrice);
+    //var_dump($part);
 
     if ($part == "cpu"){
         $_SESSION['partList']['cpu'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
+        //var_dump($_SESSION['partList']['cpu']);
     }elseif ($part == "gpu"){
         $_SESSION['partList']['gpu'] = ['productId' => $productId, 'vendorId' => $vendorName, 'price' => $productPrice];
     }elseif ($part == "cpu-cooler"){

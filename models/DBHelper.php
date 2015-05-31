@@ -199,6 +199,15 @@ class DBHelper implements IDBHelper {
     }
 
     /**
+     * Obtiene la url de la photo de cada componente
+     */
+    public function mGetCompPhoto($idComp, $colName){
+        $col = $this->db->selectCollection($colName);
+        $query = $col->findOne(array('pn' => $idComp),array('img'=>1));
+
+        return $query['img'];
+    }
+    /**
      * Obtiene todos los datos del componente dado a través de su PN
      * @param $pn PN del componente en mongoDB
      * @param $colName nombre de la colección en el que se encuentra el componente a buscar

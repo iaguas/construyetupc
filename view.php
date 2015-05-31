@@ -59,6 +59,7 @@ function vShowPartList() {
     $dhtml = '';
     $productPrice=0;
     foreach($categories as $category){
+        //var_dump($category);
         $dhtml .= "<tr>";
         $categoryName = $category['name'];
         if(isset($_SESSION)) {
@@ -73,17 +74,19 @@ function vShowPartList() {
                 $productPrice = $_SESSION['partList']["$categoryName"]['price'];
                 $productVendor = $_SESSION['partList']["$categoryName"]['vendorId'];
 
-                $productName=$db->mGetCompName($productId, 'cpus');
+                $productName = $db -> mGetCompName($productId, $categoryName.'s');
+                $productPhoto = $db -> mGetCompPhoto($productId, $categoryName.'s');
 
                 $provider=$db->mGetProviders($productVendor);
                 $providerUrl=$provider['url'];
+
                 // TODO: Obtener los datos de dicho producto desde la BD
 
                 $dhtml .= "<td class='col-md-2 vert-align'><img src='assets/img/hard-icons/" . $category['name'] . ".png' alt='" . $category['name'] . "' width='32' height='32' /> " . $category['spanishName'] . "</td>";
                 $dhtml .= "<td class='col-md-3 vert-align'>
                             <table>
                                 <tr>
-                                    <td rowspan='2'><img src='assets/img/corei3-temp.png' alt='product-image' width='50' height='50'/></td>
+                                    <td rowspan='2'><img src='$productPhoto' alt='product-image' width='50' height='50'/></td>
                                     <td><strong>Nombre</strong>: $productName<br />
                                         <strong>Precio</strong>: <span style='color:forestgreen'>". $productPrice ."</span>
                                     </td>
@@ -207,27 +210,14 @@ function vShowDetailedPartModel($part, $id){
             $page = vFillTemplatePublic('views/detailedComponents/cpu.html');
             //$dhtml = '';
             $model = $id;
-            $modelName = $db->mGetCompName($model,'cpus');
-            $properties = $db->mGetCompProperties($model, 'cpus');
+            $component=$part.'s';
+            $modelName = $db->mGetCompName($model,$component);
+            $properties = $db->mGetCompProperties($model, $component);
 
             $page = str_replace('{{component-pn}}',$model,$page);
-            $page = str_replace('{{component-type}}','cpus',$page);
+            $page = str_replace('{{component-type}}',$component,$page);
 
             // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
-            /*
-            $processors = $db->mGetCompPrices($model,'cpus');
-            $properties = $db->mGetCompProperties($model, 'cpus');
-            foreach ($processors as $key => $partItem){
-                $total = @$partItem['price'] + @$partItem['delivery-fare'];
-                $dhtml .= "<tr>";
-                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
-                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
-                $dhtml .= "</tr>";
-            }*/
             // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
             //$page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
