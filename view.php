@@ -168,6 +168,7 @@ function vShowComponentSelection($part) {
  */
 function vShowDetailedPartModel($part, $id){
     $db = new DBHelper(); // Invocar la clase del modelo de BD
+    $component=plural($part);
     switch ($part){
         //////////////////////////////  CASE  //////////////////////////////  
         case 'case':
@@ -210,7 +211,6 @@ function vShowDetailedPartModel($part, $id){
             $page = vFillTemplatePublic('views/detailedComponents/cpu.html');
             //$dhtml = '';
             $model = $id;
-            $component=plural($part);
             $modelName = $db->mGetCompName($model,$component);
             $properties = $db->mGetCompProperties($model, $component);
 
@@ -238,29 +238,22 @@ function vShowDetailedPartModel($part, $id){
         //////////////////////////////  CPU-COOLER  //////////////////////////////  
         case 'cpu-cooler':
             $page = vFillTemplatePublic('views/detailedComponents/cpu-cooler.html');
-            $dhtml = '';
             $model = $id;
-            $modelName = $db->mGetCompName($model,'cpucoolers');
+            //$component=$part.'s';
+            $component = str_replace("-","",$component);
+            $modelName = $db->mGetCompName($model,$component);
+            $properties = $db->mGetCompProperties($model, $component);
+
+            $page = str_replace('{{component-pn}}',$model,$page);
+            $page = str_replace('{{component-type}}',$component,$page);
 
             // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
-            $processors = $db->mGetCompPrices($model,'cpucoolers');
-            $properties = $db->mGetCompProperties($model, 'cpucoolers');
-            foreach ($processors as $key => $partItem){
-                $total = @$partItem['price'] + @$partItem['delivery-fare'];
-                $dhtml .= "<tr>";
-                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
-                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
-                $dhtml .= "</tr>";
-            }
             // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
-            $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
-            $page = str_replace('{{rpm}}', $properties['rpm'],$page);
-            $page = str_replace('{{size}}', $properties['size'],$page);
+            //$page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
+            $page = str_replace('{{rpm}}', @$properties['rpm'],$page);
+            $page = str_replace('{{size}}', @$properties['size'],$page);
+            $page = str_replace('{{noise}}', @$properties['noise'],$page);
             // Rellenar si es sin imagen de forma adecuada.
             if ($properties['img']=="") {
                 $page = str_replace('{{image-url}}', "./assets/img/no-image150x150.png",$page);
@@ -274,25 +267,15 @@ function vShowDetailedPartModel($part, $id){
         //////////////////////////////  MEMORIES  //////////////////////////////  
         case 'memory':
             $page = vFillTemplatePublic('views/detailedComponents/memory.html');
-            $dhtml = '';
+            $dhtml="";
             $model = $id;
-            $modelName = $db->mGetCompName($model, 'memories');
 
-            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
-            $processors = $db->mGetCompPrices($model, 'memories');
-            $properties = $db->mGetCompProperties($model, 'memories');
+            $modelName = $db->mGetCompName($model,$component);
+            $properties = $db->mGetCompProperties($model, $component);
 
-            foreach ($processors as $key => $partItem){
-                $total = @$partItem['price'] + @$partItem['delivery-fare'];
-                $dhtml .= "<tr>";
-                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
-                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
-                $dhtml .= "</tr>";
-            }
+            $page = str_replace('{{component-pn}}',$model,$page);
+            $page = str_replace('{{component-type}}',$component,$page);
+
             // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
             $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
@@ -312,44 +295,32 @@ function vShowDetailedPartModel($part, $id){
         //////////////////////////////  GPU  //////////////////////////////   
         case 'gpu':
             $page = vFillTemplatePublic('views/detailedComponents/gpu.html');
-            $dhtml = '';
             $model = $id;
-            $modelName = $db->mGetCompName($model, str_replace('-', '', $part).'s');
+            $modelName = $db->mGetCompName($model,$component);
+            $properties = $db->mGetCompProperties($model, $component);
 
-            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
-            $processors = $db->mGetCompPrices($model, str_replace('-', '', $part).'s');
-            $properties = $db->mGetCompProperties($model, str_replace('-', '', $part).'s');
+            $page = str_replace('{{component-pn}}',$model,$page);
+            $page = str_replace('{{component-type}}',$component,$page);
 
-            foreach ($processors as $key => $partItem){
-                $total = @$partItem['price'] + @$partItem['delivery-fare'];
-                $dhtml .= "<tr>";
-                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
-                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
-                $dhtml .= "</tr>";
-            }
             // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
-            $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
-            $page = str_replace('{{memory}}', $properties['memory'],$page);
+            $page = str_replace('{{memory}}', @$properties['memory'],$page);
+            $page = str_replace('{{frecuency}}', @$properties['frecuency'],$page);
             // Rellenar si es sin imagen de forma adecuada.
             if ($properties['img']=="") {
                 $page = str_replace('{{image-url}}', "./assets/img/no-image150x150.png",$page);
-                $page = str_replace('{{image-propieties}}', "No existe imagen",$page);
+                $page = str_replace('{{image-description}}', "No existe imagen",$page);
             }
             else{
                 $page = str_replace('{{image-url}}', $properties['img'],$page);
-                $page = str_replace('{{image-propieties}}', $modelName,$page);
+                $page = str_replace('{{image-description}}', $modelName,$page);
             }
             break;
 
         //////////////////////////////  MONITOR  //////////////////////////////  
         case 'monitor':
             $page = vFillTemplatePublic('views/detailedComponents/monitor.html');
-            $dhtml = '';
+            $dhtml="";
             $model = $id;
             $modelName = $db->mGetCompName($model, str_replace('-', '', $part).'s');
 
@@ -387,37 +358,26 @@ function vShowDetailedPartModel($part, $id){
         //////////////////////////////  MOTHERBOARD  //////////////////////////////  
         case 'motherboard':
             $page = vFillTemplatePublic('views/detailedComponents/motherboard.html');
-            $dhtml = '';
             $model = $id;
-            $modelName = $db->mGetCompName($model, str_replace('-', '', $part).'s');
+            //$component=$part.'s';
+            $modelName = $db->mGetCompName($model,$component);
+            $properties = $db->mGetCompProperties($model, $component);
 
-            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
-            $processors = $db->mGetCompPrices($model, str_replace('-', '', $part).'s');
-            $properties = $db->mGetCompProperties($model, str_replace('-', '', $part).'s');
+            $page = str_replace('{{component-pn}}',$model,$page);
+            $page = str_replace('{{component-type}}',$component,$page);
 
-            foreach ($processors as $key => $partItem){
-                $total = @$partItem['price'] + @$partItem['delivery-fare'];
-                $dhtml .= "<tr>";
-                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
-                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
-                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
-                $dhtml .= "</tr>";
-            }
             // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
-            $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
-            $page = str_replace('{{socket}}', $properties['socket'],$page);
+            $page = str_replace('{{socket}}', @$properties['socket'],$page);
+
             // Rellenar si es sin imagen de forma adecuada.
             if ($properties['img']=="") {
                 $page = str_replace('{{image-url}}', "./assets/img/no-image150x150.png",$page);
-                $page = str_replace('{{image-propieties}}', "No existe imagen",$page);
+                $page = str_replace('{{image-description}}', "No existe imagen",$page);
             }
             else{
                 $page = str_replace('{{image-url}}', $properties['img'],$page);
-                $page = str_replace('{{image-propieties}}', $modelName,$page);
+                $page = str_replace('{{image-description}}', $modelName,$page);
             }
             break;
 
@@ -785,7 +745,7 @@ function vFillTemplatePublic($contentRoute) {
 /**
  * Traduce al plural los nombres de los componentes
  */
-private function plural($component){
+function plural($component){
     if($component=='memory')
         return 'memories';
     else if($component=='power-supply')
