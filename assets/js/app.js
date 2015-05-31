@@ -138,6 +138,7 @@ appTable.controller('ComponentCtrl', [
         'use strict';
 
         $scope.components = [];
+        $scope.providers = [];
         $scope.numPerPage = 8;
         var screenHeight = window.screen.availHeight;
 
@@ -326,6 +327,65 @@ appTable.controller('ComponentCtrl', [
                 });
             });
         };
+
+        $scope.getProviders = function (compPn,compType) {
+            // El componente es indiferente para los campos de los proveedores a mostrar, por lo que data en un principio es vacío
+            var request = $http({
+                method: 'POST',
+                url: '/models/getComponentProviders.php',
+                data: {
+                    compPn: compPn,
+                    compType: compType
+                },
+                headers: {'Content-Type': 'application/json'}
+            });
+
+            request.success(function (data) {
+                var i;
+                console.log(compPn,compType);
+                // data['provider'], data['price']...
+                // El total se calcula en la funcion que devuelve los valores, getComponentProviders.php
+                for (i = 0; i < data.length; i++) {
+                    $scope.providers.push({
+                        'name': data[i]['name'],
+                        'price': data[i]['price'],
+                        'delivery-fare': data[i]['delivery-fare'],
+                        'total': data[i]['total'],
+                        'pos': i
+                    });
+                }
+
+                // Ocultamos rueda de carga y mostramos proveedores
+                $('#loadspin').hide();
+                $('#tableproducts').show();
+
+                $scope.tableParams = new ngTableParams({
+                    page: 1,
+                    count: 8,
+                    sorting: {
+                        name: 'asc'
+                    }
+                }, {
+                    total: $scope.providers.length,
+
+                    getData: function ($defer, params) {
+                        var orderedData = params.filter() ?
+                            $filter('filter')($scope.providers, params.filter()) :
+                            $scope.providers;
+
+                        orderedData = params.sorting() ?
+                            $filter('orderBy')(orderedData, params.orderBy()) :
+                            orderedData;
+
+                        // Recalculamos páginas
+                        params.total(orderedData.length);
+                        $('#loadspin').hide();
+
+                        $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+                    }
+                });
+            });
+        };
     }
 ]);
 
@@ -456,13 +516,13 @@ $(document).ready(function () {
         var productId = $(this).closest("tr")
             .find("#product-id")
             .attr('value');
+        console.log(productId);
         var productVendorName = $(this).closest("tr")
             .find("#product-vendor")
             .text();
         var productPrice = $(this).closest("tr")
             .find("#product-price")
             .text();
-
         var component = window.location.href.substring(window.location.href.lastIndexOf('part/') + 5,
             window.location.href.lastIndexOf('/'));
 
@@ -476,12 +536,14 @@ $(document).ready(function () {
             },
             success: function () {
                 window.location.href = "/partList";
+            },
+            error: function () {
             }
         });
     });
 });
 
-// Controlador mostar el coste de la configuración total
+// Controlador mostrar el coste de la configuración total
 app.controller('totalCostController', [
     '$scope',
     function ($scope) {
