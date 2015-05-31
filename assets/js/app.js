@@ -188,7 +188,7 @@ appTable.controller('ComponentCtrl', [
                         $scope.components.push({
                             'id': data[i][0],
                             'name': data[i][4],
-                            'frecuency': data[i][1],
+                            'frequency': data[i][1],
                             'memory': data[i][2],
                             'price': parseFloat(data[i][3])
                         });
@@ -223,11 +223,12 @@ appTable.controller('ComponentCtrl', [
 
                 // RAM
                 if (component === 'memories') {
+                    console.log(data[1][2]);
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
                             'id': data[i][0],
                             'name': data[i][5],
-                            'frecuency': data[i][1],
+                            'frequency': data[i][1],
                             'modules': data[i][2],
                             'size': data[i][3],
                             'price': parseFloat(data[i][4])
@@ -252,22 +253,21 @@ appTable.controller('ComponentCtrl', [
                 if (component === 'cases') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][3],
+                            'format': data[i][1],
+                            'price': data[i][2]
                         });
                     }
                 }
 
                 // Optical Drive
-                if (component === 'optical-drives') {
+                if (component === 'opticaldrives') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id':  data[i][0],
+                            'name':  data[i][2],
+                            'price':  data[i][1]
                         });
                     }
                 }
@@ -276,10 +276,12 @@ appTable.controller('ComponentCtrl', [
                 if (component === 'storages') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][5],
+                            'capacity': data[i][1],
+                            'format': data[i][2],
+                            'type': data[i][3],
+                            'price': data[i][4]
                         });
                     }
                 }
@@ -288,10 +290,11 @@ appTable.controller('ComponentCtrl', [
                 if (component === 'monitors') {
                     for (i = 0; i < data.length; i++) {
                         $scope.components.push({
-                            'id': null,
-                            'name': null,
-                            'brand': null,
-                            'price': null
+                            'id': data[i][0],
+                            'name': data[i][4],
+                            'resolution': data[i][1],
+                            'size': data[i][2],
+                            'price': data[i][3]
                         });
                     }
                 }

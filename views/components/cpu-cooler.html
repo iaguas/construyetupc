@@ -2,7 +2,7 @@
     <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts" data-ng-init="getComponents('cpucoolers')">
         <tr data-ng-repeat="component in $data" data-ng-cloak>
             <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-6 col-md-6 col-lg-6">
-                <a href="/part/cpu-coolers/{{component.id}}">{{component.name}}</a>
+                <a href="/part/cpu-cooler/{{component.id}}">{{component.name}}</a>
             </td>
             <td data-title="'RPM'" sortable="'rpm'" filter="{'rpm': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
                 {{component.rpm}}
