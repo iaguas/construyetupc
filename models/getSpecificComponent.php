@@ -94,6 +94,9 @@ switch($ct) {
             if (!isset($partItem['noise'][0])) {
                 $partItem['noise']="N/A";
             }
+            if (!isset($partItem['size'][0])) {
+                $partItem['size']="N/A";
+            }
 
             for ($i = 1; $i <= $size; $i++) {
                 if($finalPrice == 0){
@@ -155,6 +158,12 @@ switch($ct) {
             if(!isset($partItem['memory'][0])){
                 $partItem['memory']="N/A";
             }
+            if(!isset($partItem['modules'][0])){
+                $partItem['modules']="N/A";
+            }
+            if(!isset($partItem['size'][0])){
+                $partItem['size']="N/A";
+            }
 
             for ($i = 1; $i <= $size; $i++) {
                 if($finalPrice == 0){
@@ -203,6 +212,89 @@ switch($ct) {
                 $partItem['pn'],
                 $partItem['watts'],
                 $partItem['efficiency'],
+                $finalPrice  . " €",
+                $partItem['name']
+            );
+        }
+        break;
+    case 'cases':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if (!isset($partItem['format'][0])) {
+                $partItem['format']="N/A";
+            }
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $partItem['format'],
+                $finalPrice  . " €",
+                $partItem['name']
+            );
+        }
+        break;
+    case 'opticaldrives':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $finalPrice  . " €",
+                $partItem['name']
+            );
+        }
+        break;
+    case 'monitors':
+        foreach ($op as $partItem) {
+            $t=0;
+            $finalPrice=0;
+            $size=count(@$partItem['prices']);
+
+            if (!isset($partItem['resolution'][0])) {
+                $partItem['resolution']="N/A";
+            }
+            if (!isset($partItem['size'][0])) {
+                $partItem['size']="N/A";
+            }
+
+            for ($i = 1; $i <= $size; $i++) {
+                if($finalPrice == 0){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
+                    $finalPrice = $partItem['prices'][$t]['price'];
+                }
+                $t++;
+            }
+
+            $json[]=array(
+                $partItem['pn'],
+                $partItem['resolution'],
+                $partItem['size'],
                 $finalPrice  . " €",
                 $partItem['name']
             );

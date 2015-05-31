@@ -67,16 +67,13 @@
 </nav>
 
 <div class="container" data-ng-app="appTable" data-ng-controller="ComponentCtrl">
-    <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts" data-ng-init="getComponents('optical-drives')">
+    <table data-ng-table="tableParams" show-filter="true" class="table" id="tableproducts" data-ng-init="getComponents('opticaldrives')">
         <tr data-ng-repeat="component in $data" data-ng-cloak>
             <td data-title="'Nombre'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-6 col-md-6 col-lg-6">
                 <a href="/part/optical/{{component.id}}">{{component.name}}</a>
             </td>
-            <td data-title="'Marca'" sortable="'brand'" filter="{'brand': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
-                {{component.brand}}
-            </td>
             <td data-title="'Desde...'" sortable="'price'" class="col-sm-1 col-md-1 col-lg-1">
-                {{component.price}} €
+                {{component.price}}
             </td>
             <td>
                 <a href="/part/optical/{{component.id}}" class="btn btn-primary btn-xs">
