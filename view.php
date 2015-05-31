@@ -327,6 +327,42 @@ function vShowComponentSelection($part) {
 function vShowDetailedPartModel($part, $id){
     $db = new DBHelper(); // Invocar la clase del modelo de BD
     switch ($part){
+        //////////////////////////////  CASE  //////////////////////////////  
+        case 'case':
+            $page = vFillTemplatePublic('views/detailedComponents/case.html');
+            $dhtml = '';
+            $model = $id;
+            $modelName = $db->mGetCompName($model, str_replace('-', '', $part).'s');
+
+            // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            $processors = $db->mGetCompPrices($model, str_replace('-', '', $part).'s');
+            $properties = $db->mGetCompProperties($model, str_replace('-', '', $part).'s');
+
+            foreach ($processors as $key => $partItem){
+                $total = @$partItem['price'] + @$partItem['delivery-fare'];
+                $dhtml .= "<tr>";
+                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
+                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
+                $dhtml .= "</tr>";
+            }
+            // Insertar las especficificaciones técnicas.
+            $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
+            $page = str_replace('{{format}}', $properties['format'],$page);
+            // Rellenar si es sin imagen de forma adecuada.
+            if ($properties['img']=="") {
+                $page = str_replace('{{image-url}}', "./assets/img/no-image150x150.png",$page);
+                $page = str_replace('{{image-propieties}}', "No existe imagen",$page);
+            }
+            else{
+                $page = str_replace('{{image-url}}', $properties['img'],$page);
+                $page = str_replace('{{image-propieties}}', $modelName,$page);
+            }
+            break;
         case 'cpu':
             $page = vFillTemplatePublic('views/detailedComponents/cpu.html');
             $dhtml = '';
@@ -507,29 +543,15 @@ function vShowDetailedPartModel($part, $id){
             $page = str_replace('{{component-name}}', $modelName, $page);
             $page = str_replace('{{vendor-motherboard-list}}', $dhtml, $page);
             break;
-        case 'case':
-            $page = file_get_contents("views/detailedComponents/case.html");
             $dhtml = '';
             $model = $id;
-            // TODO: Fijar nombre correcto de la base de datos
-            $modelName = $db->mGetCompName($model,'cases');
 
             // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
-            $cases = $db->mGetCompPrices($model,'cases');
-            // TODO: Obtener especificaciones técnicas del modelo solicitado
-            foreach ($cases as $key => $partItem){
                 $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
-                $dhtml .= "<input id='product-id' type='hidden' value='" . $key . "'>";
-                $dhtml .= "<td class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['price'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare'] . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'>" . (string)$total  . "</td>";
-                $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/case/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             $page = str_replace('{{component-name}}', $modelName, $page);
-            $page = str_replace('{{vendor-case-list}}', $dhtml, $page);
             break;
         case 'monitor':
             $page = file_get_contents("views/detailedComponents/monitor.html");
@@ -552,6 +574,7 @@ function vShowDetailedPartModel($part, $id){
                 $dhtml .= "<td class='col-md-1 vert-align'><button type='button' onclick='window.location.href=\"partList/select/monitor/" . $key ."\"'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
+            // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
             $page = str_replace('{{vendor-monitor-list}}', $dhtml, $page);
             break;
