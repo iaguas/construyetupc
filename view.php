@@ -509,11 +509,7 @@ function vShowDetailedPartModel($part, $id){
                 $page = str_replace('{{image-url}}', $properties['img'],$page);
                 $page = str_replace('{{image-propieties}}', $modelName,$page);
             }
-            $page = str_replace('{{component-name}}', $modelName, $page);
-            $page = str_replace('{{vendor-power-supply-list}}', $dhtml, $page);
             break;
-        case 'storage':
-            $page = file_get_contents("views/detailedComponents/storage.html");
 
         //////////////////////////////  MONITOR  //////////////////////////////  
         case 'monitor':
@@ -638,16 +634,42 @@ function vShowDetailedPartModel($part, $id){
                 $page = str_replace('{{image-propieties}}', $modelName,$page);
             }
             break;
+
+        //////////////////////////////  POWER SUPPLY  //////////////////////////////  
+        case 'power-supply':
+            $page = vFillTemplatePublic('views/detailedComponents/power-supply.html');
             $dhtml = '';
             $model = $id;
+            $modelName = $db->mGetCompName($model, 'powersupplies');
 
             // TODO: Obtener lista de todas las tiendas que tienen el modelo solicitado y sus precios
+            $processors = $db->mGetCompPrices($model, 'powersupplies');
+            $properties = $db->mGetCompProperties($model, 'powersupplies');
+
+            foreach ($processors as $key => $partItem){
                 $total = @$partItem['price'] + @$partItem['delivery-fare'];
                 $dhtml .= "<tr>";
+                $dhtml .= "<input id='product-id' type='hidden' value='" . $properties['pn'] . "'>";
+                $dhtml .= "<td id='product-vendor' class='col-md-3 vert-align'>" . @$partItem['provider'] . "</td>";
+                $dhtml .= "<td id='product-price' class='col-md-1 vert-align'>" . @$partItem['price']. "€" . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . @$partItem['delivery-fare']. "€" . "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'>" . $total  . "€". "</td>";
+                $dhtml .= "<td class='col-md-1 vert-align'><button id='add-product' type='button'>Añadir</button></td>";
                 $dhtml .= "</tr>";
             }
             // Insertar las especficificaciones técnicas.
             $page = str_replace('{{component-name}}', $modelName, $page);
+            $page = str_replace('{{vendor-processor-list}}', $dhtml, $page);
+            $page = str_replace('{{eficiency}}', $properties['eficiency'],$page);
+            // Rellenar si es sin imagen de forma adecuada.
+            if ($properties['img']=="") {
+                $page = str_replace('{{image-url}}', "./assets/img/no-image150x150.png",$page);
+                $page = str_replace('{{image-propieties}}', "No existe imagen",$page);
+            }
+            else{
+                $page = str_replace('{{image-url}}', $properties['img'],$page);
+                $page = str_replace('{{image-propieties}}', $modelName,$page);
+            }
             break;
             $dhtml = '';
             $model = $id;
