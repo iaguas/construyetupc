@@ -23,7 +23,7 @@ $router = new AltoRouter();
 $router->setBasePath('');
 
 // Rutas
-$router->map('GET', '/', 'vLandingPage', 'landing');
+$router->map('GET', '/', 'vMainPage', 'landing');
 
 $router->map('GET', '/main', 'vMainPage', 'main');
 $router->map('GET', '/whoweare', 'vWhoWeAre', 'who-we-are');
