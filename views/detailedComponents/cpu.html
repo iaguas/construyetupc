@@ -15,18 +15,31 @@
             <p><strong>Num. núcleos:</strong> {{cores}}</p>
             <p><strong>Socket:</strong> {{socket}}</p>
         </div>
-        <div class="col-md-9">
+    </div>
+    <div class="col-md-3">
+        <div class="container" data-ng-app="appTable" data-ng-controller="ComponentCtrl">
             <h1>{{component-name}}</h1>
-            <table class="table">
-                <tr>
-                    <th>Proveedor</th>
-                    <th>Precio</th>
-                    <th>Gastos de envío</th>
-                    <th>Total</th>
-                    <th></th>
+            <table data-ng-table="tableParams" show-filter="true" class="table table-td-anchor" id="tableproducts" data-ng-init="getProviders('{{component-pn}}','{{component-type}}')">
+                <tr data-ng-repeat="provider in $data" data-ng-cloak>
+                    <input id="product-id" type="hidden" value="{{component-pn}}">
+                    <td id="product-vendor" data-title="'Proveedor'" sortable="'provider'" filter="{'provider': 'text'}" class="col-sm-3 col-md-3 col-lg-3">
+                        {{provider.name}}
+                    </td>
+                    <td data-title="'Precio'" sortable="'price'" filter="{'price': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
+                        {{provider.price}}
+                    </td>
+                    <td data-title="'Gastos de envío'" sortable="'delivery-fare'" filter="{'delivery-fare': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
+                        {{provider.delivery-fare}}
+                    </td>
+                    <td id="product-price" data-title="'Total'" sortable="'total'" filter="{'total': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
+                        {{provider.total}}
+                    </td>
+                    <td>
+                        <button id='add-product' type='button'>Añadir</button>
+                    </td>
                 </tr>
-                {{vendor-processor-list}}
             </table>
+            <div class="container text-center top-margin"><i id="loadspin" class="fa fa-spinner fa-spin fa-5x "></i></div>
         </div>
     </div>
 </div>

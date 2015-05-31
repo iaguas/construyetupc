@@ -30,19 +30,10 @@ function mParseJsons($dbcol){
     $json_array = json_decode($json, true);
 
     // NOTA: necesario pasar la variable por referencia para modificar la variable recorrida
-    foreach($json_array as $key => &$row) {
-        // Eliminar filas con "pn"s no válidos
+    foreach($json_array as &$row) {
         if(isset($row['pn']) || !empty($row['pn'])) {
             $row['pn'][0] = trim($row['pn'][0]);
-            if (strlen($row['pn'][0]) < 8) {
-                unset($json_array[$key]);
-                continue;
-            }
-        }else{
-            unset($json_array[$key]);
-            continue;
         }
-
         // Arrays auxiliares para el array de arrays de prices
         $prices = [];
         //$shop_keys = ['price', 'delivery-fare', 'provider'];

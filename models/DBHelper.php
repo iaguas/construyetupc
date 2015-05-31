@@ -86,6 +86,8 @@ class DBHelper implements IDBHelper {
 
     /**
      * Obtiene la lista de un componente determinado almacenado en mongoDB.
+     * @param $ct string categoría de componente sobre el cual se quiere hacer la consulta
+     * @return MongoCursor
      */
     public function mGetComponent($ct) {
         $col = $this->db->selectCollection($ct);
