@@ -74,8 +74,8 @@ function vShowPartList() {
                 $productPrice = $_SESSION['partList']["$categoryName"]['price'];
                 $productVendor = $_SESSION['partList']["$categoryName"]['vendorId'];
 
-                $productName = $db -> mGetCompName($productId, plural($categoryName));
-                $productPhoto = $db -> mGetCompPhoto($productId, plural($categoryName));
+                $productName = $db -> mGetCompName($productId, $categoryName.'s');
+                $productPhoto = $db -> mGetCompPhoto($productId, $categoryName.'s');
 
                 $provider=$db->mGetProviders($productVendor);
                 $providerUrl=$provider['url'];
@@ -210,7 +210,7 @@ function vShowDetailedPartModel($part, $id){
             $page = vFillTemplatePublic('views/detailedComponents/cpu.html');
             //$dhtml = '';
             $model = $id;
-            $component=plural($part);
+            $component=$part.'s';
             $modelName = $db->mGetCompName($model,$component);
             $properties = $db->mGetCompProperties($model, $component);
 
@@ -780,16 +780,4 @@ function vFillTemplatePublic($contentRoute) {
     }
 
     return $result;
-}
-
-/**
- * Traduce al plural los nombres de los componentes
- */
-private function plural($component){
-    if($component=='memory')
-        return 'memories';
-    else if($component=='power-supply')
-        return 'power-supplies';
-    else
-        return $component.'s';
 }
