@@ -8,21 +8,13 @@
 <url>
   <loc>http://www.construyetupc.es/</loc>
   <changefreq>weekly</changefreq>
-  <priority>1.00</priority>
-</url>
-<url>
-  <loc>http://www.construyetupc.es/about</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
-</url>
-<url>
-  <loc>http://www.construyetupc.es/main</loc>
-  <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
 </url>
 <url>
   <loc>http://www.construyetupc.es/partList</loc>
   <changefreq>weekly</changefreq>
-  <priority>0.80</priority>
+</url>
+<url>
+  <loc>http://www.construyetupc.es/about</loc>
+  <changefreq>weekly</changefreq>
 </url>
 </urlset>
