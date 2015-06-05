@@ -17,7 +17,7 @@
                 <h1>{{component-name}}</h1>
                 <table data-ng-table="tableParams" show-filter="true" class="table table-td-anchor" id="tableproducts" data-ng-init="getProviders('{{component-pn}}','{{component-type}}')">
                     <tr data-ng-repeat="provider in $data" data-ng-cloak>
-                        <td data-title="'Proveedor'" sortable="'provider'" filter="{'provider': 'text'}" class="col-sm-4 col-md-4 col-lg-4">
+                        <td data-title="'Proveedor'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-4 col-md-4 col-lg-4">
                             {{provider.name}}
                         </td>
                         <td data-title="'Precio'" sortable="'price'" filter="{'price': 'text'}" class="col-sm-2 col-md-2 col-lg-2">
@@ -40,32 +40,3 @@
     </div>
 
 </div>
-
-<!--<div class="container">
-    <a href="partList/choose/gpu" type="button" class="btn btn-default btn-back-space">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"> Volver</span>
-    </a>
-    <div class="row">
-        <div class="col-md-3" style="background-color: #B1E38D; padding-top: 25px">
-            <div align="center">
-            <img src="{{image-url}}" alt="{{image-propieties}}"  width="150" height="150">
-            </div>
-            <h1>Especificaciones</h1>
-            <hr>
-            <p><strong>Memoria:</strong> {{memory}}</p>
-        </div>
-        <div class="col-md-9">
-            <h1>{{component-name}}</h1>
-            <table class="table">
-                <tr>
-                    <th>Proveedor</th>
-                    <th>Precio</th>
-                    <th>Gastos de envío</th>
-                    <th>Total</th>
-                    <th></th>
-                </tr>
-                {{vendor-processor-list}}
-            </table>
-        </div>
-    </div>
-</div>-->
