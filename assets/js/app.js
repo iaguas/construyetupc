@@ -349,9 +349,9 @@ appTable.controller('ComponentCtrl', [
                 for (i = 0; i < data.length; i++) {
                     $scope.providers.push({
                         'name': data[i]['name'],
-                        'price': data[i]['price'],
-                        'delivery-fare': data[i]['delivery-fare'],
-                        'total': data[i]['total'],
+                        'price': parseFloat(data[i]['price']).toFixed(2),
+                        'delivery-fare': parseFloat(data[i]['delivery-fare']).toFixed(2),
+                        'total': parseFloat(data[i]['total']).toFixed(2),
                         'pos': i
                     });
                 }
