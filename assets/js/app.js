@@ -177,7 +177,7 @@ appTable.controller('ComponentCtrl', [
                             'socket': data[i][4],
                             'cores': data[i][5],
                             'freq': data[i][1],
-                            'price': parseFloat(data[i][3])
+                            'price': parseFloat((data[i][3])).toFixed(2)
                         });
                     }
                 }
@@ -190,7 +190,7 @@ appTable.controller('ComponentCtrl', [
                             'name': data[i][4],
                             'frequency': data[i][1],
                             'memory': data[i][2],
-                            'price': parseFloat(data[i][3])
+                            'price': parseFloat((data[i][3])).toFixed(2)
                         });
                     }
                 }
@@ -204,7 +204,7 @@ appTable.controller('ComponentCtrl', [
                             'rpm': data[i][2],
                             'noise': data[i][3],
                             'size': data[i][1],
-                            'price': parseFloat(data[i][4])
+                            'price': parseFloat((data[i][4])).toFixed(2)
                         });
                     }
                 }
@@ -216,7 +216,7 @@ appTable.controller('ComponentCtrl', [
                             'id': data[i][0],
                             'name': data[i][2],
                             'socket': data[i][3],
-                            'price': parseFloat(data[i][1])
+                            'price': parseFloat((data[i][1])).toFixed(2)
                         });
                     }
                 }
@@ -230,7 +230,7 @@ appTable.controller('ComponentCtrl', [
                             'frequency': data[i][1],
                             'modules': data[i][2],
                             'size': data[i][3],
-                            'price': parseFloat(data[i][4])
+                            'price': parseFloat(data[i][4]).toFixed(2)
                         });
                     }
                 }
@@ -243,7 +243,7 @@ appTable.controller('ComponentCtrl', [
                             'name': data[i][4],
                             'watts': data[i][1],
                             'eficiency': data[i][2],
-                            'price': parseFloat(data[i][3])
+                            'price': parseFloat((data[i][3])).toFixed(2)
                         });
                     }
                 }
@@ -553,7 +553,7 @@ app.controller('totalCostController', [
         $scope.calculateCost = function (totalCost) {
             $scope.totalCostString=totalCost;
             $scope.totalCostFin = $scope.totalCostString.split('€');
-            $scope.totalCostFin = parseFloat($scope.totalCostFin[0]);
+            $scope.totalCostFin = parseFloat($scope.totalCostFin[0]).toFixed(2);
 
             if($scope.totalCostFin !== 0) {
                 $('#totalCostid').show();
