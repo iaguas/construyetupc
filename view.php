@@ -660,12 +660,57 @@ function vFillTemplatePublic($contentRoute) {
             $result = str_replace('{{about_link}}', '/about', $result);
             $result = str_replace('{{partlist_link}}', '/partList', $result);
             break;
+        case 'views/components/monitor.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
         case 'views/detailedComponents/cpu.html':
             $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
             $result = str_replace('{{about_link}}', '/about', $result);
             $result = str_replace('{{partlist_link}}', '/partList', $result);
             break;
-        case 'views/components/monitor.html':
+        case 'views/detailedComponents/gpu.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/cpu-cooler.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/motherboard.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/memory.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/power-supply.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/case.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/optical-drive.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/storage.html':
+            $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/detailedComponents/monitor.html':
             $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
             $result = str_replace('{{about_link}}', '/about', $result);
             $result = str_replace('{{partlist_link}}', '/partList', $result);

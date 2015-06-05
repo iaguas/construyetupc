@@ -13,26 +13,24 @@
             <p><strong>Frecuencia:</strong> {{frecuency}}</p>
         </div>
         <div class="col-md-3">
-            <div class="container" data-ng-app="appTable" data-ng-controller="ComponentCtrl">
+            <div style="max-width: 62em" class="container" data-ng-app="appTable" data-ng-controller="ComponentCtrl">
                 <h1>{{component-name}}</h1>
                 <table data-ng-table="tableParams" show-filter="true" class="table table-td-anchor" id="tableproducts" data-ng-init="getProviders('{{component-pn}}','{{component-type}}')">
                     <tr data-ng-repeat="provider in $data" data-ng-cloak>
-                        <input id="product-price"  type="hidden" value="{{provider.total}}">
-                        <input id="product-vendor"  type="hidden" value="{{provider.name}}">
-                        <td data-title="'Proveedor'" sortable="'provider'" filter="{'provider': 'text'}" class="col-sm-3 col-md-3 col-lg-3">
+                        <td data-title="'Proveedor'" sortable="'provider'" filter="{'provider': 'text'}" class="col-sm-4 col-md-4 col-lg-4">
                             {{provider.name}}
                         </td>
-                        <td data-title="'Precio'" sortable="'price'" filter="{'price': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
+                        <td data-title="'Precio'" sortable="'price'" filter="{'price': 'text'}" class="col-sm-2 col-md-2 col-lg-2">
                             {{provider.price}}
                         </td>
-                        <td data-title="'Gastos de envío'" sortable="'delivery-fare'" filter="{'delivery-fare': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
+                        <td data-title="'Gastos de envío'" sortable="'delivery-fare'" filter="{'delivery-fare': 'text'}" class="col-sm-2 col-md-2 col-lg-2">
                             {{provider.delivery-fare}}
                         </td>
-                        <td data-title="'Total'" sortable="'total'" filter="{'total': 'text'}" class="col-sm-1 col-md-1 col-lg-1">
+                        <td data-title="'Total'" sortable="'total'" filter="{'total': 'text'}" class="col-sm-2 col-md-2 col-lg-2">
                             {{provider.total}}
                         </td>
                         <td>
-                            <button id='add-product' type='button' data-ng-click="addComponent('{{component-pn}}','{{component-type}}')">Añadir</button>
+                            <button id='add-product' type='button' class="btn btn-primary pull-right" data-ng-click="addComponent('{{component-pn}}','{{component-type}}')">Añadir</button>
                         </td>
                     </tr>
                 </table>

@@ -362,12 +362,13 @@ appTable.controller('ComponentCtrl', [
 
                 $scope.tableParams = new ngTableParams({
                     page: 1,
+                    total: 3,
                     count: 8,
                     sorting: {
-                        name: 'asc'
+                        total: 'asc'
                     }
                 }, {
-                    total: $scope.providers.length,
+                    counts: [],
 
                     getData: function ($defer, params) {
                         var orderedData = params.filter() ?
@@ -378,8 +379,6 @@ appTable.controller('ComponentCtrl', [
                             $filter('orderBy')(orderedData, params.orderBy()) :
                             orderedData;
 
-                        // Recalculamos páginas
-                        params.total(orderedData.length);
                         $('#loadspin').hide();
 
                         $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
