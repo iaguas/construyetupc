@@ -295,6 +295,14 @@ class DBHelper implements IDBHelper {
     /* Métodos de actualización */
     /****************************/
 
+    /** 
+     */
+    public function mUpdateDoc($colName, $doc) {
+        $col = $this->db->selectCollection($colName);
+        $col->update(array("pn" => $doc["pn"]), $doc);
+    }
+
+
     /**
      * Actualizar datos de la base con las novedades extraidas por parte del mismo u otros proveedores.
      * Por definición inclusiva, la función también se encarga de insertar los datos en el primer momento.
