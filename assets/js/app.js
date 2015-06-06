@@ -555,7 +555,7 @@ app.controller('totalCostController', [
             $scope.totalCostFin = $scope.totalCostString.split('€');
             $scope.totalCostFin = parseFloat($scope.totalCostFin[0]).toFixed(2);
 
-            if($scope.totalCostFin !== 0) {
+            if($scope.totalCostFin != 0) {
                 $('#totalCostid').show();
             }
         };
