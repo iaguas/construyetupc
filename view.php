@@ -42,7 +42,7 @@ function vShowWhoWeAre() {
  * Muestra la página de contacto
  */
 function vShowContact() {
-    $page = file_get_contents('views/contact.html');
+    $page = vFillTemplatePublic('views/contact.html');
     echo $page;
 }
 
@@ -726,6 +726,10 @@ function vFillTemplatePublic($contentRoute) {
             break;
         case 'views/detailedComponents/monitor.html':
             $result = str_replace('{{partlist_class}}', 'active animated fadeIn', $result);
+            $result = str_replace('{{about_link}}', '/about', $result);
+            $result = str_replace('{{partlist_link}}', '/partList', $result);
+            break;
+        case 'views/contact.html':
             $result = str_replace('{{about_link}}', '/about', $result);
             $result = str_replace('{{partlist_link}}', '/partList', $result);
             break;
