@@ -330,7 +330,7 @@ appTable.controller('ComponentCtrl', [
             });
         };
 
-        $scope.getProviders = function (compPn,compType) {
+        $scope.getProviders = function (compPn, compType) {
             // El componente es indiferente para los campos de los proveedores a mostrar, por lo que data en un principio es vacío
             var request = $http({
                 method: 'POST',
@@ -382,6 +382,13 @@ appTable.controller('ComponentCtrl', [
                         $('#loadspin').hide();
 
                         $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
+
+                        setTimeout(function () {
+                            var img = $('#product-vendor-4frags').find('img').prop('outerHTML');
+                            $('#product-vendor-4frags').html($.parseHTML(img + ' 4Frags'));
+                            var img = $('#product-vendor-amazon').find('img').prop('outerHTML');
+                            $('#product-vendor-amazon').html($.parseHTML(img + ' Amazon'));
+                        }, 1);
                     }
                 });
             });
