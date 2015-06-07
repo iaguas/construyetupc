@@ -46,6 +46,20 @@ function vShowContact() {
     echo $page;
 }
 
+// Envía un mensaje desde el formulario de contacto al email de construyetupc
+function vSendMessage(){
+	$to      = 'info@construyetupc.es';
+	$subject = 'Consulta: ' . $_POST["title"];
+	$message = 'Responder a: ' . $_POST["email"] . ' (' . $_POST["name"] . ')' . '<br />' . $_POST["message"];
+	$headers = 'From: info@construyetupc.es' . "\r\n" .
+		'Content-type: text/html; charset=ISO-8859-1' . "\r\n" .
+		'X-Mailer: PHP/' . phpversion();
+
+	mail($to, $subject, $message, $headers);
+	
+	return 'success';
+}
+
 /**
  * Muestra la lista de componentes.
  */

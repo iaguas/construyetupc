@@ -39,6 +39,9 @@ function mainController($match){
             case 'vShowContact':
                 vShowContact();
                 break;
+            case 'vSendMessage':
+                vSendMessage();
+                break;
             case 'vShowAbout':
                 vShowAbout();
                 break;

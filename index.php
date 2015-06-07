@@ -29,6 +29,7 @@ $router->map('GET', '/main', 'vMainPage', 'main');
 $router->map('GET', '/whoweare', 'vWhoWeAre', 'who-we-are');
 
 $router->map('GET', '/contact', 'vShowContact', 'contact');
+$router->map('POST', '/sendMessage', 'vSendMessage', 'send-message');
 
 $router->map('GET', '/partList', 'vShowPartList', 'part-list');
 $router->map('GET', '/partList/choose/[*:part]', 'vShowComponentSelection', 'component-selection');

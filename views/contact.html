@@ -45,10 +45,18 @@
 </nav>
 
 <!-- Begin page content -->
-<div class="container text-center">
+<div id="success-msg" class="container text-center" style="display: none">
+    <div class="alert alert-success" role="alert">
+        <strong>¡Mensaje enviado!</strong> Gracias por contactar con nosotros.
+    </div>
+    <a href="/" type="button" class="btn btn-default btn-back-space">
+        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Volver al inicio
+    </a>
+</div>
+<div id="contact-form" class="container text-center">
     <h1 class="main-title">Contacta con nosotros</h1>
     <br>
-    <form class="form-horizontal" action="#" method="post"> <!-- TODO: Definir acción del formulario -->
+    <form id="contact" class="form-horizontal" action="/sendMessage" method="post">
         <div class="form-group">
             <label for="name" class="col-lg-2 col-lg-offset-1 control-label">Nombre:</label>
             <div class="col-lg-4">
@@ -72,7 +80,7 @@
 
         <div class="form-group">
             <div class="col-lg-6 col-lg-offset-3">
-                <textarea class="form-control" rows="6" style="resize: vertical" placeholder="Escribe aquí lo que desees comunicarnos" ></textarea>
+                <textarea class="form-control" rows="6" style="resize: vertical" name="message" placeholder="Escribe aquí lo que desees comunicarnos" ></textarea>
             </div>
         </div>
         <button class="btn btn-success" type="submit">Enviar consulta</button>
@@ -96,6 +104,31 @@
         $.cookieBar({
             forceShow: true,
             fixed: true
+        });
+
+        //hang on event of form with id=myform
+        $("#contact").submit(function(e) {
+
+            //prevent Default functionality
+            e.preventDefault();
+
+            //get the action-url of the form
+            var actionurl = e.currentTarget.action;
+
+            //do your own request an handle the results
+            $.ajax({
+                url: actionurl,
+                type: 'post',
+                //dataType: 'json',
+                data: $("#contact").serialize(),
+                success: function(data) {
+                    $( "#contact-form").hide();
+                    $( "#success-msg" ).fadeIn( "slow", function() {
+                        // Animation complete.
+                    });
+                }
+            });
+
         });
     });
 </script>
