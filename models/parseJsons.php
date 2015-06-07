@@ -19,6 +19,9 @@ RESPECTIVAS ANTERIORES (47 Y 55)
  * - Mapear correctamente el array general
  * @param $dbcol string con el nombre de la tabla de base de datos al que se va almacenar el fichero JSON de mismo nombre
  */
+// Para pruebas
+//$val =$_GET['param'];
+//mParseJsons($val);
 
 function mParseJsons($dbcol){
     /**
@@ -81,7 +84,9 @@ function mParseJsons($dbcol){
                 if (!is_string($row[$key1])) {
                     if (empty($row[$key1])) {
                         $row[$key1] = "";
-                    } else {
+                    }elseif(is_numeric($row[$key1])){
+                        $row[$key1] = (string)$row[$key1];
+                    }else {
                         $row[$key1] = $row[$key1][0];
                     }
                 }
@@ -97,7 +102,6 @@ function mParseJsons($dbcol){
         }
     }
     // Los datos ya parseados se sobreescriben sobre el fichero original
-    // TODO: optar por almacenar los datos en otro archivo para evitar posibles corrupciones de fichero
     $fp = fopen($json_string2, 'w');
     fwrite($fp, json_encode($json_array1));
     fclose($fp);
