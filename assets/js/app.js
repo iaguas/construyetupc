@@ -175,7 +175,7 @@ appTable.controller('ComponentCtrl', [
                             'name': data[i][6],
                             'family': data[i][2],
                             'socket': data[i][4],
-                            'cores': data[i][5],
+                            'cores': parseInt(data[i][5]),
                             'freq': data[i][1],
                             'price': parseFloat(parseFloat((data[i][3])).toFixed(2))
                         });
@@ -188,8 +188,8 @@ appTable.controller('ComponentCtrl', [
                         $scope.components.push({
                             'id': data[i][0],
                             'name': data[i][4],
-                            'frequency': data[i][1],
-                            'memory': data[i][2],
+                            'frequency': parseInt(data[i][1]),
+                            'memory': parseInt(data[i][2]),
                             'price': parseFloat(parseFloat((data[i][3])).toFixed(2))
                         });
                     }
@@ -227,9 +227,9 @@ appTable.controller('ComponentCtrl', [
                         $scope.components.push({
                             'id': data[i][0],
                             'name': data[i][5],
-                            'frequency': data[i][1],
+                            'frequency': parseInt(data[i][1]),
                             'modules': data[i][2],
-                            'size': data[i][3],
+                            'size': parseInt(data[i][3]),
                             'price': parseFloat(parseFloat(data[i][4]).toFixed(2))
                         });
                     }
@@ -277,7 +277,7 @@ appTable.controller('ComponentCtrl', [
                         $scope.components.push({
                             'id': data[i][0],
                             'name': data[i][5],
-                            'capacity': data[i][1],
+                            'capacity': parseInt(data[i][1]),
                             'format': data[i][2],
                             'type': data[i][3],
                             'price': parseFloat(parseFloat(data[i][4]).toFixed(2))
