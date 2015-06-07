@@ -29,14 +29,13 @@ switch($ct) {
                 $partItem['frecuency']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -63,14 +62,13 @@ switch($ct) {
                 $partItem['memory']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -98,14 +96,13 @@ switch($ct) {
                 $partItem['size']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -128,14 +125,13 @@ switch($ct) {
                 $partItem['socket']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -165,14 +161,13 @@ switch($ct) {
                 $partItem['size']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -198,14 +193,13 @@ switch($ct) {
                 $partItem['efficiency']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -227,14 +221,13 @@ switch($ct) {
                 $partItem['format']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -251,14 +244,13 @@ switch($ct) {
             $finalPrice=0;
             $size=count(@$partItem['prices']);
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -285,14 +277,13 @@ switch($ct) {
             }
 
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
@@ -318,14 +309,13 @@ switch($ct) {
                 $partItem['size']="N/A";
             }
 
-            for ($i = 1; $i <= $size; $i++) {
-                if($finalPrice == 0){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+            for($i = 0; $i < $size; $i++) {
+                if ($i == 0) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                if($finalPrice > $finalPrice = $partItem['prices'][$t]['price']){
-                    $finalPrice = $partItem['prices'][$t]['price'];
+                elseif($partItem['prices'][$i]['price'] < $finalPrice) {
+                    $finalPrice = $partItem['prices'][$i]['price'];
                 }
-                $t++;
             }
 
             $json[]=array(
