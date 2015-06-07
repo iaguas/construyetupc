@@ -17,7 +17,7 @@
                 <h1>{{component-name}}</h1>
                 <table data-ng-table="tableParams" show-filter="true" class="table table-td-anchor" id="tableproducts" data-ng-init="getProviders('{{component-pn}}','{{component-type}}')">
                     <tr data-ng-repeat="provider in $data" data-ng-cloak>
-                        <td data-title="'Proveedor'" sortable="'name'" filter="{'name': 'text'}" class="col-sm-4 col-md-4 col-lg-4">
+                        <td data-title="'Proveedor'" sortable="'name'" filter="{'name': 'text'}" id="product-vendor-{{provider.name}}" class="col-sm-4 col-md-4 col-lg-4">
                             {{provider.name}}
                         </td>
                         <td data-title="'Precio'" sortable="'price'" filter="{'price': 'text'}" class="col-sm-2 col-md-2 col-lg-2">
@@ -26,11 +26,11 @@
                         <td data-title="'Gastos de envío'" sortable="'delivery-fare'" filter="{'delivery-fare': 'text'}" class="col-sm-2 col-md-2 col-lg-2">
                             {{provider.delivery-fare}} €
                         </td>
-                        <td data-title="'Total'" sortable="'total'" filter="{'total': 'text'}" class="col-sm-2 col-md-2 col-lg-2">
+                        <td data-title="'Total'" sortable="'total'" filter="{'total': 'text'}" id="product-price-{{provider.name}}" class="col-sm-2 col-md-2 col-lg-2">
                             {{provider.total}} €
                         </td>
                         <td>
-                            <button id='add-product' type='button' class="btn btn-primary pull-right" data-ng-click="addComponent('{{component-pn}}','{{component-type}}')">Añadir</button>
+                            <button id='add-product' type='button' class="btn btn-primary pull-right" data-ng-click="addComponent('{{component-pn}}','{{component-type}}', provider.name)">Añadir</button>
                         </td>
                     </tr>
                 </table>

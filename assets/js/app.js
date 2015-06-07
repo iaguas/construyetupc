@@ -388,10 +388,8 @@ appTable.controller('ComponentCtrl', [
         };
 
         //Función para añadir un componente a la cesta
-        $scope.addComponent = function ($productId,$component) {
-
-
-            $scope.component1 = $component.substring(0,$component.length-1);
+        $scope.addComponent = function ($productId, $component, $provider) {
+            $scope.component1 = $component.substring(0, $component.length - 1);
 
             if ($scope.component1 === 'memorie'){
                 $scope.component1 = 'memory';
@@ -403,15 +401,15 @@ appTable.controller('ComponentCtrl', [
                 $scope.component1 = 'power-supply';
             }
 
-           var request = $http({
+            var request = $http({
                 method  : 'POST',
                 url: '/partList/select/' + $scope.component1,
                 data: {
                     'productId': $productId,
-                    'productVendorName': $('#product-vendor').val(),
-                    'productPrice': $('#product-price').val()
+                    'productVendorName': $('#product-vendor-' + $provider).text().trim(),
+                    'productPrice': $('#product-price-' + $provider).text().trim()
                 },
-               headers : {'Content-Type': 'application/json'}
+                headers : {'Content-Type': 'application/json'}
             });
 
             request.success(function () {
