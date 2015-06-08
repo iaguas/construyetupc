@@ -40,6 +40,8 @@ function adminController($match){
                     echo 'aaa';
                     vShowEmails(mGetEmails());
                     break;
+                case 'vUpdateAmazon' :
+                    vShowUpdateAmazon();
                 // Por defecto se llama a la función indicada en la ruta
                 default:
                     call_user_func($match['target']);

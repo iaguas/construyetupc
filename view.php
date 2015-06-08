@@ -549,6 +549,12 @@ function vShowInsertCompPanel() {
     echo $page;
 }
 
+/* Muestra panel para incorporar datos crawleados a la BD*/
+function vShowUpdateAmazon() {
+    $page = file_get_contents("views/admin/updateAmazon.html");
+    echo $page;
+}
+
 /**
  * Obtiene un determinado número de líneas del final de un fichero PHP
  * @param $filepath

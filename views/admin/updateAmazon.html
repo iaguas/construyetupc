@@ -5,14 +5,15 @@
     <base href="/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Panel de administración</title>
+    <title>Panel de administración - Scrapy</title>
 
     <!-- Bootstrap -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
     <!-- Default styles -->
     <link href="assets/css/default.css" rel="stylesheet">
+    <link href="assets/css/ng-table.min.css" rel="stylesheet">
     <!-- Font Awesome -->
-    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
     <!-- Animate.css -->
     <link href="assets/css/animate.min.css" rel="stylesheet">
 
@@ -23,7 +24,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
-<body data-ng-app="app" data-ng-controller="AdmLoginFormCtrl">
+<body>
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -36,13 +37,20 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="javascript:">
+            <a class="navbar-brand" href="admin">
                 <img class="logo-navbar" src="assets/img/logo-h30.png" height="30">
             </a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="admin/panel">
+                        <i class="fa fa-undo"></i> Volver
+                    </a>
+                </li>
+            </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li ng-controller="AdmLoginFormCtrl">
                     <a href="main" ng-click="logout()">
@@ -54,53 +62,14 @@
     </div><!-- /.container-fluid -->
 </nav>
 
-<div class="container text-center">
+<div class="container" data-ng-app="appTable" data-ng-controller="insertionController">
     <div class="container text-center">
-        <p class="main-title animated fadeInDown">Panel de administración</p>
+        <p class="main-title animated fadeInDown">Actualizar datos de Amazon</p>
     </div>
-    <div class="div-panel-btn">
-        <i class="fa fa-envelope fa-1x"></i>
-        <br>
-        <a href="admin/showemails" title="Emails web" style="padding-top: 60%">
-            <h3>Ver Emails</h3>
-        </a>
+    <br>
+    <div class="text-center" >
+        Se está llevando a cabo la actualización de datos.<br> En unos minutos estará todo listo.
     </div>
-    <div class="div-panel-btn">
-        <img src="assets/img/admin-icons/scrapy-logo.png" width="120" height="45" alt="Logo Scrapy">
-        <br>
-        <a href="admin/crawlerPanel" title="Gestión de araña web" style="padding-top: 60%">
-            <h3>Gestión de araña web</h3>
-        </a>
-    </div>
-    <div class="div-panel-btn">
-        <img src="assets/img/admin-icons/mongodb.png" width="150" height="40" alt="Insertar">
-        <br>
-        <a href="admin/insertCompPanel" title="Inserciones en BD" style="padding-top: 50%">
-            <h3>Añadir datos recolectados a MongoDB</h3>
-        </a>
-    </div>
-        <div class="div-panel-btn">
-        <img src="assets/img/shops/amazon.png" width="50" height="50" alt="Insertar">
-        <br>
-        <a href="admin/updateAmazon" title="Inserciones de Amazon" style="padding-top: 50%">
-            <h3>Actualizar datos de Amazon</h3>
-        </a>
-    </div>
-    <div class="div-panel-btn">
-        <img src="assets/img/admin-icons/ga.png" width="150" height="50" alt="logo Analytics">
-        <br>
-        <a href="https://www.google.com/analytics/web/?hl=es&pli=1#report/visitors-overview/a61071550w95679231p99762144/" title="Acceso Analytics" style="padding-top: 50%" target="_blank">
-            <h3>Visión general de audiencia</h3>
-        </a>
-    </div>
-    <div class="div-panel-btn">
-        <img src="assets/img/admin-icons/facebook-construyetupc.png" width="150" height="50" alt="logo Facebook">
-        <br>
-        <a href="https://www.facebook.com/construyetupc" title="construyetupc facebook" style="padding-top: 50%" target="_blank">
-            <h3>Página de Facebook</h3>
-        </a>
-    </div>
-
 </div>
 
 <!-- Sticky footer -->
@@ -110,14 +79,14 @@
     </div>
 </footer>
 
-<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<!-- AngularJS -->
-<script src="assets/js/angular.min.js"></script>
-<!-- App Angular -->
-<script src="assets/js/app.js"></script>
-<!-- Bootstrap -->
+<script src="assets/js/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/angular.min.js"></script>
+<script src="assets/js/ng-table.min.js"></script>
+<script src="assets/js/app.js"></script>
+
+
 
 </body>
 </html>
